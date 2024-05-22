@@ -1,112 +1,597 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# PP5 Football Crazy
 
-Welcome Roisin Ocon,
+## Developer: Róisín O'Connell 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+![Football Crazy Mockup Image](documentation/football_crazy_mockup.png)
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 26, 2024**
+[View the live project here](HEROKU-LINK-HERE)
 
-## Gitpod Reminders
+[View GitHub repository](https://github.com/roc-11/football-crazy-pp5)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/roc-11/football-crazy-pp5)](https://github.com/roc-11/football-crazy-pp5/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/roc-11/football-crazy-pp5)](https://github.com/roc-11/football-crazy-pp5/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/roc-11/football-crazy-pp5)](https://github.com/roc-11/football-crazy-pp5)
 
-`python3 -m http.server`
+## Introduction
 
-A blue button should appear to click: _Make Public_,
+Football Crazy is a website 
 
-Another blue button should appear to click: _Open Browser_.
+## UX
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+### Planning Stage
 
-A blue button should appear to click: _Make Public_,
+#### Aim
 
-Another blue button should appear to click: _Open Browser_.
+The aim of Football Crazy is
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Application Goals
 
-To log into the Heroku toolbelt CLI:
+Goals for New Users
+* As a new site user, I would like to 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Goals for Returning Users
+* As a returning site user, I would like to 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+Goals for Site Administrators
+* As a site administrator, I would like to 
 
-------
+#### User Stories
 
-## Release History
+All epics, user stories with their acceptance criteria and tasks can be viewed on the [Github Project Board](https://github.com/users/roc-11/projects/6).
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- There were NUMBER Epics created from Project Concept to Project Submission.
 
-**April 26 2024:** Update node version to 16
+- There were NUMBER User Stories Created including:
+    1. USERSTORY # 1: Gather General Requirements & Visual Layout
+        - As a Developer I can see how the site should be laid out and make a detailed plan so that the site functionality can be developed in an incremental manner.
+    2. USERSTORY #2: Initial Django project setup
+        - As a developer I can set up the initial project files in the developer environment and deploy to Heroku so that I have a base for my project and can resolve any deployment issues early on.
+    3. USERSTORY # 3: Create Front-End Site, using Bootstrap Template
+        - As a Developer I can design and deploy a basic website so that it meets the minimum viable requirements.
 
-**September 20 2023:** Update Python version to 3.9.17.
+### Wireframes
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+The appearance of each page of the website was planned by making wireframes. It was essential to provide a positive user experience for the user. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Initially, wireframes plans were hand-drawn on a notepad. More detailed wireframes were then created using a desktop version of [Balsamiq](https://balsamiq.com/ "Link to Balsamiq homepage").
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+They can be found below:
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+![Desktop Wireframes - Homepage](documentation/wireframe_1_homepage.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Flow Chart
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+To follow best practice, a flowchart was created for the website's logic, and mapped out before coding began using a free version of [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning).
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+Below is the flowchart of the main process of this website:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+![Flow Chart](documentation/Football_Crazy_Flowchart.png)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Colour Scheme
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+The colour scheme 
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Details of the full colour palette can be found below:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+![Colour Scheme](documentation/colour_scheme.png)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### Typography
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Features
 
-------
+The following features have been implemented:
+1. Fully responsive website consisting of:
+  - Home 
 
-## FAQ about the uptime script
+### Existing Features
 
-**Why have you added this script?**
+### Navigation
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Homepage
 
-**How will this affect me?**
+### Unresolved bugs
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Future Features/Improvements
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Tools & Technologies Used
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+## Database Design
 
-**So….?**
+Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models. Understanding the relationships between different tables can save time later in the project.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+To follow best practice, a database schema was created for the backend DB and tables, and mapped out before coding began using a free version of [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning).
 
-**Can I opt out?**
+Below is the database structure:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+![Database Schema](documentation/Database_Schema.png)
+
+Below are the Models used for the project, used to create an ERD with the relationships identified in the schema:
+
+```python
 
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+
+## Agile Development Process
+
+[GitHub Projects](https://github.com/users/roc-11/projects/6) served as an Agile tool for this project.
+
+The Football Crazy project was managed from the beginning using [GitHub Projects (View Project Here)](https://github.com/users/roc-11/projects/6/views/1), in order to ensure an agile approach.
+  - The project goals were broken into Epics, each further divided into User Stories. 
+  - Each User Story contains acceptance criteria and individual tasks.
+  - Each individual User Story was assigned a specific number of story points determined by a rough estimate of the time required to complete the task.
+  - This allowed me to create a roadmap with milestones. [View Roadmap Here](https://github.com/users/roc-11/projects/6/views/1?layout=roadmap)
+  - Each User Story was also assigned a label (according to the MoSCoW System) so I could prioritise the work.
+
+![Agile Approach - Kanban Board](documentation/agile_approach.png)
+
+### Github Projects
+
+The Football Crazy project was managed from the beginning using [GitHub Projects (View Project Here)](https://github.com/users/roc-11/projects/6), in order to ensure an agile approach. Please refer above to [Agile Development Process](#agile-development-process) for more details. 
+
+### Github Issues
+
+[GitHub Issues](https://github.com/roc-11/football-crazy-pp5/issues) served as an another Agile tool. There, I used my own **User Story Template** to manage user stories.
+
+It also helped with milestone iterations on a weekly basis.
+
+GitHub Issues were used to create Epics and User Stories for the project. Each issue was added to the Football Crazy Project and assigned relevant lables. Please refer above to [Agile Development Process](#agile-development-process) for more details. 
+
+![Github Issues](documentation/github_issues.png)
+
+### MoSCoW Prioritisation
+
+I've decomposed my Epics into stories prior to prioritizing and implementing them.
+Using this approach, I was able to apply the MoSCow prioritization and labels to my user stories within the Issues tab.
+
+- **Must Have**: guaranteed to be delivered 
+- **Should Have**: adds significant value, but not vital 
+- **Could Have**: has small impact if left out 
+- **Won't Have**: not a priority for this iteration (future development)
+
+Each User Story was also assigned a label (according to the MoSCoW System) so I could prioritise the work. Please refer above to [Agile Development Process](#agile-development-process) for more details. 
+
+# Ecommerce Business Model
+
+This site sells goods to individual customers, and therefore follows a `Business to Customer` model.
+It is of the simplest **B2C** forms, as it focuses on individual transactions, and doesn't need anything
+such as monthly/annual subscriptions.
+
+It is still in its early development stages, although it already has a newsletter, and links for social media marketing.
+
+Social media can potentially build a community of users around the business, and boost site visitor numbers,
+especially when using larger platforms such a Facebook.
+
+A newsletter list can be used by the business to send regular messages to site users.
+For example, what items are on special offer, new items in stock,
+updates to business hours, notifications of events, and much more!
+
+## Search Engine Optimization (SEO) & Social Media Marketing
+
+### Keywords
+
+I've identified some appropriate keywords to align with my site, that should help users
+when searching online to find my page easily from a search engine.
+This included a series of the following keyword types
+
+- Short-tail (head terms) keywords
+- Long-tail keywords
+
+I also played around with [Word Tracker](https://www.wordtracker.com) a bit
+to check the frequency of some of my site's primary keywords (only until the free trial expired).
+
+### Sitemap
+
+I've used [XML-Sitemaps](https://www.xml-sitemaps.com) to generate a sitemap.xml file.
+This was generated using my deployed site URL: HEROKU-LINK-HERE
+
+After it finished crawling the entire site, it created a
+[sitemap.xml](sitemap.xml) which I've downloaded and included in the repository.
+
+### Robots
+
+I've created the [robots.txt](robots.txt) file at the root-level.
+Inside, I've included the default settings:
+
+```
+User-agent: *
+Disallow:
+Sitemap: https://HEROKU-LINK-HERE/sitemap.xml
 ```
 
-**Anything more?**
+Further links for future implementation:
+- [Google search console](https://search.google.com/search-console)
+- [Creating and submitting a sitemap](https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap)
+- [Managing your sitemaps and using sitemaps reports](https://support.google.com/webmasters/answer/7451001)
+- [Testing the robots.txt file](https://support.google.com/webmasters/answer/6062598)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Social Media Marketing
 
----
+Creating a strong social base (with participation) and linking that to the business site can help drive sales.
+Using more popular providers with a wider user base, such as Facebook, typically maximizes site views.
 
-Happy coding!
+I've created a mockup Facebook business account using the
+[Balsamiq template](https://code-institute-org.github.io/5P-Assessments-Handbook/files/Facebook_Mockups.zip)
+provided by Code Institute.
+
+![screenshot](documentation/mockup-facebook.png)
+
+### Newsletter Marketing
+
+I have incorporate a newsletter sign-up form on my application, to allow users to supply their
+email address if they are interested in learning more. 
+
+## Technologies Used 
+
+The site has been built with the following tech and tools:
+1. HTML5
+2. CSS
+3. JavaScript
+4. Python
+5. Django - database framework
+6. Jinja - HTML logic rendering for dynamic content
+7. ElephantSQL - database hosting
+8. Cloudinary - media hosting
+9. Bootstrap 4
+10. JQuery
+11. GitHub Projects - agile management, kanban, roadmap and milestones
+12. GitHub Repo - code storage
+13. Git - version control
+14. GitPod & VS Code - IDE
+15. Heroku - live site hosting
+
+### Frameworks, Libraries & Programs Used
+
+
+## Testing
+
+For all testing, please refer to the [TESTING.md](TESTING.md) file.
+
+## Deployment
+
+The live deployed application can be found deployed on [Heroku](HEROKU-LINK-HERE).
+
+### PostgreSQL Database
+
+This project uses a [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net).
+
+To obtain my own Postgres Database from Code Institute, I followed these steps:
+
+- Signed-in to the CI LMS using my email address.
+- An email was sent to me with my new Postgres Database.
+
+> [!CAUTION]  
+> - PostgreSQL databases by Code Institute are only available to CI Students.
+> - You must acquire your own PostgreSQL database through some other method
+> if you plan to clone/fork this repository.
+> - Code Institute students are allowed a maximum of 8 databases.
+> - Databases are subject to deletion after 18 months.
+
+### Amazon AWS
+
+This project uses [AWS](https://aws.amazon.com) to store media and static files online, due to the fact that Heroku doesn't persist this type of data.
+
+Once you've created an AWS account and logged-in, follow these series of steps to get your project connected.
+Make sure you're on the **AWS Management Console** page.
+
+#### S3 Bucket
+
+- Search for **S3**.
+- Create a new bucket, give it a name (matching your Heroku app name), and choose the region closest to you.
+- Uncheck **Block all public access**, and acknowledge that the bucket will be public (required for it to work on Heroku).
+- From **Object Ownership**, make sure to have **ACLs enabled**, and **Bucket owner preferred** selected.
+- From the **Properties** tab, turn on static website hosting, and type `index.html` and `error.html` in their respective fields, then click **Save**.
+- From the **Permissions** tab, paste in the following CORS configuration:
+
+	```shell
+	[
+		{
+			"AllowedHeaders": [
+				"Authorization"
+			],
+			"AllowedMethods": [
+				"GET"
+			],
+			"AllowedOrigins": [
+				"*"
+			],
+			"ExposeHeaders": []
+		}
+	]
+	```
+
+- Copy your **ARN** string.
+- From the **Bucket Policy** tab, select the **Policy Generator** link, and use the following steps:
+	- Policy Type: **S3 Bucket Policy**
+	- Effect: **Allow**
+	- Principal: `*`
+	- Actions: **GetObject**
+	- Amazon Resource Name (ARN): **paste-your-ARN-here**
+	- Click **Add Statement**
+	- Click **Generate Policy**
+	- Copy the entire Policy, and paste it into the **Bucket Policy Editor**
+
+		```shell
+		{
+			"Id": "Policy1234567890",
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Sid": "Stmt1234567890",
+					"Action": [
+						"s3:GetObject"
+					],
+					"Effect": "Allow",
+					"Resource": "arn:aws:s3:::your-bucket-name/*"
+					"Principal": "*",
+				}
+			]
+		}
+		```
+
+	- Before you click "Save", add `/*` to the end of the Resource key in the Bucket Policy Editor (like above).
+	- Click **Save**.
+- From the **Access Control List (ACL)** section, click "Edit" and enable **List** for **Everyone (public access)**, and accept the warning box.
+	- If the edit button is disabled, you need to change the **Object Ownership** section above to **ACLs enabled** (mentioned above).
+
+#### IAM
+
+Back on the AWS Services Menu, search for and open **IAM** (Identity and Access Management).
+Once on the IAM page, follow these steps:
+
+- From **User Groups**, click **Create New Group**.
+	- Suggested Name: `group-football-crazy-pp5` (group + the project name)
+- Tags are optional, but you must click it to get to the **review policy** page.
+- From **User Groups**, select your newly created group, and go to the **Permissions** tab.
+- Open the **Add Permissions** dropdown, and click **Attach Policies**.
+- Select the policy, then click **Add Permissions** at the bottom when finished.
+- From the **JSON** tab, select the **Import Managed Policy** link.
+	- Search for **S3**, select the `AmazonS3FullAccess` policy, and then **Import**.
+	- You'll need your ARN from the S3 Bucket copied again, which is pasted into "Resources" key on the Policy.
+
+		```shell
+		{
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Effect": "Allow",
+					"Action": "s3:*",
+					"Resource": [
+						"arn:aws:s3:::your-bucket-name",
+						"arn:aws:s3:::your-bucket-name/*"
+					]
+				}
+			]
+		}
+		```
+	
+	- Click **Review Policy**.
+	- Suggested Name: `policy-football-crazy-pp5` (policy + the project name)
+	- Provide a description:
+		- "Access to S3 Bucket for football-crazy-pp5 static files."
+	- Click **Create Policy**.
+- From **User Groups**, click your "group-football-crazy-pp5".
+- Click **Attach Policy**.
+- Search for the policy you've just created ("policy-football-crazy-pp5") and select it, then **Attach Policy**.
+- From **User Groups**, click **Add User**.
+	- Suggested Name: `user-football-crazy-pp5` (user + the project name)
+- For "Select AWS Access Type", select **Programmatic Access**.
+- Select the group to add your new user to: `group-football-crazy-pp5`
+- Tags are optional, but you must click it to get to the **review user** page.
+- Click **Create User** once done.
+- You should see a button to **Download .csv**, so click it to save a copy on your system.
+	- **IMPORTANT**: once you pass this page, you cannot come back to download it again, so do it immediately!
+	- This contains the user's **Access key ID** and **Secret access key**.
+	- `AWS_ACCESS_KEY_ID` = **Access key ID**
+	- `AWS_SECRET_ACCESS_KEY` = **Secret access key**
+
+#### Final AWS Setup
+
+- If Heroku Config Vars has `DISABLE_COLLECTSTATIC` still, this can be removed now, so that AWS will handle the static files.
+- Back within **S3**, create a new folder called: `media`.
+- Select any existing media images for your project to prepare them for being uploaded into the new folder.
+- Under **Manage Public Permissions**, select **Grant public read access to this object(s)**.
+- No further settings are required, so click **Upload**.
+
+### Stripe API
+
+This project uses [Stripe](https://stripe.com) to handle the ecommerce payments.
+
+Once you've created a Stripe account and logged-in, follow these series of steps to get your project connected.
+
+- From your Stripe dashboard, click to expand the "Get your test API keys".
+- You'll have two keys here:
+	- `STRIPE_PUBLIC_KEY` = Publishable Key (starts with **pk**)
+	- `STRIPE_SECRET_KEY` = Secret Key (starts with **sk**)
+
+As a backup, in case users prematurely close the purchase-order page during payment, we can include Stripe Webhooks.
+
+- From your Stripe dashboard, click **Developers**, and select **Webhooks**.
+- From there, click **Add Endpoint**.
+	- `https://football-crazy-roc11.herokuapp.com/checkout/wh/`
+- Click **receive all events**.
+- Click **Add Endpoint** to complete the process.
+- You'll have a new key here:
+	- `STRIPE_WH_SECRET` = Signing Secret (Wehbook) Key (starts with **wh**)
+
+### Gmail API
+
+This project uses [Gmail](https://mail.google.com) to handle sending emails to users for account verification and purchase order confirmations.
+
+Once you've created a Gmail (Google) account and logged-in, follow these series of steps to get your project connected.
+
+- Click on the **Account Settings** (cog icon) in the top-right corner of Gmail.
+- Click on the **Accounts and Import** tab.
+- Within the section called "Change account settings", click on the link for **Other Google Account settings**.
+- From this new page, select **Security** on the left.
+- Select **2-Step Verification** to turn it on. (verify your password and account)
+- Once verified, select **Turn On** for 2FA.
+- Navigate back to the **Security** page, and you'll see a new option called **App passwords**.
+- This might prompt you once again to confirm your password and account.
+- Select **Mail** for the app type.
+- Select **Other (Custom name)** for the device type.
+	- Any custom name, such as "Django" or football-crazy-pp5
+- You'll be provided with a 16-character password (API key).
+	- Save this somewhere locally, as you cannot access this key again later!
+	- `EMAIL_HOST_PASS` = user's 16-character API key
+	- `EMAIL_HOST_USER` = user's own personal Gmail email address
+
+### Heroku Deployment
+
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select **Create App**.
+- From the new app **Settings**, click **Reveal Config Vars**, and set your environment variables.
+
+> [!IMPORTANT]  
+> This is a sample only; you would replace the values with your own if cloning/forking my repository.
+
+| Key | Value |
+| --- | --- |
+| `AWS_ACCESS_KEY_ID` | user's own value |
+| `AWS_SECRET_ACCESS_KEY` | user's own value |
+| `DATABASE_URL` | user's own value |
+| `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
+| `EMAIL_HOST_PASS` | user's own value |
+| `EMAIL_HOST_USER` | user's own value |
+| `SECRET_KEY` | user's own value |
+| `STRIPE_PUBLIC_KEY` | user's own value |
+| `STRIPE_SECRET_KEY` | user's own value |
+| `STRIPE_WH_SECRET` | user's own value |
+| `USE_AWS` | True |
+
+Heroku needs three additional files in order to deploy properly.
+
+- requirements.txt
+- Procfile
+- runtime.txt
+
+You can install this project's **requirements** (where applicable) using:
+
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+The **Procfile** can be created with the following command:
+
+- `echo web: gunicorn app_name.wsgi > Procfile`
+- *replace **app_name** with the name of your primary Django app name; the folder where settings.py is located*
+
+The **runtime.txt** file needs to know which Python version you're using:
+1. type: `python3 --version` in the terminal.
+2. in the **runtime.txt** file, add your Python version:
+	- `python-3.9.18`
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either:
+
+- Select **Automatic Deployment** from the Heroku app.
+
+Or:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+The project should now be connected and deployed to Heroku!
+
+### Local Deployment
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the *requirements.txt* file.
+
+- `pip3 install -r requirements.txt`.
+
+You will need to create a new file called `env.py` at the root-level,
+and include the same environment variables listed above from the Heroku deployment steps.
+
+> [!IMPORTANT]  
+> This is a sample only; you would replace the values with your own if cloning/forking my repository.
+
+Sample `env.py` file:
+
+```python
+import os
+
+os.environ.setdefault("AWS_ACCESS_KEY_ID", "user's own value")
+os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "user's own value")
+os.environ.setdefault("DATABASE_URL", "user's own value")
+os.environ.setdefault("EMAIL_HOST_PASS", "user's own value")
+os.environ.setdefault("EMAIL_HOST_USER", "user's own value")
+os.environ.setdefault("SECRET_KEY", "user's own value")
+os.environ.setdefault("STRIPE_PUBLIC_KEY", "user's own value")
+os.environ.setdefault("STRIPE_SECRET_KEY", "user's own value")
+os.environ.setdefault("STRIPE_WH_SECRET", "user's own value")
+
+# local environment only (do not include these in production/deployment!)
+os.environ.setdefault("DEBUG", "True")
+```
+
+Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps:
+
+- Start the Django app: `python3 manage.py runserver`
+- Stop the app once it's loaded: `CTRL+C` or `⌘+C` (Mac)
+- Make any necessary migrations: `python3 manage.py makemigrations`
+- Migrate the data to the database: `python3 manage.py migrate`
+- Create a superuser: `python3 manage.py createsuperuser`
+- Load fixtures (if applicable): `python3 manage.py loaddata file-name.json` (repeat for each file)
+- Everything should be ready now, so run the Django app again: `python3 manage.py runserver`
+
+If you'd like to backup your database models, use the following command for each model you'd like to create a fixture for:
+
+- `python3 manage.py dumpdata your-model > your-model.json`
+- *repeat this action for each model you wish to backup*
+
+#### Cloning
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/roc-11/football-crazy-pp5) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git Bash or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	- `git clone https://github.com/roc-11/football-crazy-pp5.git`
+7. Press Enter to create your local clone.
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/roc-11/football-crazy-pp5)
+
+Please note that in order to directly open the project in Gitpod, you need to have the browser extension installed.
+A tutorial on how to do that can be found [here](https://www.gitpod.io/docs/configure/user-settings/browser-extension).
+
+#### Forking
+
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
+You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/roc-11/football-crazy-pp5)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
+
+### Local VS Deployment
+
+## Credits
+
+### Code
+
+### Content
+
+### Media
+
+## Acknowledgements
+
+- I would like to thank my Code Institute mentor, [Oluwaseun Owonikoko](https://github.com/seunkoko) for their support throughout the development of this project.
+- I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
+- I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
+- I would like to thank my partner, for believing in me, and allowing me to make this transition into software development.
+- I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
