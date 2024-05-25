@@ -48,6 +48,92 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
         - As a developer I can set up the initial project files in the developer environment and deploy to Heroku so that I have a base for my project and can resolve any deployment issues early on.
     3. USERSTORY # 3: Create Front-End Site, using Bootstrap Template
         - As a Developer I can design and deploy a basic website so that it meets the minimum viable requirements.
+	4. USERSTORY #4: View a list of products.
+        - As a Shopper I can view a list of products so that I can select something to purchase.
+	5. USERSTORY #5: View individual product details.
+        - As a shopper I can view individual product details so that I can identify the price, description, product rating, product image and available sizes.
+	6. USERSTORY #6: Identify deals, clearance items and special offers.
+        - As a shopper I can quickly identify deals, clearance items and special offers so that I can take advantage of special savings on products that I'd like to purchase.
+	7. USERSTORY #7: View the total of my purchases. 
+        - As a Shopper I can easily view the total of my purchases so that I can avoid spending too much.
+	8. USERSTORY #8: Register for an account
+        - As a Site User I can easily register for an account so that I can have a personal account and be able to view my profile.
+	9. USERSTORY #9: Login or Logout
+        - As a Site User I can easily login or logout so that I can access my personal account information.
+	10. USERSTORY #10: Recover Password
+        - As a Site User I can easily recover my password in case I forget it so that I can recover access to my account.
+	11. USERSTORY #11: Email confirmation upon registration
+        - As a Site User I can receive an email confirmation after registering so that I can verify my account registration was successful.
+	12. USERSTORY #12: Create SuperUser Account
+        - As a Site Admin I want to create a superuser account so that I can access the Django Admin area.
+	13. USERSTORY #13: Sort list of available products
+        - As a Shopper I can sort the list of available products so that I can easily identify the best rated, best priced and categorically sort the products.
+	14. USERSTORY #14: Sort a specific category of product
+        - As a Shopper I can sort a specific category of product so that I can find the best priced or best rated product in a specific category, or sort the products in that category by name.
+	15. USERSTORY #15: Sort multiple categories simultaneously
+        - As a Shopper I can sort multiple categories of products simultaneously so that I can find the best priced or best rated products across broad categories, such as "boots" or "accessories".
+	16. USERSTORY #16: Search for a product
+        - As a Shopper I can search for a product by name or description so that I can find a specific product I'd like to purchase.
+	17. USERSTORY #17: Search Results
+        - As a Shopper I can easily see what I have searched for and the number of results so that I can quickly decide whether the product I want is available.
+	18. USERSTORY #18: View a specific category of products
+        - As a Shopper I can view a specific category of products so that I can quickly find products I'm interested in without having to search through all products.
+	19. USERSTORY #19: Select the size and quantity of a product when purchasing it
+        - As a Shopper I can easily select the size and quantity of a product when purchasing it so that I ensure that I do not accidentally select the wrong product or quantity or size.
+	20. USERSTORY #20: View items in my bag to be purchased
+        - As a Shopper I can view items in my bag to be purchased so that I identify the total cost of my purchase and all items I will recieve.
+	21. USERSTORY #21: Adjust the quantity of individual items in my bag
+        - As a Shopper I can adjust the quantity of individual items in my bag so that I can easily make changes to my purchase before checkout.
+	22. USERSTORY #22: Enter payment information
+        - As a Shopper I can easily enter my payment information so that I can check out quickly and with no hassle.
+	23. USERSTORY #23: Feel my personal and payment information is safe and secure
+        - As a Shopper I can feel my personal and payment information is safe and secure so that I can confidently provide the needed information to make a purchase.
+	24. USERSTORY #24: View an order confirmation after checkout
+        - As a Shopper I can view an order confirmation after checkout so that I can verify that I haven't made any mistakes.
+	25. USERSTORY #25: Receive an email confirmation after checking out
+        - As a Shopper I can receive an email confirmation after checking out so that I can keep the confirmation of what I've purchased for my records.
+	26. USERSTORY #26: Add a product
+        - As a Store Owner I can add a product so that I can add new items to my store.
+	27. USERSTORY #27: Edit/update a product
+        - As a Store Owner I can edit/update a product so that I can change product prices, descriptions, images and other product criteria.
+	28. USERSTORY #28: Delete a product
+        - As a Store Owner I can delete a product so that I can remove items that are no longer for sale.
+	29. USERSTORY #29: Personalise User Profile
+        - As a Site User I can have a personalized user profile so that I can view my personal order history and order confirmations, and save my payment information.
+	30. USERSTORY #30: Customise admin area branding
+        - As a Site Admin I can recognise the admin area has the same look & feel as the front-end site so that website continuity is maintained.
+	31. USERSTORY #31: Read about the site
+        - As a Site User I can click on the About link so that I can read about the site.
+	32. USERSTORY #32: Add and update about text
+        - As a Site Admin I can create or update the about page content so that it is available on the site.
+	33. USERSTORY #33: Request for contact page
+        - As a Shopper I can fill in a contact form so that I can submit a request for contact.
+	34. USERSTORY #34: Review contact requests
+        - As a Site Admin I can store contact/collaboration requests in the database so that I can review them.
+	35. USERSTORY #35: Manage Contact Requests
+        - As a Site Admin I can mark contact/collaboration requests as "read" so that I can see how many I still need to process.
+	36. USERSTORY #36: View reviews and submit a review/rating for a product
+        - As a Shopper/Site User I want to view product reviews and ratings so that I can decide whether the product is worth purchasing and gain trust in the product/store.
+	37. USERSTORY #37: Modify or delete a review
+        - As a Shopper/Site User I want to add, modify or delete a product review so that I can review a product I purchased and help other shoppers to make a good choice/contribute to the site.
+	38. USERSTORY #38: Approve reviews
+        - As a Site Admin I can approve or disapprove reviews so that I can filter out objectionable/spam reviews.
+	39. USERSTORY #39: Create templates to handle onscreen notifications (success, error, warning and info messages)
+        - 
+	40. USERSTORY #40: Create Post Model for Blog
+        - 
+	41. USERSTORY #41: Display Post Detail
+        - 
+	42. USERSTORY #42: Manual Testing of Project
+        - 
+	43. USERSTORY #43: Code Validation
+        - 
+	44. USERSTORY #44: Write Project Documentation
+        - As a Developer I want to document my Django project so that the whole process for the ecommerce store is documented.
+	45. USERSTORY #45: Final Deployment
+        - As a Developer I want to deploy my project/website so that it can be accessed publicly online.
+	46. USERSTORY #46: Project Submission
+        - 
 
 ### Wireframes
 
