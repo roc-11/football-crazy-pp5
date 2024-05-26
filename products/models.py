@@ -5,6 +5,10 @@ class Category(models.Model):
     """
     Stores category names related to :model:`Product`.
     """
+
+    class Meta: 
+        verbose_name_plural = 'Categories'
+        
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
