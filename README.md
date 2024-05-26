@@ -119,21 +119,21 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
 	38. USERSTORY #38: Approve reviews
         - As a Site Admin I can approve or disapprove reviews so that I can filter out objectionable/spam reviews.
 	39. USERSTORY #39: Create templates to handle onscreen notifications (success, error, warning and info messages)
-        - 
+        - As a 
 	40. USERSTORY #40: Create Post Model for Blog
-        - 
+        - As a 
 	41. USERSTORY #41: Display Post Detail
-        - 
+        - As a 
 	42. USERSTORY #42: Manual Testing of Project
-        - 
+        - As a 
 	43. USERSTORY #43: Code Validation
-        - 
+        - As a 
 	44. USERSTORY #44: Write Project Documentation
         - As a Developer I want to document my Django project so that the whole process for the ecommerce store is documented.
 	45. USERSTORY #45: Final Deployment
         - As a Developer I want to deploy my project/website so that it can be accessed publicly online.
 	46. USERSTORY #46: Project Submission
-        - 
+        - As a 
 
 ### Wireframes
 
