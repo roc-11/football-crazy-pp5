@@ -20,10 +20,10 @@
                 Boots
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="boots-link">
-                <a href="" class="dropdown-item">Firm Ground</a>
-                <a href="" class="dropdown-item">Soft Ground</a>
-                <a href="" class="dropdown-item">Artificial Grass</a>
-                <a href="" class="dropdown-item">All Boots</a>
+                <a href="{% url 'products' %}?category=firm_ground" class="dropdown-item">Firm Ground</a>
+                <a href="{% url 'products' %}?category=soft_ground" class="dropdown-item">Soft Ground</a>
+                <a href="{% url 'products' %}?category=artificial_grass" class="dropdown-item">Artificial Grass</a>
+                <a href="{% url 'products' %}?category=firm_ground,soft_ground,artificial_grass" class="dropdown-item">All Boots</a>
             </div>
         </li>
 
@@ -32,10 +32,10 @@
                 Kit
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="kit-link">
-                <a href="" class="dropdown-item">Jersey</a>
-                <a href="" class="dropdown-item">Shorts</a>
-                <a href="" class="dropdown-item">Socks</a>
-                <a href="" class="dropdown-item">All Kit</a>
+                <a href="{% url 'products' %}?category=jerseys" class="dropdown-item">Jersey</a>
+                <a href="{% url 'products' %}?category=shorts" class="dropdown-item">Shorts</a>
+                <a href="{% url 'products' %}?category=socks" class="dropdown-item">Socks</a>
+                <a href="{% url 'products' %}?category=jerseys,shorts,socks" class="dropdown-item">All Kit</a>
             </div>
         </li>
 
@@ -44,11 +44,11 @@
                 Accessories &amp; Equipment
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="" class="dropdown-item">Footballs</a>
-                <a href="" class="dropdown-item">Shinpads</a>
-                <a href="" class="dropdown-item">Goalkeeper Gloves</a>
-                <a href="" class="dropdown-item">Coaching</a>
-                <a href="" class="dropdown-item">All Accessories &amp; Equipment</a>
+                <a href="{% url 'products' %}?category=footballs" class="dropdown-item">Footballs</a>
+                <a href="{% url 'products' %}?category=shinpads" class="dropdown-item">Shinpads</a>
+                <a href="{% url 'products' %}?category=goalkeeper_gloves" class="dropdown-item">Goalkeeper Gloves</a>
+                <a href="{% url 'products' %}?category=coaching" class="dropdown-item">Coaching</a>
+                <a href="{% url 'products' %}?category=footballs,shinpads,goalkeeper_gloves,coaching" class="dropdown-item">All Accessories &amp; Equipment</a>
             </div>
         </li>
 
@@ -57,10 +57,10 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?category=clearance" class="dropdown-item">Clearance</a>
+                <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>
