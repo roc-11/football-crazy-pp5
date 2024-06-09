@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,9 @@ SECRET_KEY = 'django-insecure-^p8eolhpb&*0&ayd7o^fm-koi4nk14vj36uwxsd05^z_a9c_z@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-roc11-footballcrazypp5-ddkd0b7ww4a.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = ['8000-roc11-footballcrazypp5-ddkd0b7ww4a.ws-eu114.gitpod.io',
+                    'football-crazy-pp5.herokuapp.com',
+                    'localhost']
 
 
 # Application definition
@@ -120,12 +123,17 @@ WSGI_APPLICATION = 'football_crazy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
