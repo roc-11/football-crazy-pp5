@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-roc11-footballcrazypp5-ddkd0b7ww4a.ws-eu114.gitpod.io',
                     'football-crazy-pp5.herokuapp.com',
+                    'football-crazy-pp5-5b2eb292c933.herokuapp.com',
+                    '.herokuapp.com',
                     'localhost']
 
 
