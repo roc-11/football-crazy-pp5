@@ -20,5 +20,7 @@ def about_football_crazy(request):
     return render(
         request,
         "about/about.html",
-        {"about": about},
+        {
+            "about": about
+        },
     )
