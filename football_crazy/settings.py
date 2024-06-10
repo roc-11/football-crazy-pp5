@@ -52,10 +52,12 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles',
+    'about',
 
     # Other
     'crispy_forms',
-    'storages'
+    'storages',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
