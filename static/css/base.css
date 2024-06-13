@@ -257,6 +257,25 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+/* -------------------------------- Product Reviews */
+
+#reviewCard {
+    background-color: rgb(182, 180, 180);
+}
+.review-div {
+    background-color: white;
+    border-radius: 5%;
+  }
+
+#reviewContent {
+
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
 /* ============================ Media Queries ============================*/
 
 /* Slightly larger container on xl screens */

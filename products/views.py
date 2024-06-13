@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, Review
+from .forms import ProductForm, ReviewForm
 
 
 def all_products(request):
@@ -65,9 +65,26 @@ def product_detail(request, product_id):
     """ A view to individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = product.reviews.all().order_by("-created_on")
+
+    review_count = product.reviews.filter(approved=True).count()
+    if request.method == "POST":
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.created_by = request.user
+            review.product = product
+            review.rating = '3'
+            review.save()
+            messages.success(request, 'Review submitted and awaiting approval')
+
+    review_form = ReviewForm()
 
     context = {
         'product' : product,
+        'reviews': reviews,
+        'review_count': review_count,
+        'review_form': review_form,
     }
 
     return render(request, 'products/product_detail.html', context)

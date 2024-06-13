@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -36,3 +37,17 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    """
+    Stores a review for a product related to :model:`Product`.
+    """
+    product = models.ForeignKey(
+        Product, related_name='reviews', on_delete=models.CASCADE)
+    rating = models.IntegerField(default=3)
+    content = models.TextField()
+    created_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="review_by")
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
