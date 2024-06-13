@@ -69,7 +69,9 @@
                             </a>
                             {% endif %}
                             <div class="card-body pb-0">
-                                <p class="mb-0">{{ product.name }}</p>
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <p class="mb-0 prod-name-link text-black text-decoration-none">{{ product.name }}</p>
+                                </a>
                             </div>
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
@@ -90,8 +92,8 @@
                                         <!-- Store Admin - edit/delete product -->
                                         {% if request.user.is_superuser %}
                                             <small class="ml-3">
-                                                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                <a href="{% url 'edit_product' product.id %}" class="btn-info text-decoration-none p-1">Edit</a> |
+                                                <a href="{% url 'delete_product' product.id %}" class="btn-danger text-decoration-none p-1">Delete</a>
                                             </small>
                                         {% endif %}
                                     </div>

@@ -31,7 +31,7 @@
             <!-- Product Details Column, Actions to Add to Bag -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
-                    <p class="mb-0">{{ product.name }}</p>
+                    <p class="mb-0 logo-font">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                     {% if product.category %}
                         <p class="small mt-1 mb-0">
@@ -48,8 +48,9 @@
                     <!-- Store admin - edit/delete product -->
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
-                            <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            <small class="text-muted">Store Admin: </small>
+                            <a href="{% url 'edit_product' product.id %}" class="btn-info text-decoration-none p-1">Edit</a> |
+                            <a href="{% url 'delete_product' product.id %}" class="btn-danger text-decoration-none p-1" >Delete</a>
                         </small>
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
@@ -115,15 +116,18 @@
                 </div>
             </div>
         </div>
+        <div class="col-10 offset-lg-1">
+            <hr>
+        </div>
         <div class="row">
             <!-- For Product Reviews -->
-            <div class="col-10 card offset-lg-1 mb-4 mt-3" id="reviewCard">
-                <h3>Comments:</h3>
+            <div class="col-10 offset-lg-1 mb-4 mt-3" id="reviewCard">
+                <h3 class="mt-3 logo-font">Customer Reviews</h3>
                 <!-- Creating New Reviews -->
-                <div class="col-md-4 card mb-4 mt-3">
+                <div class="col-12 card mb-4 mt-3">
                     <div class="card-body">
                         {% if user.is_authenticated %}
-                            <h3>Leave a review:</h3>
+                            <h3>Leave a review for product: <span class="text-muted">{{ product.name }}</span></h3>
                             <p>Posting as: {{ user.username }}</p>
                             <!--
                             <form id="reviewForm" method="post" style="margin-top: 1.3em;">
@@ -145,30 +149,39 @@
                             -->
                             <form id="reviewForm" method="post" style="margin-top: 1.3em;">
                                 {{ review_form | crispy }}
+                                <label for="five-star">How many stars do you give to this product?</label>
+                                <div class="star-container">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="myCheckbox" name="myCheckbox" value="myCheckbox">
+                                        <label for="myCheckbox">Checkbox Label</label>
+                                      </div>
+                                    <input type="radio" name="star-check" id="five-star" class="star-check" title="5">
+                                    <input type="radio" name="star-check" id="four-star" class="star-check" title="4">
+                                    <input type="radio" name="star-check" id="three-star" class="star-check" title="3">
+                                    <input type="radio" name="star-check" id="two-star" class="star-check" title="2">
+                                    <input type="radio" name="star-check" id="one-star" class="star-check" title="1">
+                                </div>
                                 {% csrf_token %}
                                 <button id="submitButton" type="submit"
-                                class="btn btn-black rounded-0 text-uppercase mt-5">Submit</button>
+                                class="btn btn-black rounded-0 text-uppercase mt-1">Submit</button>
                             </form>
                         {% else %}
                             <p>Log in to leave a comment</p>
                         {% endif %}
                     </div>
                 </div>
-                <div class="col-md-6 card mb-4 mt-3">
+                <div class="col-12 card mb-4 mt-3">
                     <!-- Displaying Product Reviews -->
                     <div class="card-body">
                     <!-- We want a for loop inside the empty control tags
                         to iterate through each review in reviews -->
                     {% for review in reviews %}
-                    <div class="p-2 reviews review-div mb-3
+                    <div class="p-2 reviews review-div p-3
                         {% if not review.approved and review.created_by == user %}
                         faded{% elif not review.approved %} d-none{% endif %}">
                         <p class="font-weight-bold text-muted">
                             <span class="font-weight-normal"><i class="far fa-comment"></i></span>
-                            {{ review.created_by }}
-                        <span class="font-weight-normal">
-                            {{ review.created_on }}
-                        </span> wrote:
+                            {{ review.created_by }} wrote:
                         </p>
                         <div id="review{{ review.id }}">
                             {{ review.content | linebreaks }}
@@ -178,6 +191,11 @@
                         This review is awaiting approval
                         </p>
                         {% endif %}
+                        <p class="font-weight-bold text-muted">
+                            <span class="font-weight-normal">
+                                <i class="far fa-calendar"></i> Review Date: {{ review.created_on }}
+                            </span>
+                        </p>
                         <!-- Display Edit/Delete buttons (if user is signed in & comment author) -->
                         {% if user.is_authenticated and review.created_by == user %}
                             <button class="btn btn-danger btn-delete-review" review_id="{{ review.id }}">Delete</button>

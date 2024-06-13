@@ -61,6 +61,11 @@ body {
     color: white;
 }
 
+.prod-name-link a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .text-black {
     color: #000 !important;
 }
@@ -259,20 +264,67 @@ input[name='q']::placeholder {
 
 /* -------------------------------- Product Reviews */
 
-#reviewCard {
-    background-color: rgb(182, 180, 180);
+#reviewCard textarea {
+    background-color: #F9FAFC;
 }
 .review-div {
     background-color: white;
   }
 
-#reviewContent {
-
+.reviews {
+    background-color: #F9FAFC;
 }
-
 .card {
     border: none;
     background-color: transparent;
+}
+
+#reviewForm label {
+    margin: 0;
+  }
+  
+.star-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+/*Custom Radio Buttons and Checkboxes using Font Awesome*/
+
+#reviewCard input[type=radio],
+#reviewCard input[type='checkbox'] {
+  display: none;
+}
+#reviewCard input[type=radio] + label {
+  display: block;
+}
+#reviewCard input[type='checkbox'] + label:before,
+#reviewCard input[type='radio'] + label:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-right: 8px;
+  width: 23px;
+}
+#reviewCard input[type=radio] + label:before {
+  content: "\f005"; /* Radio Unchecked */
+}
+#reviewCard input[type=radio]:checked + label:before {
+  content: "\f05d"; /* Radio Checked */
+}
+#reviewCard input[type="checkbox"] + label:before {
+  content: "\f005"; /* Checkbox Unchecked */
+}
+#reviewCard input[type="checkbox"]:checked + label:before {
+  content: "\f046"; /* Checkbox Checked */
+}
+.radio label,
+.checkbox label {
+  padding-left: 0;
 }
 
 /* ============================ Media Queries ============================*/
