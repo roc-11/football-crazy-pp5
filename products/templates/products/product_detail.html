@@ -154,39 +154,68 @@
                         {% endif %}
                     </div>
                 </div>
-                <!-- Displaying Product Reviews -->
-                <div class="card-body">
-                  <!-- We want a for loop inside the empty control tags
-                    to iterate through each review in reviews -->
-                  {% for review in reviews %}
-                  <div class="p-2 reviews review-div mb-3
-                    {% if not review.approved and review.created_by == user %}
-                    faded{% elif not review.approved %} d-none{% endif %}">
-                    <p class="font-weight-bold text-muted">
-                      {{ review.created_by }}
-                      <span class="font-weight-normal">
-                        {{ review.created_on }}
-                      </span> wrote:
-                    </p>
-                    <div id="review{{ review.id }}">
-                      {{ review.content | linebreaks }}
+                <div class="col-md-6 card mb-4 mt-3">
+                    <!-- Displaying Product Reviews -->
+                    <div class="card-body">
+                    <!-- We want a for loop inside the empty control tags
+                        to iterate through each review in reviews -->
+                    {% for review in reviews %}
+                    <div class="p-2 reviews review-div mb-3
+                        {% if not review.approved and review.created_by == user %}
+                        faded{% elif not review.approved %} d-none{% endif %}">
+                        <p class="font-weight-bold text-muted">
+                            <span class="font-weight-normal"><i class="far fa-comment"></i></span>
+                            {{ review.created_by }}
+                        <span class="font-weight-normal">
+                            {{ review.created_on }}
+                        </span> wrote:
+                        </p>
+                        <div id="review{{ review.id }}">
+                            {{ review.content | linebreaks }}
+                        </div>
+                        {% if not review.approved and review.created_by == user %}
+                        <p class="approval">
+                        This review is awaiting approval
+                        </p>
+                        {% endif %}
+                        <!-- Display Edit/Delete buttons (if user is signed in & comment author) -->
+                        {% if user.is_authenticated and review.created_by == user %}
+                            <button class="btn btn-danger btn-delete-review" review_id="{{ review.id }}">Delete</button>
+                            <button class="btn btn-outline-black btn-edit-review" review_id="{{ review.id }}">Edit</button>
+                        {% endif %}
                     </div>
-                    {% if not review.approved and review.created_by == user %}
-                    <p class="approval">
-                      This review is awaiting approval
-                    </p>
-                    {% endif %}
-                    <!-- Display Edit/Delete buttons (if user is signed in & comment author) -->
-                    {% if user.is_authenticated and review.created_by == user %}
-                        <button class="btn btn-delete-review" review_id="{{ review.id }}">Delete</button>
-                        <button class="btn btn-edit-review" review_id="{{ review.id }}">Edit</button>
-                    {% endif %}
-                  </div>
-                  <!-- Our for loop ends here -->
-                  {% endfor %}
+                    <!-- Our for loop ends here -->
+                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Delete confirmation modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title"
+            id="deleteModalLabel">Delete review?</h5>
+        <button type="button" class="btn-close"
+            data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        Are you sure you want to delete your review?
+        This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+            data-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+            btn-danger">Delete</a>
+        </div>
+    </div>
+    </div>
     </div>
 {% endblock %}
 
@@ -197,6 +226,10 @@
     const reviewText = document.getElementById("id_content");
     const reviewForm = document.getElementById("reviewForm");
     const submitButton = document.getElementById("submitButton");
+
+    const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+    const deleteButtons = document.getElementsByClassName("btn-delete-review");
+    const deleteConfirm = document.getElementById("deleteConfirm");
 
     /**
     * Initializes edit functionality for the provided edit buttons.
@@ -215,6 +248,24 @@
         reviewText.value = reviewContent;
         submitButton.innerText = "Update";
         reviewForm.setAttribute("action", `edit_review/${reviewId}`);
+    });
+    }
+
+    /**
+    * Initializes deletion functionality for the provided delete buttons.
+    * 
+    * For each button in the `deleteButtons` collection:
+    * - Retrieves the associated review's ID upon click.
+    * - Updates the `deleteConfirm` link's href to point to the 
+    * deletion endpoint for the specific review.
+    * - Displays a confirmation modal (`deleteModal`) to prompt 
+    * the user for confirmation before deletion.
+    */
+    for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+        let reviewId = e.target.getAttribute("review_id");
+        deleteConfirm.href = `delete_review/${reviewId}`;
+        deleteModal.show();
     });
     }
 </script>

@@ -264,7 +264,6 @@ input[name='q']::placeholder {
 }
 .review-div {
     background-color: white;
-    border-radius: 5%;
   }
 
 #reviewContent {

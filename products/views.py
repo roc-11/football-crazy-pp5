@@ -121,6 +121,22 @@ def review_edit(request, product_id, review_id):
     return redirect(reverse('product_detail', args=[product_id]))
 
 
+def review_delete(request, product_id, review_id):
+    """
+    view to delete review
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    review = get_object_or_404(Review, pk=review_id)
+
+    if review.created_by == request.user:
+        review.delete()
+        messages.success(request, 'Review deleted!')
+    else:
+        messages.error(request, 'You can only delete your own reviews!')
+
+    return redirect(reverse('product_detail', args=[product_id]))
+
+
 @login_required
 def add_product(request):
     """ Add a product to the store """
