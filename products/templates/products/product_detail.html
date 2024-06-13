@@ -119,36 +119,6 @@
             <!-- For Product Reviews -->
             <div class="col-10 card offset-lg-1 mb-4 mt-3" id="reviewCard">
                 <h3>Comments:</h3>
-                <div class="card-body">
-                  <!-- We want a for loop inside the empty control tags
-                    to iterate through each review in reviews -->
-                  {% for review in reviews %}
-                  <div class="p-2 reviews review-div mb-3
-                    {% if not review.approved and review.created_by == user %}
-                    faded{% elif not review.approved %} d-none{% endif %}">
-                    <p class="font-weight-bold text-muted">
-                      {{ review.created_by }}
-                      <span class="font-weight-normal">
-                        {{ review.created_on }}
-                      </span> wrote:
-                    </p>
-                    <div id="review{{ review.id }}">
-                      {{ review.content | linebreaks }}
-                    </div>
-                    {% if not review.approved and review.created_by == user %}
-                    <p class="approval">
-                      This review is awaiting approval
-                    </p>
-                    {% endif %}
-                    <!-- Display Edit/Delete buttons (if user is signed in & comment author) -->
-                    {% if user.is_authenticated and review.created_by == user %}
-                    <button class="btn btn-delete" comment_id="{{ review.id }}">Delete</button>
-                    <button class="btn btn-edit" comment_id="{{ review.id }}">Edit</button>
-                    {% endif %}
-                  </div>
-                  <!-- Our for loop ends here -->
-                  {% endfor %}
-                </div>
                 <!-- Creating New Reviews -->
                 <div class="col-md-4 card mb-4 mt-3">
                     <div class="card-body">
@@ -173,7 +143,7 @@
                                     <textarea name="reviewContent" id="reviewContent"></textarea>
                                 </div>
                             -->
-                            <form id="reviewForm" method="post"style="margin-top: 1.3em;">
+                            <form id="reviewForm" method="post" style="margin-top: 1.3em;">
                                 {{ review_form | crispy }}
                                 {% csrf_token %}
                                 <button id="submitButton" type="submit"
@@ -184,6 +154,37 @@
                         {% endif %}
                     </div>
                 </div>
+                <!-- Displaying Product Reviews -->
+                <div class="card-body">
+                  <!-- We want a for loop inside the empty control tags
+                    to iterate through each review in reviews -->
+                  {% for review in reviews %}
+                  <div class="p-2 reviews review-div mb-3
+                    {% if not review.approved and review.created_by == user %}
+                    faded{% elif not review.approved %} d-none{% endif %}">
+                    <p class="font-weight-bold text-muted">
+                      {{ review.created_by }}
+                      <span class="font-weight-normal">
+                        {{ review.created_on }}
+                      </span> wrote:
+                    </p>
+                    <div id="review{{ review.id }}">
+                      {{ review.content | linebreaks }}
+                    </div>
+                    {% if not review.approved and review.created_by == user %}
+                    <p class="approval">
+                      This review is awaiting approval
+                    </p>
+                    {% endif %}
+                    <!-- Display Edit/Delete buttons (if user is signed in & comment author) -->
+                    {% if user.is_authenticated and review.created_by == user %}
+                        <button class="btn btn-delete-review" review_id="{{ review.id }}">Delete</button>
+                        <button class="btn btn-edit-review" review_id="{{ review.id }}">Edit</button>
+                    {% endif %}
+                  </div>
+                  <!-- Our for loop ends here -->
+                  {% endfor %}
+                </div>
             </div>
         </div>
     </div>
@@ -191,5 +192,31 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script type="text/javascript">
+    const editButtons = document.getElementsByClassName("btn-edit-review");
+    const reviewText = document.getElementById("id_content");
+    const reviewForm = document.getElementById("reviewForm");
+    const submitButton = document.getElementById("submitButton");
+
+    /**
+    * Initializes edit functionality for the provided edit buttons.
+    * 
+    * For each button in the `editButtons` collection:
+    * - Retrieves the associated review's ID upon click.
+    * - Fetches the content of the corresponding comment.
+    * - Populates the `reviewText` input/textarea with the review's content for editing.
+    * - Updates the submit button's text to "Update".
+    * - Sets the form's action attribute to the `edit_review/{reviewId}` endpoint.
+    */
+    for (let button of editButtons) {
+    button.addEventListener("click", (e) => {
+        let reviewId = e.target.getAttribute("review_id");
+        let reviewContent = document.getElementById(`review${reviewId}`).innerText;
+        reviewText.value = reviewContent;
+        submitButton.innerText = "Update";
+        reviewForm.setAttribute("action", `edit_review/${reviewId}`);
+    });
+    }
+</script>
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

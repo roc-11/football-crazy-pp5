@@ -90,6 +90,37 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+def review_edit(request, product_id, review_id):
+    """
+    Display an individual review for edit.
+
+    **Context**
+
+    ``product``
+        An instance of :model:`product.Product`.
+    ``review``
+        A single review related to the product.
+    ``review_form``
+        An instance of :form:`product.ReviewForm`
+    """
+    if request.method == "POST":
+
+        product = get_object_or_404(Product, pk=product_id)
+        review = get_object_or_404(Review, pk=review_id)
+        review_form = ReviewForm(data=request.POST, instance=review)
+
+        if review_form.is_valid() and review.created_by == request.user:
+            review = review_form.save(commit=False)
+            review.post = product
+            review.approved = False
+            review.save()
+            messages.success(request, 'Comment updated! Awaiting admin approval.')
+        else:
+            messages.error(request, 'Error updating comment!')
+
+    return redirect(reverse('product_detail', args=[product_id]))
+
+
 @login_required
 def add_product(request):
     """ Add a product to the store """
