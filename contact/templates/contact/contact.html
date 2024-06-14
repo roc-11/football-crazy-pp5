@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- overlay to cover up the background image-->
+    <div class="overlay"></div>
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Contact</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 my-5">
+                <h2>Get in Touch!</h2>
+                <p>Hey there, fellow ballers! .... I'm all ears! 
+                    Drop me a line using the form below, shoot me an email, or slide into my DMs on social – 
+                    whichever floats your travel boat! Can't wait to hear from you and start exploring the world together!
+                </p>
+                <form method="post">
+                    {{ contact_form | crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-outline-black btn-lg" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
