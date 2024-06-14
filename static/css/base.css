@@ -262,6 +262,11 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+.product-head-font {
+    color:#000;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
 /* -------------------------------- Product Reviews */
 
 #reviewCard textarea {
@@ -325,6 +330,27 @@ input[name='q']::placeholder {
 .radio label,
 .checkbox label {
   padding-left: 0;
+}
+
+/* -------------------------------- Footer */
+.footer-section {
+    background-color: #000;
+}
+
+.footer-section-social-media {
+    background-color: red; /* change to red logo colour */
+}
+
+/* Badge Styling */
+.badge {
+    right: 5px;
+    position: absolute;
+    top: 15px;
+    color: #ffffff;
+    background-color: rgba(66, 49, 68, 0.26);
+    padding: 2px 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
 /* ============================ Media Queries ============================*/

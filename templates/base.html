@@ -155,6 +155,123 @@
     {% block content %}
     {% endblock %}
 
+    <!-- Footer -->
+    <div class="footer">
+      <footer class="text-center text-lg-start text-white footer-section">
+          <!-- Section: Social media -->
+          <div class="d-flex justify-content-between p-4 footer-section-social-media">
+              <div class="me-5">
+                  <span>Connect with us on social networks:</span>
+              </div>
+              <div class="d-flex flex-row-reverse">
+                  <div>
+                      <a href="https://www.facebook.com/" target="_blank" 
+                      rel="nofollow" class="text-white" aria-label="Facebook">
+                      <i class="fab fa-facebook-f"></i>
+                      </a>
+                  </div>
+                  <div>
+                      <a href="https://www.linkedin.com/" target="_blank" 
+                      rel="nofollow" class="text-white" aria-label="LinkedIn">
+                      <i class="fab fa-linkedin-in"></i>
+                      </a>
+                  </div>
+                  <div>
+                    <a href="https://instagram.com/" target="_blank" 
+                    rel="nofollow" class="text-white" aria-label="instagram">
+                    <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                  <div>
+                      <a href="https://github.com/" target="_blank" 
+                      rel="nofollow" class="text-white" aria-label="GitHub">
+                      <i class="fab fa-github"></i>
+                      </a>
+                  </div>
+              </div>            
+          </div>
+          <!-- Section: About us   -->
+          <section>
+              <div class="container text-center text-md-start mt-5">
+                  <div class="row mt-3">
+                      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                          <!-- Content -->
+                          <h6 class="text-uppercase fw-bold">About Us</h6>
+                          <hr class="mb-4 mt-0 d-inline-block mx-auto shop-content">
+                          <p>
+                              Welcome to FOOTBALL CRAZY, your premier online destination for elite football
+                              boots, training kits and accessories. Stay crazy about football with Football Crazy!
+                          </p>
+                      </div>
+                      <!-- Stores column -->
+                      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                          <!-- Links -->
+                          <h6 class="text-uppercase fw-bold"> PRODUCTS</h6>
+                          <hr class="mb-4 mt-0 d-inline-block mx-auto shop-content">
+                          <p class="text-white">
+                              Boots
+                          </p>
+                          <p class="text-white">
+                              Kit
+                          </p>
+                          <p class="text-white">
+                              Accessories & Equipment
+                          </p>
+                          <p class="text-white">
+                              Special Offers
+                          </p>
+                      </div>
+                      <!-- Contact Us column -->
+                      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                          <!-- Links -->
+                          <a class="text-uppercase text-white link-offset-2 link-underline link-underline-opacity-0 fw-bold" href="{% url 'contact' %}">
+                              <h6>Contact Us</h6>
+                          </a>
+                          <hr class="mb-4 mt-0 d-inline-block mx-auto shop-content">
+                          <p><i class="fas fa-home mr-3"></i> Cork, Ireland</p>
+                          <p><i class="fas fa-envelope mr-3"></i> footballcrazystore@gmail.ie</p>
+                          <p><i class="fas fa-phone mr-3"></i> +353 234 345 65</p>
+                          <p><i class="fas fa-print mr-3"></i> +353 654 342 45</p>
+                      </div>
+                      <!-- Subscriber -->
+                      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                          <form method="POST" action="" id="newsletters-form">
+                              {% csrf_token %}
+                              <div class="modal-header justify-content-center">
+                                  <div class="icon-box">
+                                      <i class="fa-regular far fa-envelope fa-4x"></i>
+                                  </div>
+                              </div>
+                              <div class="modal-body text-center">
+                                  <p>Join our weekly newsletter. Stay in the loop
+                                      with the latest trends and exclusive offers. </p>                                
+                                  <div class="form-group ">
+                                      <input type="email" name="email" class="form-control"
+                                          placeholder="Enter your email" required="" autocomplete="email">
+                                          <div class="d-flex gap-2 flex-column">                                            
+                                              <button class="btn btn-primary mt-2" type="submit" id="subscribe">Subscribe</button>
+                                              <a href="" class="btn btn-warning mt-2" id="unsubscribe">Unsubscribe</a>
+                                          </div>                                 
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <!-- Copyright -->
+          <div class="text-center p-3 footer-bar">
+              © 2024 Copyright:
+              <a class="text-white link-offset-2 link-underline link-underline-opacity-0" target="_blank" 
+              rel="nofollow" href="https://www.linkedin.com/in/">For Educational Purpose Only!</a>
+              <a href="" 
+              class="link-offset-2 link-underline link-underline-opacity-0 fw-bold"
+              target="_blank" rel="noopener">Privacy Policy
+              </a>
+          </div>
+      </footer>
+  </div>
+
     {% block postloadjs %}
     <script type="text/javascript">
       $('.toast').toast('show');

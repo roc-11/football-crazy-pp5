@@ -31,7 +31,19 @@
             <!-- Product Details Column, Actions to Add to Bag -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
-                    <p class="mb-0 logo-font">{{ product.name }}</p>
+                    <p class="mb-0 product-head-font">{{ product.name }}</p>
+                    <!-- Store admin - edit/delete product -->
+                    {% if request.user.is_superuser %}
+                    <hr>
+                    <div class="card" style="width: 18rem;" class="mr-0">
+                        <div class="card-body pt-0 pb-0">
+                            <h5 class="card-title">Store Admin</h5>
+                            <a href="{% url 'edit_product' product.id %}" class="btn-info text-decoration-none p-1">Edit</a>
+                            <a href="{% url 'delete_product' product.id %}" class="btn-danger text-decoration-none p-1" >Delete</a>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endif %}
                     <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                     {% if product.category %}
                         <p class="small mt-1 mb-0">
@@ -44,14 +56,6 @@
                         <small class="text-muted"><i class="fas fa-star mr-1">{{ product.rating }}</i></small>
                     {% else %}
                         <small class="text-muted">No Rating</small>
-                    {% endif %}
-                    <!-- Store admin - edit/delete product -->
-                    {% if request.user.is_superuser %}
-                        <small class="ml-3">
-                            <small class="text-muted">Store Admin: </small>
-                            <a href="{% url 'edit_product' product.id %}" class="btn-info text-decoration-none p-1">Edit</a> |
-                            <a href="{% url 'delete_product' product.id %}" class="btn-danger text-decoration-none p-1" >Delete</a>
-                        </small>
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
                     <!-- Add Product to Bag -->

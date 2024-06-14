@@ -23,7 +23,7 @@ def contact_football_crazy(request):
         if contact_form.is_valid():
             contact_form.save()
             messages.add_message(
-                request, messages.SUCCESS, "Contact request received! We'll try to respond within 2 working days.")  # noqa
+                request, messages.INFO, "Contact request received! We'll try to respond within 2 working days.")  # noqa
 
     contact_form = ContactForm()
 
