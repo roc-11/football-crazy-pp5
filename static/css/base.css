@@ -332,12 +332,9 @@ input[name='q']::placeholder {
 #reviewForm label {
     margin: 0;
   }
-  
-.star-container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    justify-content: flex-end;
+
+.rating-star i {
+    color: #FFBF00;
 }
 /*Custom Radio Buttons and Checkboxes using Font Awesome*/
 

@@ -2,6 +2,7 @@ from django import forms
 from .widgets import CustomClearableFileInput
 from .models import Product, Category, Review
 
+RATING_CHOICES = (('1', '1'),('2', '2'),('3', '3'),('4', '4'),('5', '5'),)
 
 class ProductForm(forms.ModelForm):
     """ A form for store admins to add products to the store """
@@ -25,6 +26,9 @@ class ReviewForm(forms.ModelForm):
     """
     Form class for users to review on a product 
     """
+
+    rating = forms.ChoiceField(choices=RATING_CHOICES)
+
     class Meta:
         model = Review
-        fields = ('content',)
+        fields = ('content','rating')

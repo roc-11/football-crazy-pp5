@@ -66,6 +66,7 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all().order_by("-created_on")
+    review_count = reviews.count()
 
     review_count = product.reviews.filter(approved=True).count()
     if request.method == "POST":
@@ -74,7 +75,6 @@ def product_detail(request, product_id):
             review = review_form.save(commit=False)
             review.created_by = request.user
             review.product = product
-            review.rating = '3'
             review.save()
             messages.success(request, 'Review submitted and awaiting approval')
 
