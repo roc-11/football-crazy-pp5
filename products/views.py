@@ -90,6 +90,7 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+@login_required
 def review_edit(request, product_id, review_id):
     """
     Display an individual review for edit.
@@ -121,6 +122,7 @@ def review_edit(request, product_id, review_id):
     return redirect(reverse('product_detail', args=[product_id]))
 
 
+@login_required
 def review_delete(request, product_id, review_id):
     """
     view to delete review

@@ -87,17 +87,13 @@ body {
     width:100%;
     transition:800ms ease all;
   }
-/*  
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
+  
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #b32a2a;
+    background: #222;
     color: white;
 }
-    */
 
 .prod-name-link a:hover {
     text-decoration: none;
