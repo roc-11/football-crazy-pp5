@@ -26,20 +26,34 @@
         <div class="row">
             <!-- User Wishlist -->
             <div class="col-12">
-                <h3 class="text-muted">View & Edit Wishlist for {{profile.user.username}}</h3>
-                <h4>Wishlist Items</h4>
+                <h3 class="text-muted my-2">View & Edit Wishlist for {{profile.user.username}}</h3>
+                <h4 class="text-center text-uppercase my-3">Wishlist Items</h4>
                 {% if wishlist %}
                     {% for product in wishlist %}
-                        <div class="wishlist-item mt-4 pb-2 pl-2 pr-2 pt-2" style="border-bottom: 1px solid #fff;">
-                            <div class="product-details">
-                                <div class="product-image">
-                                    <a href="{% url 'product_detail' product.id %}" style="text-decoration: none; color: #fff;">
-                                        <p class="product-name">{{ product.name }}</p>
-                                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid" style="width: 100px; height: 100px;">
-                                    </a>
+                        <div class="row">
+                            <div class="offset-3 col-md-6">
+                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                    <div class="col p-4 d-flex flex-column position-static">
+                                        <strong class="d-inline-block mb-2 text-muted">Category: <span class="text-uppercase">{{ product.category.friendly_name }}</span></strong>
+                                        <a href="{% url 'product_detail' product.id %}" class="post-link text-decoration-none">
+                                            <h3 class="card-title mb-3">{{ product.name }}</h3>
+                                        </a>
+                                        <div class="image-flash author mb-1 mt-2">Price: ${{ product.price }}</div>
+                                        <hr>
+                                        {% if product.rating %}
+                                        <div class="mb-1 text-body-secondary">Rating: {{ product.rating }}</div>
+                                        {% else %}
+                                        <div class="mb-1 text-body-secondary">Rating: No rating</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-auto d-none d-lg-block blog-images mt-1">
+                                        <a href="{% url 'product_detail' product.id %}">
+                                            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="object-fit: cover;" width="200" height="250">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                         {% endfor %}
                         {% if request.user.is_authenticated %}
                             <a href="{% url 'profile' %}" class="btn btn-light rounded-1 text-uppercase border border-danger text-black mt-2 btn-sm mb-4"><i class="fa-solid fa-arrow-left mr-2" style="color: #000000;"></i>Back to your profile</a>
