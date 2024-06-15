@@ -78,6 +78,15 @@
         <!-- Main/Top Header - My Profile / Shopping Bag -->
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+            <!-- Wishlist Link -->
+            <li class="list-inline-item">
+              <a href="{% url 'wishlist' %}" class="text-black nav-link">
+                <div class="text-center">
+                    <div><i class="fas fa-heart fa-lg"></i></div>
+                    <p class="my-0">Wishlist</p>
+                </div>
+              </a>
+            </li>
             <!-- My Profile / Account Link -->
             <li class="list-inline-item dropdown">
               <a href="#" class="text-black nav-link" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

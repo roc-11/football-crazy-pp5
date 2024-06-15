@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponseRedirect
 
 from products.models import Product
 from .models import UserProfile
@@ -59,11 +59,13 @@ def wishlist(request):
     Display the user's wishlist.
     This view renders the user's wishlist page.
     """
+    profile = get_object_or_404(UserProfile, user=request.user)
     products = Product.objects.filter(users_wishlist=request.user)
 
     template = 'profiles/wishlist.html'
     context = {
         'wishlist' : products,
+        'profile': profile,
     }
 
     return render(request, template, context)
@@ -90,12 +92,5 @@ def add_to_wishlist(request, id, *args, **kwargs):
             request, f'Successfully added {product_wish} to Wishlist!'
         )
         liked = True
-
-    return redirect(reverse('product_detail', args=[product_wish.id]))
-
-    #product = get_object_or_404(Product, pk=id)
-    ###if product.users_wishlist.filter(id=request.user.id).exists():
-    ##    product.users_wishlist.remove(request.user)
-    #else:
-     #   product.user_wishlist.add(request.user)
-    #ßreturn HttpResponseRedirect(request.META["HTTP_REFERER"])
+    
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])

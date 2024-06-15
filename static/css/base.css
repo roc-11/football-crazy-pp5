@@ -363,6 +363,30 @@ input[name='q']::placeholder {
   padding-left: 0;
 }
 
+/* -------------------------------- Wishlist */
+.wish-link {
+    font-size: 1rem;
+    color: #b32a2a;
+    font-weight: 800;
+}
+
+.wish-link:hover {
+    color: #000;
+}
+
+.btn-wish {
+    background: #9e2020;
+    color: white;
+    border: 2px solid white !important;
+}
+
+.btn-wish:hover,
+.btn-wish:active,
+.btn-wish:focus {
+    background: white;
+    color: #9e2020 !important;
+    border: 2px solid #9e2020 !important;
+}
 /* -------------------------------- Footer */
 .footer-section {
     background-color: #000;

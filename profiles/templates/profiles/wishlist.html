@@ -35,18 +35,20 @@
                                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                     <div class="col p-4 d-flex flex-column position-static">
                                         <strong class="d-inline-block mb-2 text-muted">Category: <span class="text-uppercase">{{ product.category.friendly_name }}</span></strong>
-                                        <a href="{% url 'product_detail' product.id %}" class="post-link text-decoration-none">
+                                        <a href="{% url 'product_detail' product.id %}" class="wish-link text-decoration-none">
                                             <h3 class="card-title mb-3">{{ product.name }}</h3>
                                         </a>
-                                        <div class="image-flash author mb-1 mt-2">Price: ${{ product.price }}</div>
-                                        <hr>
+                                        <div class="image-flash mt-2 mb-2">Price: ${{ product.price }}</div>
                                         {% if product.rating %}
                                         <div class="mb-1 text-body-secondary">Rating: {{ product.rating }}</div>
                                         {% else %}
                                         <div class="mb-1 text-body-secondary">Rating: No rating</div>
                                         {% endif %}
+                                        <div class="mt-2 mb-1">
+                                            <a class="btn btn-wish btn-md" href="{% url 'user_wishlist' product.id %}" role="button" aria-disabled="false">Remove from Wishlist</a>
+                                        </div>
                                     </div>
-                                    <div class="col-auto d-none d-lg-block blog-images mt-1">
+                                    <div class="col-auto d-none d-lg-block blog-images mt-2 mb-2">
                                         <a href="{% url 'product_detail' product.id %}">
                                             <img src="{{ product.image.url }}" alt="{{ product.name }}" style="object-fit: cover;" width="200" height="250">
                                         </a>
@@ -56,13 +58,13 @@
                         </div>
                         {% endfor %}
                         {% if request.user.is_authenticated %}
-                            <a href="{% url 'profile' %}" class="btn btn-light rounded-1 text-uppercase border border-danger text-black mt-2 btn-sm mb-4"><i class="fa-solid fa-arrow-left mr-2" style="color: #000000;"></i>Back to your profile</a>
+                            <a href="{% url 'profile' %}" class="btn btn-black rounded-0 text-uppercase mt-2 mb-3"><i class="fas fa-chevron-left"></i> Back to Profile</a>
                         {% endif %}
                 <!-- Card element for each item in wishlist-->
                 {% else %}
                 <div class="wishlist-item mt-4 mb-4 pb-2">
                     <p>Your wishlist is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-light rounded-1 text-uppercase border border-danger text-black mt-2 btn-sm">
+                    <a href="{% url 'products' %}" class="btn btn-black rounded-0 text-uppercase mt-2 mb-3">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
