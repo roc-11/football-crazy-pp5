@@ -28,9 +28,26 @@ body {
 }
 
 .shop-now-button {
-    background: black;
-    color: white;
+    /*background: white;
+    border: 3px solid #b32a2a;
+    color: #000;
     min-width: 260px;
+    font-weight: 600;
+    letter-spacing: 2px;*/
+
+    background:white;
+    color:#9e2022;
+    font-weight: 800;
+    letter-spacing: 2px;
+    border:none;
+    position:relative;
+    min-width: 260px;
+    height:60px;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .btn-black {
@@ -51,15 +68,43 @@ body {
     color: white !important;
 }
 
+.shop-now-button:hover{
+    background:#fff;
+    color:#b32a2a;
+  }
+  .shop-now-button:before,
+  .shop-now-button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:4px;
+    width:0;
+    background: #b32a2a;
+    transition:400ms ease all;
+  }
+  .shop-now-button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .shop-now-button:hover:before,
+  .shop-now-button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+/*  
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: #b32a2a;
     color: white;
 }
+    */
 
 .prod-name-link a:hover {
     text-decoration: none;
