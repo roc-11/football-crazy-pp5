@@ -23,6 +23,14 @@
                 <hr>
             </div>
         </div>
+        {% if request.user.is_superuser %}
+        <div class="row my-3">
+            <div class="col-12 d-flex justify-content-center">
+                    <a href="{% url 'send_email' %}" 
+                    class="btn btn-info rounded-0 btn-lg text-uppercase mb-2"><i class="fas fa-envelope"></i> Send Newsletter</a>
+            </div>
+        </div>
+        {% endif %}
         <div class="row">
             <!-- User Profile / Delivery Info -->
             <div class="col-12 col-lg-6">

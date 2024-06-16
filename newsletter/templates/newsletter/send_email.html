@@ -12,15 +12,24 @@
 {% endblock %}
 
 {% block content %}
-<hr>
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="logo-font mb-4">Send Newsletter</h2>
+            <hr>
+        </div>
+    </div>
+</div>
 <div class="container-fluid d-flex justify-content-center">
     <div class="row">
         <div class="col-md-12">
-            <h1>Send Newsletter</h1>
+            <h3>Fill in the form to send out your newsletter!</h3>
             <form method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit" class="bg-primary btn-lg text-white">Send Newsletter</button>
+                <button type="submit" class="btn btn-info btn-md rounded-0 text-uppercase mb-2"><i class="fas fa-paper-plane"></i> Send Newsletter</button>
             </form>
         </div>
     </div>

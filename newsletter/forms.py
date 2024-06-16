@@ -50,3 +50,8 @@ class UnsubscribeForm(forms.Form):
         label='Email address',
         widget=forms.EmailInput(attrs={'placeholder': 'Email address'})
     )
+
+
+class NewsletterForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    content = forms.CharField(widget=forms.Textarea)
