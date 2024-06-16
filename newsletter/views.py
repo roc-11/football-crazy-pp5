@@ -27,7 +27,7 @@ def add_subscriber(request):
         instance = form.save(commit=False)
 
         if NewsletterSubscription.objects.filter(email=instance.email).exists():
-            messages.error(request,
+            messages.warning(request,
                 f"{instance.email} already exists in our database. "
                 "Please check your email and try again."
             )
