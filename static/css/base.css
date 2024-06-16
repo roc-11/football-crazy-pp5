@@ -76,18 +76,20 @@ body {
     background: #b32a2a;
     transition:400ms ease all;
   }
+  
   .shop-now-button:after{
     right:inherit;
     top:inherit;
     left:0;
     bottom:0;
   }
+
   .shop-now-button:hover:before,
   .shop-now-button:hover:after{
     width:100%;
     transition:800ms ease all;
   }
-  
+
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
