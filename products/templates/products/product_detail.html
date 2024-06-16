@@ -32,9 +32,29 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0 product-head-font">{{ product.name }}</p>
+                    <!--
                     <div>
                         <a class="btn btn-wish mt-2" href="{% url 'user_wishlist' product.id %}" role="button" aria-disabled="false">Add to Wishlist</a>
                     </div>
+                    -->
+                    {% if user.is_authenticated %}
+                        <form class="d-inline like-form" action="{% url 'user_wishlist' product.id %}" method="POST" data-product-id="{{ product.id }}">
+                            {% csrf_token %}
+                                {% if request.user in product.users_wishlist.all %}
+                                <button type="submit" name="like" value="{{ product_wish.product.id }}" class="btn btn-like-wish mt-2" data-like-action="unlike">
+                                    <i class="fas fa-heart fa-sm" style="color: #cc2b5e;"></i><span class="ml-1 like-text">Remove from Wishlist</span>
+                                </button>
+                                {% else %}
+                                <button type="submit" name="like" value="{{ product_wish.product.id }}" class="btn btn-like-wish mt-2" data-like-action="like">
+                                    <i class="far fa-heart fa-sm" style="color: #000;"></i><span class="ml-1 like-text">Add to Wishlist</span>
+                                </button>
+                                {% endif %}
+                        </form>
+                    {% else %}
+                        <a href="{% url 'account_login' %}" class="btn btn-like-wish mt-2">
+                            <i class="far fa-heart fa-sm" style="color: #000;"></i><span class="ml-1 like-text">Add to Wishlist</span>
+                        </a>
+                    {% endif %}
                     <!-- Store admin - edit/delete product -->
                     {% if request.user.is_superuser %}
                     <hr>
