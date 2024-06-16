@@ -175,26 +175,26 @@
               <div class="me-5">
                   <span>Connect with us on social networks:</span>
               </div>
-              <div class="d-flex flex-row-reverse">
-                  <div>
+              <div class="d-flex flex-row">
+                  <div class="mr-2">
                       <a href="https://www.facebook.com/" target="_blank" 
                       rel="nofollow" class="text-white" aria-label="Facebook">
                       <i class="fab fa-facebook-f"></i>
                       </a>
                   </div>
-                  <div>
+                  <div class="mr-2">
                       <a href="https://www.linkedin.com/" target="_blank" 
                       rel="nofollow" class="text-white" aria-label="LinkedIn">
                       <i class="fab fa-linkedin-in"></i>
                       </a>
                   </div>
-                  <div>
+                  <div class="mr-2">
                     <a href="https://instagram.com/" target="_blank" 
                     rel="nofollow" class="text-white" aria-label="instagram">
                     <i class="fab fa-instagram"></i>
                     </a>
-                </div>
-                  <div>
+                  </div>
+                  <div class="mr-2">
                       <a href="https://github.com/" target="_blank" 
                       rel="nofollow" class="text-white" aria-label="GitHub">
                       <i class="fab fa-github"></i>
@@ -220,17 +220,21 @@
                           <!-- Links -->
                           <h6 class="text-uppercase fw-bold"> PRODUCTS</h6>
                           <hr class="mb-4 mt-0 d-inline-block mx-auto shop-content">
-                          <p class="text-white">
-                              Boots
+                          <p>
+                            <a class="text-white text-decoration-none"
+                          href="{% url 'products' %}?category=firm_ground,soft_ground,artificial_grass">Boots</a>
                           </p>
-                          <p class="text-white">
-                              Kit
+                          <p>
+                            <a class="text-white text-decoration-none"
+                            href="{% url 'products' %}?category=jerseys,shorts,socks">Kit</a>
                           </p>
-                          <p class="text-white">
-                              Accessories & Equipment
+                          <p>
+                            <a class="text-white text-decoration-none"
+                            href="{% url 'products' %}?category=footballs,shinpads,goalkeeper_gloves,coaching">Accessories & Equipment</a>
                           </p>
-                          <p class="text-white">
-                              Special Offers
+                          <p></p>
+                            <a class="text-white text-decoration-none"
+                            href="{% url 'products' %}?category=new_arrivals,deals,clearance">Special Offers</a>
                           </p>
                       </div>
                       <!-- Contact Us column -->
@@ -275,7 +279,7 @@
           <div class="text-center p-3 footer-bar">
               © 2024 Copyright:
               <a class="text-white link-offset-2 link-underline link-underline-opacity-0" target="_blank" 
-              rel="nofollow" href="https://www.linkedin.com/in/">For Educational Purpose Only!</a>
+              rel="nofollow" href="https://www.linkedin.com/in/">For Educational Purpose Only.</a>
               <a href="" 
               class="link-offset-2 link-underline link-underline-opacity-0 fw-bold"
               target="_blank" rel="noopener">Privacy Policy
