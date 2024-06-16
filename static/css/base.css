@@ -514,4 +514,10 @@ input[name='q']::placeholder {
     .list-inline-item {
         font-size: .8rem !important;
     }
+
+    .btt-link, 
+    .btt-link i {
+        background: black;
+        color: white !important;
+    }
 }
