@@ -76,13 +76,15 @@
                             </a>
                             <hr class="mb-4 mt-0 d-inline-block mx-auto shop-content">
                             <p><i class="fas fa-home mr-3"></i> Cork, Ireland</p>
-                            <p><i class="fas fa-envelope mr-3"></i> footballcrazystore@gmail.ie</p>
+                            <p><i class="fas fa-envelope mr-3"></i> 
+                                <a href="mailto:footballcrazystore@gmail.ie" class="text-white">footballcrazystore@gmail.ie</a>
+                            </p>
                             <p><i class="fas fa-phone mr-3"></i> +353 234 345 65</p>
                             <p><i class="fas fa-print mr-3"></i> +353 654 342 45</p>
                         </div>
                         <!-- Subscriber -->
                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <form method="POST" action="" id="newsletters-form">
+                            <form method="POST" action="{% url 'newsletters' %}" id="newsletters-form">
                                 {% csrf_token %}
                                 <div class="modal-header justify-content-center">
                                     <div class="icon-box">
@@ -97,7 +99,7 @@
                                             placeholder="Enter your email" required="" autocomplete="email">
                                             <div class="d-flex gap-2 flex-column">                                            
                                                 <button class="btn btn-primary mt-2" type="submit" id="subscribe">Subscribe</button>
-                                                <a href="" class="btn btn-warning mt-2" id="unsubscribe">Unsubscribe</a>
+                                                <a href="{% url 'unsubscribe' %}" class="btn btn-warning mt-2" id="unsubscribe">Unsubscribe</a>
                                             </div>                                 
                                     </div>
                                 </div>

@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
-
+from .import views
 
 urlpatterns = [
-    path('send-email/', views.send_newsletter, name='send_email'),
+    path('', views.add_subscriber, name='newsletters'),
+    path('unsubscribe/', views.unsubscribe, name='unsubscribe'),
 ]
