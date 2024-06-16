@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /checkout/
+Disallow: /profiles/
+Sitemap: https://football-crazy-pp5-5b2eb292c933.herokuapp.com/sitemap.xml
