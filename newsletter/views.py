@@ -78,6 +78,22 @@ def unsubscribe(request):
             try:
                 subscriber = NewsletterSubscription.objects.get(email=email)
                 subscriber.unsubscribe()
+
+                subject = 'Newsletter - unsubscribed'
+                html_message = render_to_string(
+                    'newsletter/newsletter_unsubscribe.html', {}
+                )
+                plain_message = strip_tags(html_message)
+                from_email = settings.DEFAULT_FROM_EMAIL
+                recipient_list = [subscriber]
+                send_mail(
+                    subject,
+                    plain_message,
+                    from_email,
+                    recipient_list,
+                    html_message=html_message
+                )
+
                 messages.info(request,
                     f"Successfully unsubscribed {email} from our newsletter."
                 )
