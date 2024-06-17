@@ -174,7 +174,7 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
 	38. USERSTORY #38: Approve reviews
         - As a Site Admin I can approve or disapprove reviews so that I can filter out objectionable/spam reviews.
 	39. USERSTORY #39: Create templates to handle onscreen notifications (success, error, warning and info messages)
-        - As a 
+        - As a Shopper/Site User I want to get notifications when I perform an action, such as a success message so that I know whether my interaction/action was successful or not and that I receive feedback.
 	40. USERSTORY #40: Create Post Model for Blog
         - As a site admin I can create, read, update and delete blog posts in the admin section so that I can manage my blog content. 
 	41. USERSTORY #41: Display Post Detail
@@ -418,18 +418,22 @@ Each User Story was also assigned a label (according to the MoSCoW System) so I 
 
 # Ecommerce Business Model
 
-This site sells goods to individual customers, and therefore follows a `Business to Customer` model.
-It is of the simplest **B2C** forms, as it focuses on individual transactions, and doesn't need anything
-such as monthly/annual subscriptions.
+This site sells goods to individual customers, and therefore follows a `Business to Customer` model. It is of the simplest **B2C** forms, as it focuses on individual transactions, and doesn't need anything such as monthly/annual subscriptions.
+
+As a B2C e-commerce platform, Football Crazy specialises in high-quality and elite football boots. Our goal is to become the go-to Football Boot provider in Ireland, offering a wide range of products through our online store.
 
 It is still in its early development stages, although it already has a newsletter, and links for social media marketing.
 
-Social media can potentially build a community of users around the business, and boost site visitor numbers,
-especially when using larger platforms such a Facebook.
+Social media can potentially build a community of users around the business, and boost site visitor numbers, especially when using larger platforms such a Facebook.
 
-A newsletter list can be used by the business to send regular messages to site users.
-For example, what items are on special offer, new items in stock,
-updates to business hours, notifications of events, and much more!
+A newsletter list can be used by the business to send regular messages to site users. For example, what items are on special offer, new items in stock, updates to business hours, notifications of events, and much more!
+
+**Business Overview**
+* The main business objective Football Crazy is to provide a seamless e-commerce experience for football players and coaches.
+* Football Crazy is a retail store and it is a B2C (business to customer) type of business.
+* The deliverables for the Football Crazy store are products (boots, kit, football accessories, gloves, shinpads and training equipment).
+* The business uses a single payment system, that is the transaction is finished after a single payment is made.
+* This business does not have a physical storefront, it is an online-only store
 
 ## Search Engine Optimization (SEO) & Social Media Marketing
 
@@ -855,17 +859,38 @@ You can fork this repository by using the following steps:
 
 ### Code
 
-I followed a number of tutorials in order to create this Django website. I was also inspired and helped by the "Boutique Ado" & "I Think Therefore I Blog" Code institute walkthrough project.
-* [
+I followed a number of tutorials in order to create this Django website. I was also inspired and helped by the "Boutique Ado" & "I Think Therefore I Blog" Code institute walkthrough projects.
+* [Django Ecommerce Website | Product Reviews | Htmx and Tailwind | Part 20 by 'Code with Stein'](https://www.youtube.com/watch?v=8iCqlFyFu2s)
+* [Python Django Ecommerce Customer Wish List by 'Very Academy'](https://www.youtube.com/watch?v=OgA0TTKAtqQ)
+* [Django Tutorial - Introduction no Subscribers and Newsletter #18 by 'Python Lessons'](https://www.youtube.com/watch?v=wl4Yxo5_Cgw)
+* [Build a Newsletter Section for Your Django Web Application by 'KenBroTech'](https://www.youtube.com/watch?v=hWtlskOaFNI)
+* [Testing in Django](https://docs.djangoproject.com/en/4.2/topics/testing/)
+* [How To Style Django Admin Panel](https://medium.com/@rajparmar23801/how-to-style-django-admin-panel-583944334c55)
 
 ### Content
 
+* All product descriptions were generated using [ChapGPT](https://openai.com/index/chatgpt/) by the website developer. 
+
+* I was hugely inspired by [ProdirectSoccer](https://www.prodirectsport.com/soccer/) for this e-commerce site. Although no content was taken from ProDirectSoccer, it was the basis on which Football Crazy came to be. 
+
+* All other content was written by the developer.
+
 ### Media
+
+* All product images were generated with Generative AI using the website [leonardo.ai](https://leonardo.ai/). 
+
+* The about image was also generated with Generative AI using the website [leonardo.ai](https://leonardo.ai/). 
+
+* Hero Image - Generated using [Canva](https://www.canva.com/) AI Magic feature, and extended using [Adobe Photoshop](https://www.adobe.com/ie/products/photoshop/landpa.html?gclid=Cj0KCQjwvb-zBhCmARIsAAfUI2sQ-579PWJuFVy750U14vPEel_uLYYJpZyAMWNRar9E-3A0VRUF_T8aAo8oEALw_wcB&mv=search&mv=search&mv2=paidsearch&sdid=2XBSBWBF&ef_id=Cj0KCQjwvb-zBhCmARIsAAfUI2sQ-579PWJuFVy750U14vPEel_uLYYJpZyAMWNRar9E-3A0VRUF_T8aAo8oEALw_wcB:G:s&s_kwcid=AL!3085!3!441704131147!e!!g!!adobe%20photoshop!1423511192!58810496314&gad_source=1) to fit the dimensions required for the website.
+
+* The Football Crazy Site logo and favicon were created using [Canva](https://www.canva.com/) and Adobe Photoshop.
+
+* The icons across the site were sourced from [Font Awesome](https://fontawesome.com/ "Link to Font Awesome homepage")
 
 ## Acknowledgements
 
 - I would like to thank my Code Institute mentor, [Oluwaseun Owonikoko](https://github.com/seunkoko) for their support throughout the development of this project.
-- I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
+- I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues. They really helped me find my way with some tricky bugs and I am very thankful for their guidance. 
 - I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
 - I would like to thank my partner, for believing in me, and allowing me to make this transition into software development.
 - I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
