@@ -4,7 +4,7 @@
 
 ![Football Crazy Mockup Image](documentation/football_crazy_mockup.png)
 
-[View the live project here](HEROKU-LINK-HERE)
+[View the live project here](https://football-crazy-pp5-5b2eb292c933.herokuapp.com/)
 
 [View GitHub repository](https://github.com/roc-11/football-crazy-pp5)
 
@@ -392,7 +392,7 @@ to check the frequency of some of my site's primary keywords (only until the fre
 ### Sitemap
 
 I've used [XML-Sitemaps](https://www.xml-sitemaps.com) to generate a sitemap.xml file.
-This was generated using my deployed site URL: HEROKU-LINK-HERE
+This was generated using my deployed site URL: https://football-crazy-pp5-5b2eb292c933.herokuapp.com/
 
 After it finished crawling the entire site, it created a
 [sitemap.xml](sitemap.xml) which I've downloaded and included in the repository.
@@ -405,7 +405,7 @@ Inside, I've included the default settings:
 ```
 User-agent: *
 Disallow:
-Sitemap: https://HEROKU-LINK-HERE/sitemap.xml
+Sitemap: https://https://football-crazy-pp5-5b2eb292c933.herokuapp.com//sitemap.xml
 ```
 
 Further links for future implementation:
@@ -458,7 +458,7 @@ For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 ## Deployment
 
-The live deployed application can be found deployed on [Heroku](HEROKU-LINK-HERE).
+The live deployed application can be found deployed on [Heroku](https://football-crazy-pp5-5b2eb292c933.herokuapp.com/).
 
 ### PostgreSQL Database
 
