@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponseRedirect
 
@@ -13,13 +14,15 @@ from .forms import SubscriberForm, UnsubscribeForm, NewsletterForm
 def add_subscriber(request):
     """
     Add email to the subscriber list.
-    This view function handles the
-    addition of an email address to the subscriber list.
-    It uses the SubscriberForm to
-    validate and save the email address.
-    If the email already exists in the database,
-    an error message is displayed.
+    This view function handles the addition of an email address to 
+    the subscriber list. It uses the SubscriberForm to
+    validate and save the email address. 
+    
+    If the email already exists in 
+    the database, an error message is displayed.
+
     Otherwise, the email is saved, and a success message is shown.
+    Confirmation of subscription email is sent to the subscriber.
     """
     form = SubscriberForm(request.POST or None)
 
@@ -32,6 +35,21 @@ def add_subscriber(request):
                 "Please check your email and try again."
             )
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            subject = 'Subscription Confirmation'
+            html_message = render_to_string(
+                'newsletter/confirmation_email.html', {}
+            )
+            plain_message = strip_tags(html_message)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [instance.email]
+            send_mail(
+                subject,
+                plain_message,
+                from_email,
+                recipient_list,
+                html_message=html_message
+            )
 
         instance.save()
         messages.info(request,
