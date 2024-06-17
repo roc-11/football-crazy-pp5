@@ -7,6 +7,10 @@ class OrderLineItemAdminInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
+    """
+    This class defines the custom configuration for displaying and ordering
+    Order records in the Django admin site.
+    """
     inlines = (OrderLineItemAdminInline,)
 
     readonly_fields = ('order_number', 'date',

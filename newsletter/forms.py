@@ -6,12 +6,10 @@ from .models import NewsletterSubscription
 
 class SubscriberForm(forms.ModelForm):
     """
-    Subscriber Form:
-    This form is used for capturing email
-    addresses from users who want to subscribe
-    to newsletters. It extends Django's ModelForm
-    and customizes its appearance using crispy_forms
-    and additional field modifications.
+    A form for handling email newsletter subscription requests.
+    
+    It extends Django's ModelForm and customizes its appearance 
+    using crispy_formsand additional field modifications.
     """
 
     def __init__(self, *args, **kwargs):
@@ -27,10 +25,6 @@ class SubscriberForm(forms.ModelForm):
         self.fields['email'].widget.attrs['placeholder'] = 'Email address'
 
     class Meta:
-        """
-        Meta class for the SubscriberForm.
-        This class defines the model and fields for the form.
-        """
         model = NewsletterSubscription
         fields = ('email', 'is_subscribed')
 

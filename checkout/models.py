@@ -68,7 +68,9 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    """ Stores individual shopping bag item related to :model:`Order`. """
+    """
+    Stores individual shopping bag item related to :model:`Order`.
+    """
 
     order = models.ForeignKey(
         Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')

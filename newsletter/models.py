@@ -11,9 +11,6 @@ class NewsletterSubscription(models.Model):
     is_subscribed = models.BooleanField(default=True)
 
     def __str__(self):
-        """
-        String for representing the NewsletterSubscription object (email).
-        """
         return self.email
 
     def unsubscribe(self):

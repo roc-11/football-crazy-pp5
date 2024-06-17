@@ -5,7 +5,9 @@ from .models import Product, Category, Review
 RATING_CHOICES = (('1', '1'),('2', '2'),('3', '3'),('4', '4'),('5', '5'),)
 
 class ProductForm(forms.ModelForm):
-    """ A form for store admins to add products to the store """
+    """
+    A form for store admins to add products to the store
+    """
     class Meta:
         model = Product
         fields = '__all__'

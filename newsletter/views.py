@@ -14,14 +14,12 @@ from .forms import SubscriberForm, UnsubscribeForm, NewsletterForm
 def add_subscriber(request):
     """
     Add email to the subscriber list.
-    This view function handles the addition of an email address to 
-    the subscriber list. It uses the SubscriberForm to
-    validate and save the email address. 
+    This view function handles the addition of an email address to the subscriber 
+    list. It uses the SubscriberForm to validate and save the email address. 
     
-    If the email already exists in 
-    the database, an error message is displayed.
+    If the email already exists in the database, an error message is displayed.
 
-    Otherwise, the email is saved, and a success message is shown.
+    Else, the email is saved, and a success message is shown.
     Confirmation of subscription email is sent to the subscriber.
     """
     form = SubscriberForm(request.POST or None)
@@ -61,15 +59,11 @@ def add_subscriber(request):
 
 def unsubscribe(request):
     """
-    This view handles the unsubscription
-    process based on a submitted form.
-    If the request method is POST,
-    it validates the UnsubscribeForm, attempts to
-    find a subscriber with the provided email address,
-    and marks them as unsubscribed.
-    Success and error messages are displayed accordingly.
-    If the form is not valid, an error message is
-    shown for invalid form submission.
+    This view handles the unsubscription process based on a submitted form.
+
+    If the request method is POST, it validates the UnsubscribeForm, attempts 
+    to find a subscriber with the provided email address, and marks them as 
+    unsubscribed.
     """
     if request.method == 'POST':
         form = UnsubscribeForm(request.POST)
@@ -112,6 +106,13 @@ def unsubscribe(request):
 
 @login_required
 def send_newsletter(request):
+    """
+    View for sending newsletters to subscribers.
+    Accessible only to superusers (administrators).
+
+    On successful newsletter submission, redirects to 'profile'.
+    On unauthorized access, redirects to 'home' with an error message.
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only administrators can access this page.')
         return redirect(reverse('home'))

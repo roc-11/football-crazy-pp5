@@ -4,6 +4,10 @@ from .models import Product, Category, Review
 # Register your models here.
 
 class ProductAdmin(admin.ModelAdmin):
+    """
+    This class defines the custom configuration for displaying and ordering
+    Products records in the Django admin site.
+    """
     list_display = (
         'sku',
         'name',

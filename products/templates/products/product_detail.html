@@ -32,11 +32,6 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0 product-head-font">{{ product.name }}</p>
-                    <!--
-                    <div>
-                        <a class="btn btn-wish mt-2" href="{% url 'user_wishlist' product.id %}" role="button" aria-disabled="false">Add to Wishlist</a>
-                    </div>
-                    -->
                     {% if user.is_authenticated %}
                         <form class="d-inline like-form" action="{% url 'user_wishlist' product.id %}" method="POST" data-product-id="{{ product.id }}">
                             {% csrf_token %}
@@ -194,7 +189,6 @@
                         {% endif %}
                         <div class="rating-star">
                             <span title="{{ review.rating }}/5">
-                            <!-- By default the star is full else it is empty otherwise it is half -->
                                 <i class="fa fa-star{% if review.rating < 0.5%}-o{% elif review.rating >= 0.5 and review.rating < 1 %}-half-o{% endif %}" aria-hidden="true"></i>
                                 <i class="fa fa-star{% if review.rating < 1.5%}-o{% elif review.rating >= 1.5 and review.rating < 2 %}-half-o{% endif %}" aria-hidden="true"></i>
                                 <i class="fa fa-star{% if review.rating < 2.5%}-o{% elif review.rating >= 2.5 and review.rating < 3 %}-half-o{% endif %}" aria-hidden="true"></i>

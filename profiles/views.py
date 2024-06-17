@@ -11,7 +11,9 @@ from checkout.models import Order
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
+    """
+    Display the user's profile.
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -36,7 +38,9 @@ def profile(request):
 
 
 def order_history(request, order_number):
-    """ Display the user's order history. """
+    """
+    Display the user's order history.
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
@@ -73,6 +77,11 @@ def wishlist(request):
 
 @login_required
 def add_to_wishlist(request, id, *args, **kwargs):
+    """
+    This view handles adding to, and removing a products from,
+    the user's wishlist.
+    Renders the user's wishlist page.
+    """
     product_wish = get_object_or_404(Product, pk=id)
     user = request.user
     user_profile = user.userprofile
