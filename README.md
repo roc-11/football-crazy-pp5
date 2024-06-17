@@ -133,7 +133,11 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
 	45. USERSTORY #45: Final Deployment
         - As a Developer I want to deploy my project/website so that it can be accessed publicly online.
 	46. USERSTORY #46: Project Submission
-        - As a 
+        - Submit final project for grading
+	47. USERSTORY #46: Wishlist
+        - As a Shopper/site user I want to be able to add and view products to a wish list so that I can save products I would wish to purchase in the future.
+	48. USERSTORY #46: Newsletter
+        - As a site user I want to subscribe to the newsletter so that I keep up to date with the latest store news and deals.
 
 ### Wireframes
 
@@ -143,7 +147,27 @@ Initially, wireframes plans were hand-drawn on a notepad. More detailed wirefram
 
 They can be found below:
 
-![Desktop Wireframes - Homepage](documentation/wireframe_1_homepage.png)
+![Wireframes - Homepage](documentation/Wireframe-Home.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Shop-(All-Products).png)
+
+![Wireframes - Homepage](documentation/Wireframe-Product-Detail.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Shopping-bag.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Checkout.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Purchase-Confirmation.png)
+
+![Wireframes - Homepage](documentation/Wireframe-About.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Contact.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Profile.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Blog.png)
+
+![Wireframes - Homepage](documentation/Wireframe-Blog-Detail.png)
 
 ### Flow Chart
 
