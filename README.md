@@ -41,21 +41,64 @@ The site aims to make adding, editing and deleting products from the store simpl
 #### Application Goals
 
 Goals for New Users
-* As a new site user, I would like to 
+* As a new site user, I would like to view an intuitive website with straightforward navigation that is fully responsive, for an easy shopping experience.
+* As a new site user, I would like to checkout as a guest without creating an account.
+* As a new site user, I would like to create an account so that I can store my delivery details, save my order history and submit product reviews.
+* As a new site user, I would like to add products to my wishlist so that I can return to them at a later date/time.
+* As a new site user, I would like to easily edit and delete any reviews that I write.
+* As a new site user, I would like to easily contact the website administrators with questions.
+* As a new site user, I would like to easily understand the main purpose of the site/store.
+* As a new user, I want attractive and relevant visuals and colour schemes that work with the content.
 
 Goals for Returning Users
-* As a returning site user, I would like to 
+* As a returning site user, I would like to view an intuitive website with straightforward navigation that is fully responsive, for an easy shopping experience.
+* As a returning site user, I would like to easily log into my account so that I can edit my delivery details, view my order history and submit product reviews.
+* As a returning site user, I would like to checkout quickly using my stored/saved delivery information.
+* As a new site user, I would like to add products to my wishlist so that I can return to them at a later date/time.
+* As a new site user, I would like to easily edit and delete any reviews that I write.
+
 
 Goals for Site Administrators
-* As a site administrator, I would like to 
+* As a site administrator, I would like to have a recognizable branded Django admininstator area to manage users, products, categories, contact requests, about page, reviews and the newsletter.
+* As a site administrator, I would like to easily add a new product to the store from the front-end/website.
+* As a site administrator, I would like to easily edit or delete a product from the store from the front-end/website.
+* As a site administrator, I would like to easily send a newsletter email to all newsletter subscribers using a user-friendly UI.
+* As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI.
+* As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website.
+* * As a site administrator, I would like to manage user contact requests and mark them as read.
+As a site administrator, I would like to have a simple UI that will encourage users to return and engage with the store.
+
+Goals for Shoppers
+* As a shopper, I want to easily find the products and their details.
+* As a shopper, I want to view products on a specific category.
+* As a shopper, I want to be able to sort the products depending on their price, rating or category.
+* As a shopper, I want to be able to search for products using specific keywords.
+* As a shopper, I want to easily select the quantity of products to be purchased.
+* As a shopper, I want to easily view the current purchase amount.
+* As a shopper, I want to view all items currently in my shopping cart and be able to update them.
+* As a shopper, I want to easily provide my shipping and payment information during the checkout.
+* As a shopper, I want to feel my personal and payment data is being handled securely.
+* As a shopper, I want to receive an order confirmation once I have finished my purchase.
+* As a shopper, I want to receive an order confirmation email for my records.
+* As a shopper, I want to be able to read product reviews left by other shoppers.
+
+Goals for Frequent Shoppers/Registered Users
+* As a frequent shopper, I want to be able to register an account using my email address to be able to keep my records and interact with the website.
+* As a frequent shopper, I want to receive a confirmation once my account has been registered to make sure the information entered was correctly.
+* As a registered shopper, I want to easily log in and log out from my account.
+* As a registered shopper, I want to be able to recover access to my account in case I forget my password.
+* As a registered shopper, I want to have a personalized profile page where I can keep my contact information updated and see my past orders.
+* As a registered shopper, I want to be able to leave product reviews and rate the products.
+* As a registered shopper, I want to be able to keep a list of my favorite products to purchase again in the future.
+* As a registered shopper, I want to be able to easily add and remove products from my wishlist.
 
 #### User Stories
 
 All epics, user stories with their acceptance criteria and tasks can be viewed on the [Github Project Board](https://github.com/users/roc-11/projects/6).
 
-- There were NUMBER Epics created from Project Concept to Project Submission.
+- There were 18 Epics created from Project Concept to Project Submission.
 
-- There were NUMBER User Stories Created including:
+- There were 52 User Stories Created including:
     1. USERSTORY # 1: Gather General Requirements & Visual Layout
         - As a Developer I can see how the site should be laid out and make a detailed plan so that the site functionality can be developed in an incremental manner.
     2. USERSTORY #2: Initial Django project setup
@@ -135,7 +178,7 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
 	39. USERSTORY #39: Create templates to handle onscreen notifications (success, error, warning and info messages)
         - As a 
 	40. USERSTORY #40: Create Post Model for Blog
-        - As a 
+        - As a site admin I can create, read, update and delete blog posts in the admin section so that I can manage my blog content. 
 	41. USERSTORY #41: Display Post Detail
         - As a 
 	42. USERSTORY #42: Manual Testing of Project
@@ -148,10 +191,18 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
         - As a Developer I want to deploy my project/website so that it can be accessed publicly online.
 	46. USERSTORY #46: Project Submission
         - Submit final project for grading
-	47. USERSTORY #46: Wishlist
+	47. USERSTORY #47: Wishlist
         - As a Shopper/site user I want to be able to add and view products to a wish list so that I can save products I would wish to purchase in the future.
-	48. USERSTORY #46: Newsletter
+	48. USERSTORY #48: Newsletter
         - As a site user I want to subscribe to the newsletter so that I keep up to date with the latest store news and deals.
+	49. USERSTORY #49: Newsletter
+		- As a Site Admin I can create Comments table/model so that I can manage comments.
+	50. USERSTORY #50: Newsletter
+		- As a Site User/Admin I can view comments on an individual post so that I can read the conversation.
+	51. USERSTORY #51: Newsletter
+		- As a Site User I can modify or delete my comment on a post so that I can be involved in the conversation.
+	52. USERSTORY #52: Newsletter
+		- As a Site Admin I can approve or disapprove comments so that I can filter out objectionable comments.
 
 ### Wireframes
 
