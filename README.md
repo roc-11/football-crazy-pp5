@@ -14,8 +14,6 @@
 
 ## Introduction
 
-## Introduction
-
 The goal of Football Crazy is to be a comprehensive e-commerce store where users can purchase football boots, training kits, coaching equipment, accessories, and other football-related products. This site provides a seamless shopping experience with several user-friendly features:
 
 - **User Accounts**: Users can create accounts, sign in, and log out. Authenticated users have personalized profile pages showing order history, wishlisted products, and the option to add default delivery information.
@@ -180,11 +178,11 @@ All epics, user stories with their acceptance criteria and tasks can be viewed o
 	40. USERSTORY #40: Create Post Model for Blog
         - As a site admin I can create, read, update and delete blog posts in the admin section so that I can manage my blog content. 
 	41. USERSTORY #41: Display Post Detail
-        - As a 
+        - As a Site User I can click on a post so that I can read the full text.
 	42. USERSTORY #42: Manual Testing of Project
-        - As a 
+        - Manual testing of website and functionality of store/profile/etc.
 	43. USERSTORY #43: Code Validation
-        - As a 
+        - Code Validation process 
 	44. USERSTORY #44: Write Project Documentation
         - As a Developer I want to document my Django project so that the whole process for the ecommerce store is documented.
 	45. USERSTORY #45: Final Deployment
@@ -253,6 +251,13 @@ Details of the full colour palette can be found below:
 ![Colour Scheme](documentation/colour_scheme.png)
 
 ### Typography
+
+The pairing chosen for the site are: 
+* [Chivo](https://fonts.google.com/specimen/Chivo?preview.text=Max%20Rehab%20Physiotherapy&preview.text_type=custom)
+* [Lato](https://fonts.google.com/specimen/Lato)
+* A backup of 'Lato' and sans-serif are applied in case of failure.
+
+Chivo is used for title headings, while Lato is used for almost all other text. Both were imported from[Google Fonts](https://fonts.google.com/).
 
 ## Features
 
@@ -455,8 +460,11 @@ Inside, I've included the default settings:
 
 ```
 User-agent: *
-Disallow:
-Sitemap: https://https://football-crazy-pp5-5b2eb292c933.herokuapp.com//sitemap.xml
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /checkout/
+Disallow: /profiles/
+Sitemap: https://https://football-crazy-pp5-5b2eb292c933.herokuapp.com/sitemap.xml
 ```
 
 Further links for future implementation:
@@ -491,7 +499,7 @@ The site has been built with the following tech and tools:
 5. Django - database framework
 6. Jinja - HTML logic rendering for dynamic content
 7. ElephantSQL - database hosting
-8. Cloudinary - media hosting
+8. Amazon AWS - static files media hosting
 9. Bootstrap 4
 10. JQuery
 11. GitHub Projects - agile management, kanban, roadmap and milestones
@@ -499,6 +507,8 @@ The site has been built with the following tech and tools:
 13. Git - version control
 14. GitPod & VS Code - IDE
 15. Heroku - live site hosting
+16. Gmail - Football Crazy email to send real emails
+17. Stripe - for secure payment/checkout
 
 ### Frameworks, Libraries & Programs Used
 
@@ -844,6 +854,9 @@ You can fork this repository by using the following steps:
 ## Credits
 
 ### Code
+
+I followed a number of tutorials in order to create this Django website. I was also inspired and helped by the "Boutique Ado" & "I Think Therefore I Blog" Code institute walkthrough project.
+* [
 
 ### Content
 
