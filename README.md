@@ -2,7 +2,7 @@
 
 ## Developer: Róisín O'Connell 
 
-![Football Crazy Mockup Image](documentation/football_crazy_mockup.png)
+![Football Crazy Mockup Image](documentation/football-crazy-mockup.png)
 
 [View the live project here](https://football-crazy-pp5-5b2eb292c933.herokuapp.com/)
 
