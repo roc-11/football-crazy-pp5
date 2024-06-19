@@ -287,6 +287,8 @@ The following features have been implemented:
 
 * Featured at the top of the page, the navigation shows the Football Crazy logo in the left corner. This image is clickable and it links the user back to the homepage. On smaller devices the Home link is displayed in the burger menu, as text, in order to save screen space. 
 * The other navigation links, which link to different pages of the site, are: 
+	- Logo Image (link to homepage)
+	- Search box ([see more here](#product-search))
 	- About
 	- All Products - Dropdown Menu (by Price, Rating, Category or All)
 	- Boots - Dropdown Menu (Firm Ground, Sort Ground, Artificial Grass or All Boots)
@@ -318,10 +320,6 @@ The following features have been implemented:
 	5. Privacy Policy - link to the Football Crazy Privacy Policy, made with [www.privacypolicygenerator.info](https://www.privacypolicygenerator.info/).
 * On smaller devices the coloumns are stacked for responsive display. 
 
-![Screenshot of the footer mobile](documentation/features/fc-footer-mobile.png) 
-
-![Screenshot of the footer desktop - dropdown](documentation/features/fc-footer-desktop.png) |
-
 Footer Desktop            |  Footer Mobile
 :-------------------------:|:-------------------------:
 ![Screenshot of the footer desktop](documentation/features/fc-footer-desktop.png)  |  ![Screenshot of the footer mobile](documentation/features/fc-footer-mobile.png)
@@ -330,7 +328,7 @@ Footer Desktop            |  Footer Mobile
 
 * The homepage consists of a large hero image. Here the user is welcomed with the tagline "Find your ultimate boot".
 * The 'SHOP NOW' button takes the user to the 'All Products' page. There is a cool UI hover effect on this button, where a red border top and bottom appears when a user hovers over this button. 
-* Above the hero image is a black banner with the free delivery offer - "Free delivery on orders over $50. This encourages shoppers immediately to spend more than $50 in the store. 
+* Above the hero image is a black banner with the free delivery offer/discount - "Free delivery on orders over $50. This encourages shoppers immediately to spend more than $50 in the store. 
 * All of the elements on the page follow the company branding colours of white, black and red. There is a black border around the title tagline, and a red shadow to ensure the text is readable and stands out. 
 * The hero image is a striking and eye-catching zoom in of the latest Adidas Predator boots, on the background of a stadium. This was generated using AI especially for the Football Crazy Store. 
 
@@ -340,9 +338,120 @@ Homepage Desktop            |  Homepage Mobile
 
 ### Products Page
 
+* The Products Page (All Products) displays all the products currently available, or filtered on a specific category.
+* Each product from the Products table is rendered as a card. The card for each product contains: 
+		- A Product Image (which is a link the the Product Details page for that specific product)
+		- A Product Name (which is a link the the Product Details page for that specific product)
+		- The price of the product
+		- The category of the product (which is a link to that category page)
+		- The product rating
+
+		- if logged in as an administrator, an edit and delete button also exists here ([see more here](#product-admin-pagefunctionality-crud))
+* Products are displayed in a row, with 4 products per row on larger screens, 3 on medium/large and 2 on medium screens. The rows are stacked on mobile display to show one product at a time, to maximise the available screen space. 
+* The products page features a "back to top" button in the bottom right of the screen, taking a user back to the top of the page quickly.
+
+Products Page             |  Products Page (Admin)		   | Products Page Mobile
+:-------------------------:|:-------------------------:|:-------------------------:
+![Screenshot of the Products page](documentation/features/fc-all-products-page.png)   |  ![Screenshot of the Products page as logged in admin](documentation/features/fc-all-products-page-admin.png) |  ![Screenshot of the Products page mobile](documentation/features/fc-all-products-page-mobile.png)
+
+Code for Product Cards
+```html
+{% for product in products %}
+<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+    <div class="card h-100 border-0">
+        <!-- Render Product Image URL if image exits, or default Image if not -->
+        {% if product.image %}
+        <a href="{% url 'product_detail' product.id %}">
+            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+        </a>
+        {% else %}
+        <a href="{% url 'product_detail' product.id %}">
+            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+        </a>
+        {% endif %}
+        <div class="card-body pb-0">
+            <a href="{% url 'product_detail' product.id %}">
+                <p class="mb-0 prod-name-link text-black text-decoration-none">{{ product.name }}</p>
+            </a>
+        </div>
+        <div class="card-footer bg-white pt-0 border-0 text-left">
+            <div class="row">
+                <div class="col">
+                    <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                    {% if product.category %}
+                        <p class="small mt-1 mb-0">
+                            <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                                <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                            </a>
+                        </p>
+                    {% endif %}
+                    {% if product.rating %}
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                    {% else %}
+                        <small class="text-muted">No Rating</small>
+                    {% endif %}
+                    <!-- Store Admin - edit/delete product -->
+                    {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_product' product.id %}" class="btn-info text-decoration-none p-1">Edit</a> |
+                            <a href="{% url 'delete_product' product.id %}" class="btn-danger text-decoration-none p-1">Delete</a>
+                        </small>
+                    {% endif %}
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+```
+
 #### Product Search
 
+* As mentionined in the [Navigation Section](#navigation), there is a search bar which users/shoppers can use to search for a particular product or keyword. 
+* In the screenshots below, the search term "navy" was used. All products with the word "navy" in their Product Name or Product Description are brought back from the database and displayed to the user. The search term is displayed in the top left of the first product row, as well as how many results matched the search. 
+
+Search Bar             |  Product Search Results	 | Product search term and number of results
+:-------------------------:|:-------------------------:|:-------------------------:
+![Screenshot of the Products Search Bar](documentation/features/fc-product-search-bar.png)   |  ![Screenshot of the Product Search Results](documentation/features/fc-products-search-results.png) |  ![Screenshot of the Product search term and number of results](documentation/features/fc-product-search-term.png)
+
 #### Product Filter & Sort
+
+* Products can be filtered by category. Users can do this by clicking the main product type, e.g. Boots, in the Navbar and then choosing a category from the list, e.g. soft ground boots, or they can click the small category tag in the product card information. 
+
+Product Category            |  Product Filter Results (by Kit > Shorts)	 | Product Card - Small Category Icon/Link
+:-------------------------:|:-------------------------:|:-------------------------:
+![Screenshot of the Products Search Bar](documentation/features/fc-category-nav-dropdown.png)   |  ![Screenshot of the Product Search Results](documentation/features/fc-filter-results.png) |  ![Screenshot of the Product search term and number of results](documentation/features/fc-cateogry-small.png)
+
+* Products can also be sorted. 
+* Users can sort and search by Price, Rating and Category from the products tab on the navbar. 
+* There is sort select box, handled by javascript, on the right hand side of the page. This sorts all of the products on the current page by price, rating, name or category. The sort direction can also be specified with this handy feature (ASC or DESC order).
+
+Javascript Code for the Sort
+```javascript
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != 'reset'){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        });
+```
+
+Sort Select             |  Sort Results - By Name A-Z
+:-------------------------:|:-------------------------:
+![Screenshot of the Sort Select](documentation/features/fc-sort-select.png) |  ![Screenshot of the Sort Results - By Name A-Z](documentation/features/fc-sort-alpha.png) 
 
 ### Product Reviews & Ratings (CRUD)
 

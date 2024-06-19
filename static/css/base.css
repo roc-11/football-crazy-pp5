@@ -431,18 +431,6 @@ input[name='q']::placeholder {
     background-color: red; /* change to red logo colour */
 }
 
-/* Badge Styling */
-.badge {
-    right: 5px;
-    position: absolute;
-    top: 15px;
-    color: #ffffff;
-    background-color: rgba(66, 49, 68, 0.26);
-    padding: 2px 8px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
 /* ============================ Media Queries ============================*/
 
 /* Slightly larger container on xl screens */
