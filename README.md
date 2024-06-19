@@ -284,6 +284,7 @@ The following features have been implemented:
 ### Existing Features
 
 ### Navigation
+
 * Featured at the top of the page, the navigation shows the Football Crazy logo in the left corner. This image is clickable and it links the user back to the homepage. On smaller devices the Home link is displayed in the burger menu, as text, in order to save screen space. 
 * The other navigation links, which link to different pages of the site, are: 
 	- About
@@ -308,7 +309,34 @@ The following features have been implemented:
 
 ### Footer
 
+* Featured at the bottom of the page, the footer consists of a red banner (in keeping with the Football Crazy branding) with links to the various social media pages, as per the business marketing strategy. 
+* Below the banner are 4 columns: 
+	1. About Us - with a short blurb about Football Crazy 
+	2. Products - links to the main product sections for the store website. 
+	3. Contact Us - with basic, at a glance contact information. This makes it easy for the customer to find contact info quickly. 
+	4. Newsletter subscribe/unsubscribe buttons (explained in detail in the [Newsletter](#newsletter) section below.)
+	5. Privacy Policy - link to the Football Crazy Privacy Policy, made with [www.privacypolicygenerator.info](https://www.privacypolicygenerator.info/).
+* On smaller devices the coloumns are stacked for responsive display. 
+
+![Screenshot of the footer mobile](documentation/features/fc-footer-mobile.png) 
+
+![Screenshot of the footer desktop - dropdown](documentation/features/fc-footer-desktop.png) |
+
+Footer Desktop            |  Footer Mobile
+:-------------------------:|:-------------------------:
+![Screenshot of the footer desktop](documentation/features/fc-footer-desktop.png)  |  ![Screenshot of the footer mobile](documentation/features/fc-footer-mobile.png)
+
 ### Homepage
+
+* The homepage consists of a large hero image. Here the user is welcomed with the tagline "Find your ultimate boot".
+* The 'SHOP NOW' button takes the user to the 'All Products' page. There is a cool UI hover effect on this button, where a red border top and bottom appears when a user hovers over this button. 
+* Above the hero image is a black banner with the free delivery offer - "Free delivery on orders over $50. This encourages shoppers immediately to spend more than $50 in the store. 
+* All of the elements on the page follow the company branding colours of white, black and red. There is a black border around the title tagline, and a red shadow to ensure the text is readable and stands out. 
+* The hero image is a striking and eye-catching zoom in of the latest Adidas Predator boots, on the background of a stadium. This was generated using AI especially for the Football Crazy Store. 
+
+Homepage Desktop            |  Homepage Mobile
+:-------------------------:|:-------------------------:
+![Screenshot of the homepage desktop](documentation/features/fc-homepage-desktop.png)  |  ![Screenshot of the homepage mobile](documentation/features/fc-homepage-mobile.png)
 
 ### Products Page
 
