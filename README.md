@@ -525,12 +525,12 @@ Product Detail - Size Selector | Product Detail - Quantity Disable | Product Det
 * Once a review is submitted successfully, the user will be notified with a success message. The review will then be pending until it is approved by the store admin. This is to prevent spam or any unwanted content being shown on the site's front-end. 
 * All approved review will appear on the Product Detail page for that product. 
 
-        ```python
+```python
         def product_detail(request, product_id):
                 reviews = product.reviews.all().order_by("-created_on")
-        ```
+```
 
-        ```html
+```html
         <!-- Creating New Reviews -->
         <div class="col-12 card mb-4 mt-3">
             <div class="card-body">
@@ -549,9 +549,9 @@ Product Detail - Size Selector | Product Detail - Quantity Disable | Product Det
                 {% endif %}
             </div>
         </div>
-        ```
+```
 
-        ```html
+```html
                 <!-- Displaying Product Reviews -->
                 <div class="card-body">
                 {% for review in reviews %}
@@ -593,7 +593,7 @@ Product Detail - Size Selector | Product Detail - Quantity Disable | Product Det
                     </div>
                 {% endfor %}
                 </div>
-        ```
+```
 ![Screenshot of the Review Form](documentation/features/fc-review-form-leave-a-review.png)
 
 Review - Pending Approval | Review - Approved | Review - Rating |  Review - Success |Review - Add to Bag Success
@@ -669,13 +669,162 @@ def review_delete(request, product_id, review_id):
 
 ### Shopping Bag Page
 
+* The shopping bag page displays all products currently in the shopping bag/cart and their information.
+* Users can update the product quantity or remove the product from the shopping bag. The same restrictions relating to disabling the increment and decrement buttons apply as the [Product Detail Quantity](#product-details).
+* The Current **TOTAL COST** is displayed, including delivery costs. 
+* A message alerts the user in case the free delivery threshold has not been reached, displaying the amount left.
+* There is a button at the bottom of the bag page, "Keep Shopping". Clicking this will take the user back to the products page.
+* The "Secure Checkout" button to checkout is provided for the shopper to finish the purchase, and move to the Checkout Page. 
+
+![Screenshot of the Shopping Bag](documentation/features/fc-bag.png)
+
+![Screenshot of the Shopping Bag](documentation/features/fc-bag-empty.png)
+
+Shopping Bag - Free Delivery Threshold not reached | Shopping Bag - Free Delivery  | Shopping Bag - Add To Bag - Threshold Not Reached
+:-------------------------:|:-------------------------: |:-------------------------:    
+![Screenshot of the Shopping Bag Free Delivery Threshold not reached](documentation/features/fc-bag-total-threshold.png) |  ![Screenshot of the Shopping Bag - Free Delivery](documentation/features/fc-bag-total-free-delivery.png)  |  ![Screenshot of the Shopping Bag Add To Bag - Threshold Not Reached](documentation/features/fc-bag-add-to-bag-threshold.png)
+
 ### Checkout Page
+
+* The checkout page renders a form to the user, so that they can complete their purchase and provide the required contact, shipping and payment information. 
+* On the left of the page is the order form. The form is validated on both the front and back end. Users must complete the required fields in order to make a successful checkout/order.
+* If the user is logged in and has a profile with pre-saved order details, the order form will be pre-populated with these details. 
+* There is a checkbox to save details that the user can click to save their delivery information to their profile (if they are logged in and have registered for an account).
+* On the right of the page is an order summary, listing all the products to be purchased. It shows details of the products to be ordered, their size, quantity and subtotal.
+* The total cost including the bag total and delivery costs is clearly displayed to the user.
+* The "Adjust Bag" button is like a back button. The user/shopper can click this to return to their shopping bag in case they would like to make adjustments before checkout.
+* The card payment is handled by Stripe. A valid card must be provided, or else an error will return and the order will not complete.
+* Descriptive error messages are displayed in case there is any issue with the payment information provided. 
+* A message is displayed, informing the shopper the amount to be charged on the provided card.
+* The "Complete Order" button is clearly available for the shopper to complete the order.
+* Stripe webhook handler is created in the backend to pass the order information in the case the browser crashes once the checkout completion.
+
+![Screenshot of Checkout - Empty Form](documentation/features/fc-checkout-blank-form.png)
+
+![Screenshot of Checkout - Saved/Prefilled Form](documentation/features/fc-checkout-prefilled-form.png)
+
+Checkout - Save Information Checkbox | Checkout - Stripe Payment Form  | Checkout - Stripe Payment Error/Fail
+:-------------------------:|:-------------------------: |:-------------------------:    
+![Screenshot of Checkout - Save Information Checkbox](documentation/features/fc-checkout-save-info.png) |  ![Screenshot Checkout - Stripe Payment Form](documentation/features/fc-checkout-stripe-card-form.png)  |  ![Screenshot of Checkout - Stripe Payment Error/Fail](documentation/features/fc-checkout-stripe-card-error.png)
 
 ### Checkout Success
 
+* Upon successfully checking out, and payment going through with Stripe, the Checkout Success Page will be displayed. 
+* This page shows the order details and shopper/user information. The customer can confirm that the information provided is correct.
+* Additionally, informs the customer that an email has been sent to the email address they provided with the same information (a copy of the order details that they can keep for their records).
+* A button to the latest deals is provided at the bottom of the page. This encourages the customer to keep shopping!
+
+![Screenshot of Checkout Success Page](documentation/features/fc-checkout-success.png)
+
 ### Product Admin Page/Functionality (CRUD)
 
+* Superusers/site administrators have an additional functionality of being able to add a new product to the store/DB on the front-end by filling out a form. They can access this feature by clicking "Profile >> Store Management". 
+* This makes it simple for store owners to add a new product to the store, by filling out the required product information and clicking "Add Product". 
+* There is a default "no image" which shows when the owner adds a new product but does not supply an image. 
+
+![Screenshot of Product Admin - Add Product](documentation/features/fc-product-admin-add-product.png)
+
+![Screenshot of Product Admin - Product Management Link](documentation/features/fc-product-admin-product-management-link.png)
+
+```python
+@login_required
+def add_product(request):
+    """
+    Add a product to the store.
+    Accessible only to superusers (administrators).
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        form = ProductForm()
+
+    template = 'products/add_product.html'
+    context = {
+        'form' : form
+    }
+
+    return render(request, template, context)
+```
+
+* Site admins have full CRUD functionality with the store admin feature. They can also EDIT an existing product by clicking the edit button. This will bring them to the same form as "Add a Product", except the product information will be prefilled. 
+* Similarly a DELETE button exists if a store owner wishes to remove a product from the store. 
+
+![Screenshot of Product Admin - Edit Product](documentation/features/fc-product-admin-edit-1.png)
+
+![Screenshot of Product Admin - Edit Product](documentation/features/fc-product-admin-edit-2.png)
+
+Product Admin - Edit/Delete Buttons            |  Product Admin - Edit/Delete Buttons
+:-------------------------:|:-------------------------:
+![Product Admin - Edit/Delete Buttons](documentation/features/fc-product-admin-buttons-product-page.png)  |  ![Product Admin - Edit/Delete Buttons](documentation/features/fc-product-admin-buttons-product-detail.png)
+
+```python
+@login_required
+def edit_product(request, product_id):
+    """
+    Edit a product in the store
+    Accessible only to superusers (administrators).
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)  # get product to prefill the form
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+        'form' : form,
+        'product' : product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_product(request, product_id):
+    """
+    Delete a product in the store
+    Accessible only to superusers (administrators).
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted!')
+
+    return redirect(reverse('products'))
+```
 ### Profile Page
+
+* The Profile Page is accessed by clicking on the **"MY ACCOUNT"** button in the navigation bar.
+* If a user has an account and is logged in, they can view and edit their profile information.
+* The page features a form on the left. Users can fill this in order to save their delivery information. Next time they checkout, the delivery form will be prefilled with this information. If they have already made an order and checked "save my information", the profile will save the delivery information. 
+* The page also features a list of past orders made by this customer/logged in user. 
+* The order number can be clicked, taking the user to the checkout success page, where they can view a detailed summary of this order. 
+
+![Screenshot of My Profile](documentation/features/fc-my-profile.png)
 
 ### Wishlist
 
