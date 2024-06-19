@@ -263,13 +263,94 @@ Chivo is used for title headings, while Lato is used for almost all other text. 
 
 The following features have been implemented:
 1. Fully responsive website consisting of:
-  - Home 
+  - Home
+  - About
+  - Contact
+  - Products - Categorised, Searchable and Sortable
+  - Product Details
+  - Product Reviews (with CRUD functionality for logged in users to write a review (reviews can be edited or deleted))
+  - Shopping Bag
+  - Checkout & Checkout Success
+  - Login
+  - Logout
+  - Register
+  - Forgot Password
+  - Product Admin (with CRUD functionality for superusers to add, edit and delete products on the front-end)
+  - Profile 
+  - Wishlist
+  - Newsletter
+  - 404 Error
 
 ### Existing Features
 
 ### Navigation
+* Featured at the top of the page, the navigation shows the Football Crazy logo in the left corner. This image is clickable and it links the user back to the homepage. On smaller devices the Home link is displayed in the burger menu, as text, in order to save screen space. 
+* The other navigation links, which link to different pages of the site, are: 
+	- About
+	- All Products - Dropdown Menu (by Price, Rating, Category or All)
+	- Boots - Dropdown Menu (Firm Ground, Sort Ground, Artificial Grass or All Boots)
+	- Kit - Dropdown Menu (Jerseys, Shorts, Socks or All Kit)
+	- Accessories & Equipment - Dropdown Menu (Footballs, Shinpads, Goalkeeper Gloves, Coaching or All Accessories & Equipment)
+	- Special Offers - Dropdown Menu (New Arrivals, Deals, Clearance or All Specials)
+	- Contact
+	- Wishlist
+	- My Account - Dropdown Menu (Login/Register/Logout/My Profile/Product Management)
+	- Shopping Bag
+* The navigation makes clear the name of the company and website.
+* The navigation makes the different sections of information easy to find.
+* On smaller devices the navigation converts to a burger menu.
+
+![Screenshot of the navigation desktop](documentation/features/fc-navigation-desktop.png)
+
+![Screenshot of the navigation desktop - dropdown](documentation/features/fc-navigation-desktop-dropdowns.png)
+
+![Screenshot of the navigation mobile](documentation/features/fc-navigation-mobile.png)
+
+### Footer
 
 ### Homepage
+
+### Products Page
+
+#### Product Search
+
+#### Product Filter & Sort
+
+### Product Reviews & Ratings (CRUD)
+
+#### Add a Review
+
+#### Edit a Review
+
+#### Delete a Review
+
+### Shopping Bag Page
+
+### Checkout Page
+
+### Checkout Success
+
+### Product Admin Page/Functionality (CRUD)
+
+### Profile Page
+
+### Wishlist
+
+### Contact Page
+
+### About Page
+
+### Newsletter
+
+#### Newsletter Subscribe/Unsubscribe
+
+#### Newsletter Admin Page
+
+### 404 Error Page
+
+### Alerts/Toasts/Messages
+
+### Registration & Accounts
 
 ### Unresolved bugs
 
