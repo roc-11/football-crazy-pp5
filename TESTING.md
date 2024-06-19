@@ -11,22 +11,18 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | File | Screenshot | Notes |
 | --- | --- | --- | --- |
-| home | index.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| about | about.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| bag | bag.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| checkout | checkout.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| checkout success | checkout_success.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| contact | contact.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| products | products.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| product detail | product_detail.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| add a product | add_product.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| edit a product | edit_product.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| profile | profile.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| wishlist | wishlist.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| login | login.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| logout | logout.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| signup | signup.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| password reset | password_reset.html | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| home | index.html | ![screenshot](documentation/validation/home.png) | |
+| about | about.html | ![screenshot](documentation/validation/about.png) | |
+| bag | bag.html | ![screenshot](documentation/validation/bag.png) | |
+| checkout | checkout.html | ![screenshot](documentation/validation/checkout.png) | |
+| checkout success | checkout_success.html | ![screenshot](documentation/validation/checkout_success.png) | |
+| contact | contact.html | ![screenshot](documentation/validation/contact.png) | |
+| products | products.html | ![screenshot](documentation/validation/products.png) | |
+| product detail | product_detail.html | ![screenshot](documentation/validation/product_detail.png) | |
+| add a product | add_product.html | ![screenshot](documentation/validation/add_product.png) | |
+| edit a product | edit_product.html | ![screenshot](documentation/validation/edit_product.png) | |
+| profile | profile.html | ![screenshot](documentation/validation/profile.png) | |
+| wishlist | wishlist.html | ![screenshot](documentation/validation/wishlist.png) | |
 
 ### Python
 
