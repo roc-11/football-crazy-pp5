@@ -63,7 +63,7 @@ Goals for Site Administrators
 * As a site administrator, I would like to easily send a newsletter email to all newsletter subscribers using a user-friendly UI.
 * As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI.
 * As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website.
-* * As a site administrator, I would like to manage user contact requests and mark them as read.
+* As a site administrator, I would like to manage user contact requests and mark them as read.
 As a site administrator, I would like to have a simple UI that will encourage users to return and engage with the store.
 
 Goals for Shoppers
@@ -257,7 +257,7 @@ The pairing chosen for the site are:
 * [Lato](https://fonts.google.com/specimen/Lato)
 * A backup of 'Lato' and sans-serif are applied in case of failure.
 
-Chivo is used for title headings, while Lato is used for almost all other text. Both were imported from[Google Fonts](https://fonts.google.com/).
+Chivo is used for title headings, while Lato is used for almost all other text. Both were imported from [Google Fonts](https://fonts.google.com/).
 
 ## Features
 
@@ -340,8 +340,8 @@ Homepage Desktop            |  Homepage Mobile
 
 * The Products Page (All Products) displays all the products currently available, or filtered on a specific category.
 * Each product from the Products table is rendered as a card. The card for each product contains: 
-	- A Product Image (which is a link the the [Product Details page](#product-details) for that specific product)
-	- A Product Name (which is a link the the [Product Details page](#product-details) for that specific product)
+	- A Product Image (which is a link to the [Product Details page](#product-details) for that specific product)
+	- A Product Name (which is a link to the [Product Details page](#product-details) for that specific product)
 	- The price of the product
 	- The category of the product (which is a link to that category page)
 	- The product rating
@@ -509,7 +509,7 @@ def add_to_bag(request, item_id):
 
 ![Screenshot of the Product Detail Page](documentation/features/fc-product-details.png)
 
-![Screenshot of the Product Detail Page - Mobile ](documentation/features/fc-product-details-mobile.png)
+![Screenshot of the Product Detail Page - Mobile ](documentation/features/c-product-details-mobile.png)
 
 Product Detail - Size Selector | Product Detail - Quantity Disable | Product Detail - Quantity Management/Defense |  Product Detail - Admin |Product Detail - Add to Bag Success
 :-------------------------:|:-------------------------: |:-------------------------:   |:-------------------------:  |:-------------------------:
@@ -1115,6 +1115,8 @@ Reset Password | Allow the registered shopper to reset their password. | ![Scree
 
 ### Unresolved bugs
 
+There are no unresolved bugs that I am presently aware of. 
+
 ### Future Features/Improvements
 
 The Football Crazy e-commerce store is functioning as planned in its current state. However, the developer plans to implement some new features, and improve upon some existing features, in order to improve the customer's/user's shopping experience.
@@ -1277,6 +1279,11 @@ Social media can potentially build a community of users around the business, and
 
 A newsletter list can be used by the business to send regular messages to site users. For example, what items are on special offer, new items in stock, updates to business hours, notifications of events, and much more!
 
+Marketing Strategies used in Business Model: 
+1. Seach Engine Optimisation - more potential customers with good SEO. 
+2. Social Media Marketing - to encourage customer interest and engagement. To get attention and sales through social media. To increase public knowledge in the brand. 
+3. Newsletter Marketing - to reach customers, both new and existing, with news and deals. To increase sales. To make an effort to retain customers. 
+
 **Business Overview**
 * The main business objective Football Crazy is to provide a seamless e-commerce experience for football players and coaches.
 * Football Crazy is a retail store and it is a B2C (business to customer) type of business.
@@ -1284,12 +1291,20 @@ A newsletter list can be used by the business to send regular messages to site u
 * The business uses a single payment system, that is the transaction is finished after a single payment is made.
 * This business does not have a physical storefront, it is an online-only store
 
+**B2B features** 
+* easy payment system
+* authentication system
+* search and filtering functionality 
+* high quality images
+* clear product descriptions
+* ratings and reviews
+* shopping cart and payment system
+
 ## Search Engine Optimization (SEO) & Social Media Marketing
 
 ### Keywords
 
-I've identified some appropriate keywords to align with my site, that should help users
-when searching online to find my page easily from a search engine.
+I've identified some appropriate keywords to align with my site, that should help users when searching online to find my page easily from a search engine.
 This included a series of the following keyword types
 
 - Short-tail (head terms) keywords
@@ -1303,12 +1318,12 @@ to check the frequency of some of my site's primary keywords (only until the fre
 I've used [XML-Sitemaps](https://www.xml-sitemaps.com) to generate a sitemap.xml file.
 This was generated using my deployed site URL: https://football-crazy-pp5-5b2eb292c933.herokuapp.com/
 
-After it finished crawling the entire site, it created a
-[sitemap.xml](sitemap.xml) which I've downloaded and included in the repository.
+After it finished crawling the entire site, it created a [sitemap.xml](sitemap.xml) which I've downloaded and included in the repository.
 
 ### Robots
 
 I've created the [robots.txt](robots.txt) file at the root-level.
+
 Inside, I've included the default settings:
 
 ```
@@ -1339,9 +1354,9 @@ I've created a Facebook business account using Facebook. The Football Crazy Face
 
 ### Newsletter Marketing
 
-I have incorporate a newsletter sign-up form on my application, to allow users to supply their
-email address if they are interested in learning more. 
+I have incorporate a newsletter sign-up form on my application, to allow users to supply their email address if they are interested in learning more. 
 
+Please go up to the [Newsletter section](#newsletter) to get more information about Football Crazy's newsletter marketing. 
 
 ## Tools & Technologies Used
 
@@ -1422,14 +1437,22 @@ For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 The live deployed application can be found deployed on [Heroku](https://football-crazy-pp5-5b2eb292c933.herokuapp.com/).
 
-### PostgreSQL Database
+### ElepahntSQL Database
 
-This project uses a [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net).
+This project uses an [ElepahntSQL](https://www.elephantsql.com/) (PostgreSQL) Database.
 
-To obtain my own Postgres Database from Code Institute, I followed these steps:
+To obtain my own ElepahntSQL Database, I followed these steps:
 
-- Signed-in to the CI LMS using my email address.
-- An email was sent to me with my new Postgres Database.
+- Signed up to ElepahntSQL
+- Created an external database for my application
+- Added the database url to my config vars on Heroku (production) & my env.py file (development)
+
+Another option would be to use the [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net).
+
+To obtain a Postgres Database from Code Institute, follow these steps:
+
+- Sign-in to the CI LMS using my email address.
+- An email will be sent with the new Postgres Database.
 
 > [!CAUTION]  
 > - PostgreSQL databases by Code Institute are only available to CI Students.
