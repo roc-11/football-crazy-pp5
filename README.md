@@ -340,13 +340,14 @@ Homepage Desktop            |  Homepage Mobile
 
 * The Products Page (All Products) displays all the products currently available, or filtered on a specific category.
 * Each product from the Products table is rendered as a card. The card for each product contains: 
-		- A Product Image (which is a link the the Product Details page for that specific product)
-		- A Product Name (which is a link the the Product Details page for that specific product)
-		- The price of the product
-		- The category of the product (which is a link to that category page)
-		- The product rating
+	- A Product Image (which is a link the the [Product Details page](#product-details) for that specific product)
+	- A Product Name (which is a link the the [Product Details page](#product-details) for that specific product)
+	- The price of the product
+	- The category of the product (which is a link to that category page)
+	- The product rating
 
-		- if logged in as an administrator, an edit and delete button also exists here ([see more here](#product-admin-pagefunctionality-crud))
+	- if logged in as an administrator, an edit and delete button also exists here 
+	( [see more here](#product-admin-pagefunctionality-crud) )
 * Products are displayed in a row, with 4 products per row on larger screens, 3 on medium/large and 2 on medium screens. The rows are stacked on mobile display to show one product at a time, to maximise the available screen space. 
 * The products page features a "back to top" button in the bottom right of the screen, taking a user back to the top of the page quickly.
 
@@ -408,6 +409,7 @@ Code for Product Cards
 
 * As mentionined in the [Navigation Section](#navigation), there is a search bar which users/shoppers can use to search for a particular product or keyword. 
 * In the screenshots below, the search term "navy" was used. All products with the word "navy" in their Product Name or Product Description are brought back from the database and displayed to the user. The search term is displayed in the top left of the first product row, as well as how many results matched the search. 
+* **Responsive Design** - Optimized for both desktop and mobile views, ensuring a seamless and consistent search experience across all devices.
 
 Search Bar             |  Product Search Results	 | Product search term and number of results
 :-------------------------:|:-------------------------:|:-------------------------:
@@ -453,13 +455,217 @@ Sort Select             |  Sort Results - By Name A-Z
 :-------------------------:|:-------------------------:
 ![Screenshot of the Sort Select](documentation/features/fc-sort-select.png) |  ![Screenshot of the Sort Results - By Name A-Z](documentation/features/fc-sort-alpha.png) 
 
+### Product Details
+
+* Clicking on the image or name of a product will take the user/shopper to the Product Details Page for that particular product. It will display a larger image of the product as well as the more detailed details for that product.  
+* Here the shopper can get a more indepth look at the product. The page shows the products:
+ - Name
+ - Add to wishlist option, to easily add the product to the user's wishlist (see more details [here on the Wishlist section](#wishlist) )
+ - Store Admin - Edit/Delete Buttons (only visible if logged in as Superadmin)
+ - Price
+ - Category
+ - Rating
+ - Description
+ - Size (if the product has a Sizes option)
+ - Quantity of the product to add to bag
+* Below the product details are two buttons. "Keep shopping" will take the user back to the products page, while the "Add to Bag" button will submit a form to to be handled by the Bag View (adding the product, the selected size if applicable, and quantity to the bag). If the product is successfully added to the bag/shopping card, the user will see a success message and the grand order total will update and become visible under the Shopping Bag icon on the navigation bar.
+* The quantity selector uses Javascript/jQuery code to prevent a user attempting to put an invalid number of items in the bag. The decrement button is disabled when the value is 1, so the user cannot attempt to add 0 products or a minus number to the bag. The increment button will be disabled once 99 is reached. The user also cannot type a quantity of 100 items to the bag - they will get an error message.  
+* **Responsive Design** - Optimized for both desktop and mobile views, ensuring products can be easily viewed across all devices.
+
+The function "add_to_bag" in the Bag app's views.py file handles adding the specified quantity (and size) of the product to the bag.
+```python
+def add_to_bag(request, item_id):
+
+    product = get_object_or_404(Product, pk=item_id)
+    quantity = int(request.POST.get('quantity'))
+    redirect_url = request.POST.get('redirect_url')
+    size = None
+    if 'product_size' in request.POST:
+        size = request.POST['product_size']
+    bag = request.session.get('bag', {})
+
+    if size:
+        if item_id in list(bag.keys()):
+            if size in bag[item_id]['items_by_size'].keys():
+                bag[item_id]['items_by_size'][size] += quantity
+                messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
+            else:
+                bag[item_id]['items_by_size'][size] = quantity
+                messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+        else:
+            bag[item_id] = {'items_by_size': {size: quantity}}
+            messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+    else:
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+            messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+        else:
+            bag[item_id] = quantity
+            messages.success(request, f'Added {product.name} to your bag')
+
+    request.session['bag'] = bag
+    return redirect(redirect_url)
+```
+
+![Screenshot of the Product Detail Page](documentation/features/fc-product-details.png)
+
+![Screenshot of the Product Detail Page - Mobile ](documentation/features/fc-product-details-mobile.png)
+
+Product Detail - Size Selector | Product Detail - Quantity Disable | Product Detail - Quantity Management/Defense |  Product Detail - Admin |Product Detail - Add to Bag Success
+:-------------------------:|:-------------------------: |:-------------------------:   |:-------------------------:  |:-------------------------:
+![Screenshot of the Product Detail](documentation/features/fc-product-details-size-selector.png)  |  ![Screenshot of the Product Detail](documentation/features/fc-product-details-disable-quantity.png) |  ![Screenshot of the Product Detail](documentation/features/fc-product-details-defensive-quantity.png) |  ![Screenshot of the Product Detail](documentation/features/fc-product-details-admin.png) |  ![Screenshot of the Product Detail](documentation/features/fc-product-details-add-to-bag.png)
+
 ### Product Reviews & Ratings (CRUD)
+
+* Logged in customers can leave a review on a product. The product for is located on the Product Details page, below the details for the product.
 
 #### Add a Review
 
-#### Edit a Review
+* The Review form is a simple form with a text area, where the user can write their review, and a select box, where the user can give the product a rating between 1 and 5. 
+* Once a review is submitted successfully, the user will be notified with a success message. The review will then be pending until it is approved by the store admin. This is to prevent spam or any unwanted content being shown on the site's front-end. 
+* All approved review will appear on the Product Detail page for that product. 
 
-#### Delete a Review
+        ```python
+        def product_detail(request, product_id):
+                reviews = product.reviews.all().order_by("-created_on")
+        ```
+
+        ```html
+        <!-- Creating New Reviews -->
+        <div class="col-12 card mb-4 mt-3">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <h3 class="text-uppercase mb-3">Leave a review</h3>
+                        <h4><span class="text-muted">{{ product.name }}</span></h4>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+                        {{ review_form | crispy }}
+                        {% csrf_token %}
+                        <button id="submitButton" type="submit"
+                        class="btn btn-black rounded-0 text-uppercase mt-1">Submit</button>
+                    </form>
+                {% else %}
+                    <p>Log in to leave a comment</p>
+                {% endif %}
+            </div>
+        </div>
+        ```
+
+        ```html
+                <!-- Displaying Product Reviews -->
+                <div class="card-body">
+                {% for review in reviews %}
+                    <div class="p-2 reviews review-div p-3 mb-3
+                        {% if not review.approved and review.created_by == user %}
+                        faded{% elif not review.approved %} d-none{% endif %}">
+                        <p class="font-weight-bold text-muted">
+                            <span class="font-weight-normal"><i class="far fa-comment"></i></span>
+                            {{ review.created_by }} wrote:
+                        </p>
+                        <div id="review{{ review.id }}">
+                            {{ review.content | linebreaks }}
+                        </div>
+                        {% if not review.approved and review.created_by == user %}
+                        <p class="approval">
+                        This review is awaiting approval
+                        </p>
+                        {% endif %}
+                        <div class="rating-star">
+                            <span title="{{ review.rating }}/5">
+                                <i class="fa fa-star{% if review.rating < 0.5%}-o{% elif review.rating >= 0.5 and review.rating < 1 %}-half-o{% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating < 1.5%}-o{% elif review.rating >= 1.5 and review.rating < 2 %}-half-o{% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating < 2.5%}-o{% elif review.rating >= 2.5 and review.rating < 3 %}-half-o{% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating < 3.5%}-o{% elif review.rating >= 3.5 and review.rating < 4 %}-half-o{% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating < 4.5%}-o{% elif review.rating >= 4.5 and review.rating < 5 %}-half-o{% endif %}" aria-hidden="true"></i>
+                            </span>
+                            <span><strong>( {{ review.rating }}/5 )</strong></span>
+                        </div>
+                        <p class="font-weight-bold text-muted mt-2">
+                            <span class="font-weight-normal">
+                                <i class="far fa-calendar"></i> Review Date: {{ review.created_on }}
+                            </span>
+                        </p>
+                        <!-- Display Edit/Delete buttons (if user is signed in & comment author) -->
+                        {% if user.is_authenticated and review.created_by == user %}
+                            <button class="btn btn-danger btn-delete-review" review_id="{{ review.id }}">Delete</button>
+                            <button class="btn btn-outline-black btn-edit-review" review_id="{{ review.id }}">Edit</button>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+        ```
+![Screenshot of the Review Form](documentation/features/fc-review-form-leave-a-review.png)
+
+Review - Pending Approval | Review - Approved | Review - Rating |  Review - Success |Review - Add to Bag Success
+:-------------------------:|:-------------------------: |:-------------------------:   |:-------------------------:  |:-------------------------:
+![Screenshot of the Review Pending Approval](documentation/features/fc-review-pending-approval.png)  |  ![Screenshot of the Review Approved](documentation/features/fc-review-approved-review.png) |  ![Screenshot of the Review Rating](documentation/features/fc-review-rating.png) |  ![Screenshot of the Review Success](documentation/features/fc-review-success.png) |  ![Screenshot of the Review Not Logged In](documentation/features/fc-review-not-legged-in.png)
+
+#### Edit/Delete a Review
+
+* A logged in user can edit or delete **their own** comment. Editing a comment will resubmit the new comment to the DB for approval. A message will appear again under the review, saying "This review is awaiting approval". It will not appear on the site until it is approved.
+* If a user tries to delete their comment, a modal will appear asking them are they sure they want to delete (defensive programming). 
+
+![Screenshot of the Review Delete - Confirmation Modal](documentation/features/fc-review-delete.png)
+
+ ```javascript
+    /** Show delete confirmation modal before deleting review **/
+    for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+        let reviewId = e.target.getAttribute("review_id");
+        deleteConfirm.href = `delete_review/${reviewId}`;
+        deleteModal.show();
+    });
+    }
+```
+```python
+@login_required
+def review_edit(request, product_id, review_id):
+    """
+    Display an individual review for edit.
+
+    **Context**
+
+    ``product``
+        An instance of :model:`product.Product`.
+    ``review``
+        A single review related to the product.
+    ``review_form``
+        An instance of :form:`product.ReviewForm`
+    """
+    if request.method == "POST":
+
+        product = get_object_or_404(Product, pk=product_id)
+        review = get_object_or_404(Review, pk=review_id)
+        review_form = ReviewForm(data=request.POST, instance=review)
+
+        if review_form.is_valid() and review.created_by == request.user:
+            review = review_form.save(commit=False)
+            review.post = product
+            review.approved = False
+            review.save()
+            messages.success(request, 'Comment updated! Awaiting admin approval.')
+        else:
+            messages.error(request, 'Error updating comment!')
+
+    return redirect(reverse('product_detail', args=[product_id]))
+
+
+@login_required
+def review_delete(request, product_id, review_id):
+    """
+    view to delete review
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    review = get_object_or_404(Review, pk=review_id)
+
+    if review.created_by == request.user:
+        review.delete()
+        messages.success(request, 'Review deleted!')
+    else:
+        messages.error(request, 'You can only delete your own reviews!')
+
+    return redirect(reverse('product_detail', args=[product_id]))
+```
 
 ### Shopping Bag Page
 
@@ -510,11 +716,11 @@ Below are the Models used for the project, used to create an ERD with the relati
 ```python
 
 class Category(models.Model):
-	name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
 class Product(models.Model):
-	category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
@@ -525,8 +731,9 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     users_wishlist = models.ManyToManyField(User, related_name="user_wishlist", blank=True)
 
+CUSTOM MODEL
 class Review(models.Model):
-	product = models.ForeignKey(
+   product = models.ForeignKey(
         Product, related_name='reviews', on_delete=models.CASCADE)
     rating = models.IntegerField(default=3)
     content = models.TextField()
@@ -536,14 +743,14 @@ class Review(models.Model):
     approved = models.BooleanField(default=False)
 
 class About(models.Model):
-	title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     profile_image_url = models.URLField(max_length=1024, null=True, blank=True)
     profile_image = models.ImageField(null=True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
 
 class Order(models.Model):
-	order_number = models.CharField(max_length=32, null=False, editable=False)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -563,7 +770,7 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
 class OrderLineItem(models.Model):
-	order = models.ForeignKey(
+    order = models.ForeignKey(
         Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
@@ -571,20 +778,21 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
+CUSTOM MODEL
 class Contact(models.Model):
-	name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()
     read = models.BooleanField(default=False)
 
 class NewsletterSubscription(models.Model):
-	email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True)
     name = models.CharField(max_length=100)
     subscribed_at = models.DateTimeField(auto_now_add=True)
     is_subscribed = models.BooleanField(default=True)
 
 class UserProfile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
     default_street_address2 = models.CharField(max_length=80, null=True, blank=True)

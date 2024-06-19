@@ -12,7 +12,8 @@ def view_bag(request):
 
 def add_to_bag(request, item_id):
     """
-    Add a quantity of the specified product to the shopping bag
+    Add a quantity of the specified product to the shopping bag.
+    Also add the specified product size, if relevant.
     """
 
     product = get_object_or_404(Product, pk=item_id)
