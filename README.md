@@ -828,27 +828,301 @@ def delete_product(request, product_id):
 
 ### Wishlist
 
+* The wishlist was an additional feature added to the store which was not in the additional plan. 
+* The feature is only available to registered, logged in users. 
+* From the "Product Detail" page, a user can click the "Add to Wishlist" button, adding that product to their wishlist. The page will reload, and with the product now in the user's wishlist, the button text will change to "Remove from Wishlist". Click the button now will remove the product from the user's wishlist. 
+* User's can view a list of the products in their wishlist by clicking on the **heart** icon in the navigation men. This will direct them to their wishlist page. 
+* The wishlist page simply consists of a loop, rendering each item the user favourited in a card. The card contains product information (name, price, category and rating) as well as a product image on larger screen sizes. There is another "Remove from Wishlist" button here which users can click to remove that item from their wishlist. 
+* Clicking the product name on the card will bring the user to the Product Details page for that product. 
+
+![Screenshot of Wishlist](documentation/features/fc-wishlist.png)
+
+![Screenshot of Wishlist Empty](documentation/features/fc-wishlist-empty.png)
+
+Wishlist - Add Button | Wishlist - Remove Button  | Wishlist - Success
+:-------------------------:|:-------------------------: |:-------------------------:    
+![Screenshot of Wishlist - Add Button](documentation/features/fc-wishlist-add.png) |  ![Screenshot Wishlist - Remove Button](documentation/features/fc-wishlist-remove.png)  |  ![Screenshot of Wishlist - Success](documentation/features/fc-wishlist-success.png)
+
+```python
+@login_required
+def wishlist(request):
+    """
+    Display the user's wishlist.
+    This view renders the user's wishlist page.
+    """
+    profile = get_object_or_404(UserProfile, user=request.user)
+    products = Product.objects.filter(users_wishlist=request.user)
+
+    template = 'profiles/wishlist.html'
+    context = {
+        'wishlist' : products,
+        'profile': profile,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def add_to_wishlist(request, id, *args, **kwargs):
+    """
+    This view handles adding to, and removing a products from,
+    the user's wishlist.
+    Renders the user's wishlist page.
+    """
+    product_wish = get_object_or_404(Product, pk=id)
+    user = request.user
+    user_profile = user.userprofile
+
+    liked = False
+
+    if product_wish.users_wishlist.filter(id=request.user.id).exists():
+        product_wish.users_wishlist.remove(request.user)
+        messages.success(
+            request,
+            f'Successfully removed {product_wish} from Wishlist!'
+        )
+        liked = False
+    else:
+        product_wish.users_wishlist.add(request.user)
+        messages.success(
+            request, f'Successfully added {product_wish} to Wishlist!'
+        )
+        liked = True
+    
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+```
+
 ### Contact Page
+
+* The Contact page consists of a form a user can use to get in touch with Football Crazy. 
+* Front end validation code ensures users must fill out all fields in order to submit the contact form. 
+* User submitted contact requests can be marked as read by administrators from the admin panel. 
+
+![Screenshot of the contact page](documentation/features/fc-contact-page.png)
 
 ### About Page
 
+* The About page is a simple page to inform site users all about Football Crazy. 
+* It consists of about content, an image, and the date edited (from the about DB table).
+* The contents of the about page can be edited with a UI from the admin area (Summernote Installed & Utilised to achieve this).
+
+![Screenshot of the about page](documentation/features/fc-about_page.png)
+
+![Screenshot of the about DB UI](documentation/features/fc-about_table_ui.png)
+
+```python
+
+def about_football_crazy(request):
+    """
+    Renders the most recent information on the website author.
+
+    Displays an individual instance of :model:`about.About`.
+
+    **Context**
+    ``about``
+        The most recent instance of :model:`about.About`.
+
+    **Template**
+    :template:`about/about.html`
+    """
+    about = About.objects.all().order_by('-updated_on').first()
+
+    return render(
+        request,
+        "about/about.html",
+        {
+            "about": about
+        },
+    )
+
+```
+
 ### Newsletter
 
+* Users can sign up to the mailing list/subscribe to the Football Crazy newsletter by filling in their email address, on the footer, and clicking the subscribe button.
+
+![Screenshot of Newsletter](documentation/features/fc-newsletter.png)
+
 #### Newsletter Subscribe/Unsubscribe
+* A success message will appear, and the user will get an email to the email address they gave, confirming their subscription. 
+* Filling in an email address and clicking the unsubscribe button will unsubscribe the users from the newsletter list. They will receive an email with confirmation of their unsubscription, informing them that we're sorry to see them go. 
+
+Newsletter Subscribe Email         |  Newsletter Unsubscribe Email
+:-------------------------:|:-------------------------:
+![Newsletter Subscribe Email](documentation/features/fc-newsletter-email-1.png)  |  ![Newsletter Unsubscribe Email](documentation/features/fc-newsletter-email-2.png)
+
+
+```python
+def add_subscriber(request):
+    """
+    Add email to the subscriber list.
+    This view function handles the addition of an email address to the subscriber 
+    list. It uses the SubscriberForm to validate and save the email address. 
+    
+    If the email already exists in the database, an error message is displayed.
+
+    Else, the email is saved, and a success message is shown.
+    Confirmation of subscription email is sent to the subscriber.
+    """
+    form = SubscriberForm(request.POST or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+
+        if NewsletterSubscription.objects.filter(email=instance.email).exists():
+            messages.warning(request,
+                f"{instance.email} already exists in our database. "
+                "Please check your email and try again."
+            )
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            subject = 'Subscription Confirmation'
+            html_message = render_to_string(
+                'newsletter/confirmation_email.html', {}
+            )
+            plain_message = strip_tags(html_message)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [instance.email]
+            send_mail(
+                subject,
+                plain_message,
+                from_email,
+                recipient_list,
+                html_message=html_message
+            )
+
+        instance.save()
+        messages.info(request,
+            f"{instance.email} has been added to our the newsletter"
+        )
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def unsubscribe(request):
+    """
+    This view handles the unsubscription process based on a submitted form.
+
+    If the request method is POST, it validates the UnsubscribeForm, attempts 
+    to find a subscriber with the provided email address, and marks them as 
+    unsubscribed.
+    """
+    if request.method == 'POST':
+        form = UnsubscribeForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                subscriber = NewsletterSubscription.objects.get(email=email)
+                subscriber.unsubscribe()
+
+                subject = 'Newsletter - unsubscribed'
+                html_message = render_to_string(
+                    'newsletter/newsletter_unsubscribe.html', {}
+                )
+                plain_message = strip_tags(html_message)
+                from_email = settings.DEFAULT_FROM_EMAIL
+                recipient_list = [subscriber]
+                send_mail(
+                    subject,
+                    plain_message,
+                    from_email,
+                    recipient_list,
+                    html_message=html_message
+                )
+
+                messages.info(request,
+                    f"Successfully unsubscribed {email} from our newsletter."
+                )
+            except Subscriber.DoesNotExist:
+                messages.error(request,
+                    f"No subscriber found with the email {email}. "
+                    f"Please check your email and try again."
+                )
+        else:
+            messages.error(request,
+                "Invalid form submission. Check your input and try again."
+            )
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+```
 
 #### Newsletter Admin Page
 
+* The superadmin user has a useful option to write their newsletter subject and content on the front-end, using the Football Crazy website UI.
+* A "Send Newsletter" button appears on the My Profile page if the logged in user is a superadmin. Clicking on this button will direct the admin to the newsletter page.
+* The admin can fill in a simple form, with subject and content, and hit the send button. This will trigger a function to send the newsletter email to all the subscribers to the newsletter, getting their emails from the database. 
+
+![Screenshot Newsletter page/form](documentation/features/fc-newsletter-blank.png)
+
+Newsletter Admin - My Profile | Newsletter Admin - Form  | Newsletter Admin - Success Message
+:-------------------------:|:-------------------------: |:-------------------------:    
+![Screenshot of Newsletter Admin - My Profile](documentation/features/fc-newsletter-my-profile-admin.png) |  ![Screenshot Newsletter Admin - Form](documentation/features/fc-newsletter-form.png)  |  ![Screenshot of Newsletter Admin - Success Message](documentation/features/fc-newsletter-success.png)
+
 ### 404 Error Page
 
-### Alerts/Toasts/Messages
+* The HTTP 404 Not Found response status code indicates that the server cannot find the requested resource. 
+* If a user enters a link that doesn't exist, has changed or cannot be found, the custom 404 error page will be shown. 
+* The page features a simple message - "The page you are looking for isn't available" - and a button bringing the user to the Products page. 
+
+![Screenshot of the 404 page](documentation/features/fc-404.png)
+
+### Alerts/Toasts/Messages - Onscreen notifications
+
+* Toasts are utilised throughout the project to provide users with feedback after actions performed on the site, eg. add to bag, subscription success, etc.
+* The Django messages framework is imported in order to make use of this functionality.
+For example:
+```python
+from django.contrib import messages
+
+messages.success(request, 'Review submitted and awaiting approval')
+```
+
+* On the front-end, the following code in **base.hmtl** displays the messages whenever there is a Django message. Javascript disables the time function and so the user can control when to X out of the message. 
+
+```html
+{% if messages %}
+        <div class="message-container">
+          {% for message in messages %}
+                {% with message.level as level %}
+                    <!-- Django Message Level 40=Error, 30=warning, 25=success -->
+                    {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
+```
+
+```javascript
+$('.toast').toast('show');
+```
 
 ### Registration & Accounts
+
+Page | Purpose/Function/Feature | Image |
+--- | --- | --- |
+Sign Up | Allow the shopper to sign up an account for the website. | ![Screenshot of the Sign Up Page](documentation/features/fc-signup.png) |
+Sign In | Allow the registered shopper to sign in with their account. | ![Screenshot of the Sign In Page](documentation/features/fc-signin.png) |
+Sign Out | Allow the registered shopper to sign out from their account. | ![Screenshot of the Sign Out Page](documentation/features/fc-signout.png) |
+Reset Password | Allow the registered shopper to reset their password. | ![Screenshot of the Reset Password Page](documentation/features/fc-reset-password.png) |
 
 ### Unresolved bugs
 
 ### Future Features/Improvements
 
-## Tools & Technologies Used
+The Football Crazy e-commerce store is functioning as planned in its current state. However, the developer plans to implement some new features, and improve upon some existing features, in order to improve the customer's/user's shopping experience.
+
+* Improve the product rating functionality. 
+* Add a football blog. This was in the initial user stories as a "could have" item, however, as it was outside the scope of this project, it will be implemented in future implementations of the e-commerce store. 
+* Improve upon the sizing options available - e.g. size 6,7,8,9 for boots. 
+* Add a delete account feature, so that users can delete their user profile. 
 
 ## Database Design
 
@@ -1068,29 +1342,77 @@ I've created a Facebook business account using Facebook. The Football Crazy Face
 I have incorporate a newsletter sign-up form on my application, to allow users to supply their
 email address if they are interested in learning more. 
 
-## Technologies Used 
+
+## Tools & Technologies Used
+
+### Technologies Used 
 
 The site has been built with the following tech and tools:
 1. HTML5
 2. CSS
 3. JavaScript
 4. Python
-5. Django - database framework
-6. Jinja - HTML logic rendering for dynamic content
+5. [Django]((https://www.djangoproject.com/)) - database framework
+6. [Jinja](https://jinja.palletsprojects.com) - HTML logic rendering for dynamic content, used as a templating language for Django to display backend data to HTML.
 7. ElephantSQL - database hosting
 8. Amazon AWS - static files media hosting
-9. Bootstrap 4
+9. [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 10. JQuery
 11. GitHub Projects - agile management, kanban, roadmap and milestones
 12. GitHub Repo - code storage
 13. Git - version control
 14. GitPod & VS Code - IDE
-15. Heroku - live site hosting
+15. [Heroku](https://www.heroku.com) - live site hosting
 16. Gmail - Football Crazy email to send real emails
-17. Stripe - for secure payment/checkout
+17. [Stripe](https://stripe.com/ie) - for secure payment/checkout - process payment transactions
 
 ### Frameworks, Libraries & Programs Used
-
+* [Google Fonts](https://fonts.google.com/)
+  * Google fonts was used to import the fonts "Chivo", "Krub", and "Lato" into the style.css file. These fonts were used throughout the project.
+* Font Awesome
+  * [Font Awesome](https://fontawesome.com/) was used on almost all pages throughout the website to import icons (e.g. social media icons) for UX purposes.
+* Gitpod 
+  * [Gitpod](https://www.gitpod.io/) was used for writing code, commiting, and then pushing to GitHub.
+  * IDE used to code the project.
+  * Migrated to Code Institute's Gitpod IDE.
+* [GitHub](https://github.com/)
+  * GitHub was used to store the project after pushing
+* [Adobe Photoshop](https://www.adobe.com/ie/ "link to the adobe homepage")
+  * Adobe Photoshop was used to resize images
+* [Balsamiq](https://balsamiq.com/)
+  * Balsamiq was used to create the wireframes during the design phase of the project.
+* [Website Mockup Generator](https://websitemockupgenerator.com/)
+  * 'Website Mockup Generator' was used to visualise responsive design throughout the process and to generate mockup imagery.
+* [Canva](https://www.canva.com/)
+  * Canva was used to generate a logo for the website and the favicon.
+* [Lucid Chart](https://lucid.app/) 
+  * Lucid Chart was used to create DB schema and flow diagrams.
+* [Favicon generator](https://favicon.io/favicon-converter/)
+  * Favicon generator was used to create a favicon image.
+* [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+  * HTML and CSS templates
+* [Django allauth](https://docs.allauth.org/en/latest/)
+  * sign-up, login, registration and authentication
+* [Django cripsy forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+  * improved form styling and validation
+* [django.messages](https://docs.djangoproject.com/en/5.0/ref/contrib/messages/)
+  * success and alert bootstrap messages
+* [SQLite](https://www.sqlite.com/index.html)
+  * used as a single-file database during development.
+* [ElephantSQL](https://www.elephantsql.com/)
+  * database used in production.
+* [Amazon Web Service S3](https://aws.amazon.com/s3/)
+  * used to store all static and media files in production.
+* [Coolors](https://coolors.co)  
+    * Coolors was used to create a color scheme for the website.
+* [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+    * Chrome DevTools was used during development process for code review and to test responsiveness.
+* [W3C Markup Validator](https://validator.w3.org/)
+    * W3C Markup Validator was used to validate the HTML code.
+* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+    * W3C CSS Validator was used to validate the CSS code.
+* [JSHint](https://jshint.com/) 
+    * The JSHints JavaScript Code Quality Tool was used to validate the site's JavaScript code.
 
 ## Testing
 
