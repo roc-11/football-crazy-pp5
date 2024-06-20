@@ -88,64 +88,71 @@ I've tested my deployed project on multiple devices to check for responsiveness 
 
 ## Lighthouse Audit
 
-I've tested my deployed project using the Lighthouse Audit tool to check for any major issues.
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. No major issues were found, although at times it seemed to take a while for AWS to serve the home hero image.
 
-| Page | Mobile | Desktop | Notes |
-| --- | --- | --- | --- |
-| Home | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | Some minor warnings |
-| About | ![screenshot](documentation/lighthouse/lighthouse-about-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-about-desktop.png) | Some minor warnings |
-| Gallery | ![screenshot](documentation/lighthouse/lighthouse-gallery-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-gallery-desktop.png) | Slow response time due to large images |
-| home | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| about | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| bag | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | !![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| checkout | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| checkout success | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| contact | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png)| |
-| products | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) |![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| product detail | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| add a product | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| edit a product | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| profile | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
-| wishlist | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | 
+Unfortunately, on the day of documenting this testing file, I was unable to take many screenshots. My internet connection was poor and I was getting strange Lighthouse results. 
+
+I asked a Code Institute tutor for assistance and he sent me the screenshot below:
+![screenshot](documentation/lighthouse-1.png)
+![screenshot](documentation/lighthouse-2.png)
+
+I ran tests for the site on [lighthouse-metrics.com](https://lighthouse-metrics.com/) and the following were the results:
+
+![screenshot](documentation/lighthouse-metrics-mobile.png)
 
 ## Defensive Programming
 
-Defensive programming was manually tested with the below user acceptance testing:
+I have implemented defensive programming throughout the project. This was done in combination of try catch blocks in Python and using Python messages. All HTML forms are validated on the front end, using a combination of HTML and Javascript form validation. Customer errors were pre-empted as much as possible and plans put in place to prevent them.
 
-| Page | User Action | Expected Result | Pass/Fail | Comments |
-| --- | --- | --- | --- | --- |
-| Home | | | | |
-| | Click on Logo | Redirection to Home page | Pass | |
-| | Click on Home link in navbar | Redirection to Home page | Pass | |
-| Gallery | | | | |
-| | Click on Gallery link in navbar | Redirection to Gallery page | Pass | |
-| | Load gallery images | All images load as expected | Pass | |
-| Contact | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
-| Sign Up | | | | |
-| | Click on Sign Up button | Redirection to Sign Up page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password (twice) | Field will only accept password format | Pass | |
-| | Click on Sign Up button | Asks user to confirm email page | Pass | Email sent to user |
-| | Confirm email | Redirects user to blank Sign In page | Pass | |
-| Log In | | | | |
-| | Click on the Login link | Redirection to Login page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password | Field will only accept password format | Pass | |
-| | Click Login button | Redirects user to home page | Pass | |
-| Log Out | | | | |
-| | Click Logout button | Redirects user to logout page | Pass | Confirms logout first |
-| | Click Confirm Logout button | Redirects user to home page | Pass | |
-| Profile | | | | |
-| | Click on Profile button | User will be redirected to the Profile page | Pass | |
-| | Click on the Edit button | User will be redirected to the edit profile page | Pass | |
-| | Click on the My Orders link | User will be redirected to the My Orders page | Pass | |
-| | Brute forcing the URL to get to another user's profile | User should be given an error | Pass | Redirects user back to own profile |
-| repeat for all remaining pages | x | x | x | x |
+Defensive programming was manually tested with the below user acceptance testing:
+(This is not an exhaustive list. Everything was tested extensively during the development and testing stage.)
+(Examples of manual testing also exist in screenshots on the [README.md](README.md) file)
+
+- All links take the user to the relevant page. PASS
+
+- Any page requiring authentication is accounting for in the Python Script and on the front end. PASS
+- If a user attempts to access an out of bounds area, for which they do not have permission, they are re-directed to the login page. PASS
+
+- Homepage - user enters invalid email in subscription form - error message. PASS
+![screenshot](documentation/invalid-email-sub.png)
+
+- Signup - form validated on the front end (username, password, email) PASS
+- Signup - confirmation message and email sent to validate email address. PASS
+- Signup - success email validation. User account created and verified. PASS
+![screenshot](documentation/signup-alert-confirmation-sent.png)
+![screenshot](documentation/please-confirm-email.png)
+![screenshot](documentation/signup-confirm-message.png)
+![screenshot](documentation/signup-confirm-email.png)
+
+- Add product to bag, with correct quantity and size. PASS
+- Success message on add to bag. PASS
+- Success message when bag updated and can see update on the front end. PASS
+- Defensive programming on the quantity selector [product detail and bag page] - limit min=1, max=98. PASS
+- Stripe validation with error messages on the checkout page. PASS
+- Email sent to user on successful checkout. PASS
+- User redirected to checkout success page on successful checkout. PASS
+![screenshot](documentation/test-add-to-bag.png)
+![screenshot](documentation/test-update-bag.png)
+![screenshot](documentation/order-success-message.png)
+![screenshot](documentation/features/fc-product-details-defensive-quantity.png)
+![screenshot](documentation/features/fc-product-details-disable-quantity.png)
+
+- Products sorting, searching and filtering works as expected. PASS 
+(See README.md Products Features section for screenshots and more information on this)
+- User is notified when they submit a review. PASS 
+- User can see the review is pending approval. PASS 
+- User can only edit their own review. PASS 
+- User can only delete their own review. PASS 
+![screenshot](documentation/features/fc-products-search-results.png)
+![screenshot](documentation/features/fc-product-search-term.png)
+![screenshot](documentation/features/fc-sort-select.png)
+
+- The add to wishlist button works as expected. PASS
+- Users can click remove from wishlist button to remove item from their wishlist. PASS
+- Users who try to access the wishlist page without an account are redirected to the login page. PASS
+![screenshot](documentation/features/fc-wishlist-success.png)
+
+
 
 ## User Story Testing
 
