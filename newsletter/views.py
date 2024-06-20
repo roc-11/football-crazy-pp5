@@ -19,7 +19,7 @@ def add_subscriber(request):
     This view function handles the addition of an email
     address to the subscriber list. It uses the
     SubscriberForm to validate and save the email address.
-    
+
     If the email already exists in the database, an
     error message is displayed.
 

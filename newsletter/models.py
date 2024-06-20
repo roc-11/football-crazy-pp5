@@ -19,4 +19,4 @@ class NewsletterSubscription(models.Model):
         """
         self.is_subscribed = False
         self.save()
-     
+    
