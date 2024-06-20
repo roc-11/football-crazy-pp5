@@ -187,10 +187,10 @@ def checkout_success(request, order_number):
 
     # send order confirmation email
     subject = render_to_string(
-        'checkout/confirmation_emails/confirmation_email_subject.txt', {}
+        'checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order,}
     )
     html_message = render_to_string(
-        'checkout/confirmation_emails/confirmation_email_body.txt', {}
+        'checkout/confirmation_emails/confirmation_email_body.txt', {'order': order,}
     )
     plain_message = strip_tags(html_message)
     from_email = settings.DEFAULT_FROM_EMAIL

@@ -185,36 +185,16 @@ I fully acknowledge and understand that, in a real-world scenario, an extensive 
 
 ## Bugs
 
-- Gmail password naming error: preventing sending of real emails. This bug took me a long time to debug and it was a simple typo error.
+- Gmail password naming error: preventing sending of real emails. This bug took me a long time to debug and it was a simple typo error. Result was a "500 error" on any page which required email in production (register, checkout, etc.)
 
     - To fix this, I changed:
     EMAIL_HOST_PASS = os.environ.get('EMAIL_HOST_PASS')
     to
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS').
 
-- JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).
+- Django/Python error: I had duplicate workspaces. This caused a huge error in the IDE. 
 
-    ![screenshot](documentation/bugs/bug02.png)
-
-    - To fix this, I _____________________.
-
-- Python `'ModuleNotFoundError'` when trying to import module from imported package
-
-    ![screenshot](documentation/bugs/bug03.png)
-
-    - To fix this, I _____________________.
-
-- Django `TemplateDoesNotExist` at /appname/path appname/template_name.html
-
-    ![screenshot](documentation/bugs/bug04.png)
-
-    - To fix this, I _____________________.
-
-- Python `E501 line too long` (93 > 79 characters)
-
-    ![screenshot](documentation/bugs/bug04.png)
-
-    - To fix this, I _____________________.
+    - To fix this, I deleted one workspace, and pinned the one I kept. I had to reinstall Django and allauth. This was near the beginnning of my project.
 
 ### GitHub **Issues**
 
