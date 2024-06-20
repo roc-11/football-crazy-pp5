@@ -7,8 +7,8 @@ from .models import NewsletterSubscription
 class SubscriberForm(forms.ModelForm):
     """
     A form for handling email newsletter subscription requests.
-    
-    It extends Django's ModelForm and customizes its appearance 
+
+    It extends Django's ModelForm and customizes its appearance
     using crispy_formsand additional field modifications.
     """
 

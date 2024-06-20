@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -16,10 +18,11 @@ from bag.contexts import bag_contents
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     """
-    Cache checkout data for Stripe PaymentIntent to ensure that 
+    Cache checkout data for Stripe PaymentIntent to ensure that
     the order total and other relevant information are captured.
     """
     try:
@@ -39,10 +42,10 @@ def cache_checkout_data(request):
 
 def checkout(request):
     """
-    A view that handles the checkout process. 
+    A view that handles the checkout process.
 
-    This view handles both GET and POST requests for the checkout process, 
-    including form validation, order creation, and redirection 
+    This view handles both GET and POST requests for the checkout process,
+    including form validation, order creation, and redirection
     to success page.
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -97,9 +100,12 @@ def checkout(request):
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]
+                ))
         else:
-            messages.error(request, 'There was an error with your form. \
+            messages.error(
+                request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         bag = request.session.get('bag', {})
@@ -118,7 +124,7 @@ def checkout(request):
 
         if request.user.is_authenticated:
             try:
-                profile=UserProfile.objects.get(user=request.user)
+                profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
@@ -143,7 +149,7 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key' : stripe_public_key,
-        'client_secret' : intent.client_secret,
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
@@ -167,13 +173,13 @@ def checkout_success(request, order_number):
 
         if save_info:
             profile_data = {
-                'default_phone_number' : order.phone_number,
-                'default_country' : order.country,
-                'default_postcode' : order.postcode,
-                'default_town_or_city' : order.town_or_city,
-                'default_street_address1' : order.street_address1,
-                'default_street_address2' : order.street_address2,
-                'default_county' : order.county,
+                'default_phone_number': order.phone_number,
+                'default_country': order.country,
+                'default_postcode': order.postcode,
+                'default_town_or_city': order.town_or_city,
+                'default_street_address1': order.street_address1,
+                'default_street_address2': order.street_address2,
+                'default_county': order.county,
             }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():

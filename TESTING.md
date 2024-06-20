@@ -30,13 +30,48 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 | Directory | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| football_crazy | settings.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/football_crazy/settings.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| football_crazy | settings.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/football_crazy/settings.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 Line too long and E127 continuation line over-indented for visual indent. Does not affect functionality. |
 | football_crazy | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/football_crazy/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| home | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/home/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
-| home | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/home/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
 | home | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/home/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
 | home | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/home/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
 |  | manage.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/manage.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
+| about | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/about/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| about | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/about/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| about | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/about/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| about | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/about/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
+| bag | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/bag/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| bag | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/bag/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | 102: E501 line too long (98 > 79 characters) |
+| bag | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/bag/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| bag | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/bag/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| bag | contexts.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/bag/contexts.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
+| checkout | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/checkout/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (93 > 79 characters) |
+| checkout | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/checkout/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+| checkout | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/checkout/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+| checkout | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/checkout/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| checkout | forms.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/checkout/forms.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
+| newsletter | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/newsletter/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| newsletter | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/newsletter/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E128 continuation line under-indented for visual indent |
+| newsletter | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/newsletter/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| newsletter | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/newsletter/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| newsletter | forms.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/newsletter/forms.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
+| products | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/products/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+| products | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/products/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+| products | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/products/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| products | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/products/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| products | forms.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/products/forms.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+
+| profiles | urls.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/profiles/urls.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+| profiles | views.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/profiles/views.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+| profiles | models.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/profiles/models.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| profiles | admin.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/profiles/admin.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | |
+| profiles | forms.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/roc-11/football-crazy-pp5/main/profiles/forms.py) | ![screenshot](documentation/validation/path-to-screenshot.png) | E501 line too long (98 > 79 characters) |
+
 
 ## Browser Compatibility
 
@@ -72,7 +107,18 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Home | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | Some minor warnings |
 | About | ![screenshot](documentation/lighthouse/lighthouse-about-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-about-desktop.png) | Some minor warnings |
 | Gallery | ![screenshot](documentation/lighthouse/lighthouse-gallery-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-gallery-desktop.png) | Slow response time due to large images |
-| x | x | x | repeat for any other tested pages/sizes |
+| home | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| about | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| bag | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | !![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| checkout | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| checkout success | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| contact | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png)| |
+| products | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) |![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| product detail | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| add a product | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| edit a product | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| profile | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | |
+| wishlist | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | 
 
 ## Defensive Programming
 

@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponseRedirect
+from django.shortcuts import (
+    render, get_object_or_404, redirect, reverse, HttpResponseRedirect
+)
 
 from products.models import Product
 from .models import UserProfile
@@ -22,16 +24,17 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
-        'form' : form,
-        'orders' : orders,
-        'on_profile_page' : True,
+        'form': form,
+        'orders': orders,
+        'on_profile_page': True,
     }
 
     return render(request, template, context)
@@ -50,8 +53,8 @@ def order_history(request, order_number):
 
     template = 'checkout/checkout_success.html'
     context = {
-        'order' : order,
-        'from_profile' : True,
+        'order': order,
+        'from_profile': True,
     }
 
     return render(request, template, context)
@@ -68,7 +71,7 @@ def wishlist(request):
 
     template = 'profiles/wishlist.html'
     context = {
-        'wishlist' : products,
+        'wishlist': products,
         'profile': profile,
     }
 
@@ -101,5 +104,5 @@ def add_to_wishlist(request, id, *args, **kwargs):
             request, f'Successfully added {product_wish} to Wishlist!'
         )
         liked = True
-    
+
     return HttpResponseRedirect(request.META["HTTP_REFERER"])

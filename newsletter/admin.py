@@ -11,4 +11,5 @@ class NewsletterSubscriptionAdmin(admin.ModelAdmin):
 
     ordering = ('-subscribed_at',)
 
+
 admin.site.register(NewsletterSubscription, NewsletterSubscriptionAdmin)

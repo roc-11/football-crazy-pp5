@@ -5,7 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponseRedirect
+from django.shortcuts import (
+    render, get_object_or_404, redirect, reverse, HttpResponseRedirect
+)
 
 from .models import NewsletterSubscription
 from .forms import SubscriberForm, UnsubscribeForm, NewsletterForm
@@ -14,10 +16,12 @@ from .forms import SubscriberForm, UnsubscribeForm, NewsletterForm
 def add_subscriber(request):
     """
     Add email to the subscriber list.
-    This view function handles the addition of an email address to the subscriber 
-    list. It uses the SubscriberForm to validate and save the email address. 
+    This view function handles the addition of an email
+    address to the subscriber list. It uses the
+    SubscriberForm to validate and save the email address.
     
-    If the email already exists in the database, an error message is displayed.
+    If the email already exists in the database, an
+    error message is displayed.
 
     Else, the email is saved, and a success message is shown.
     Confirmation of subscription email is sent to the subscriber.
@@ -27,11 +31,11 @@ def add_subscriber(request):
     if form.is_valid():
         instance = form.save(commit=False)
 
-        if NewsletterSubscription.objects.filter(email=instance.email).exists():
+        if NewsletterSubscription.objects.filter(
+            email=instance.email).exists():
             messages.warning(request,
                 f"{instance.email} already exists in our database. "
-                "Please check your email and try again."
-            )
+                "Please check your email and try again.")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             subject = 'Subscription Confirmation'
@@ -51,18 +55,19 @@ def add_subscriber(request):
 
         instance.save()
         messages.info(request,
-            f"{instance.email} has been added to our the newsletter"
-        )
+            f"{instance.email} has been added to our the newsletter")
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def unsubscribe(request):
     """
-    This view handles the unsubscription process based on a submitted form.
+    This view handles the unsubscription process based on a
+    submitted form.
 
-    If the request method is POST, it validates the UnsubscribeForm, attempts 
-    to find a subscriber with the provided email address, and marks them as 
+    If the request method is POST, it validates the
+    UnsubscribeForm, attempts to find a subscriber with the 
+    provided email address, and marks them as
     unsubscribed.
     """
     if request.method == 'POST':
@@ -89,17 +94,14 @@ def unsubscribe(request):
                 )
 
                 messages.info(request,
-                    f"Successfully unsubscribed {email} from our newsletter."
-                )
+                    f"Successfully unsubscribed {email} from our newsletter.")
             except Subscriber.DoesNotExist:
                 messages.error(request,
                     f"No subscriber found with the email {email}. "
-                    f"Please check your email and try again."
-                )
+                    f"Please check your email and try again.")
         else:
             messages.error(request,
-                "Invalid form submission. Check your input and try again."
-            )
+                "Invalid form submission. Check your input and try again.")
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -110,21 +112,27 @@ def send_newsletter(request):
     View for sending newsletters to subscribers.
     Accessible only to superusers (administrators).
 
-    On successful newsletter submission, redirects to 'profile'.
-    On unauthorized access, redirects to 'home' with an error message.
+    On successful newsletter submission, redirects to
+    'profile'. On unauthorized access, redirects to 'home'
+    with an error message.
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only administrators can access this page.')
+        messages.error(
+            request, 'Sorry, only administrators can access this page.')
         return redirect(reverse('home'))
     if request.method == 'POST':
         form = NewsletterForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
-            subscribers = NewsletterSubscription.objects.all().values_list('email', flat=True)
-            html_content = render_to_string('newsletter/newsletter_template.html', {'subject': subject, 'content': content})
-            send_mail(subject, content, settings.EMAIL_HOST_USER, subscribers, fail_silently=False)
-            messages.success(request, 'Newsletter Sent Succesfully')
+            subscribers = NewsletterSubscription.objects.all().values_list(
+                'email', flat=True)
+            html_content = render_to_string(
+                'newsletter/newsletter_template.html', {'subject': subject, 'content': content})
+            send_mail(
+                subject, content, settings.EMAIL_HOST_USER, subscribers, fail_silently=False)
+            messages.success(
+                request, 'Newsletter Sent Succesfully')
             return redirect('profile')
         else:
             messages.error(request, 'Failed to send newsletter')

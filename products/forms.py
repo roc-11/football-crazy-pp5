@@ -2,7 +2,8 @@ from django import forms
 from .widgets import CustomClearableFileInput
 from .models import Product, Category, Review
 
-RATING_CHOICES = (('1', '1'),('2', '2'),('3', '3'),('4', '4'),('5', '5'),)
+RATING_CHOICES = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'),)
+
 
 class ProductForm(forms.ModelForm):
     """
@@ -13,7 +14,8 @@ class ProductForm(forms.ModelForm):
         fields = '__all__'
         exclude = ('users_wishlist',)
 
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -27,11 +29,11 @@ class ProductForm(forms.ModelForm):
 
 class ReviewForm(forms.ModelForm):
     """
-    Form class for users to review on a product 
+    Form class for users to review on a product
     """
 
     rating = forms.ChoiceField(choices=RATING_CHOICES)
 
     class Meta:
         model = Review
-        fields = ('content','rating')
+        fields = ('content', 'rating')
