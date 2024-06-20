@@ -100,6 +100,13 @@ I ran tests for the site on [lighthouse-metrics.com](https://lighthouse-metrics.
 
 ![screenshot](documentation/lighthouse-metrics-mobile.png)
 
+I tried to test the website using Lighthouse on Google DevTools using my work laptop and got the following results, with no major issues:
+![screenshot](documentation/lighthouse-desktop-1.PNG)
+![screenshot](documentation/lighthouse-desktop-2.PNG)
+![screenshot](documentation/lighthouse-desktop-3.PNG)
+![screenshot](documentation/lighthouse-desktop-4.PNG)
+![screenshot](documentation/lighthouse-desktop-5.PNG)
+
 ## Defensive Programming
 
 I have implemented defensive programming throughout the project. This was done in combination of try catch blocks in Python and using Python messages. All HTML forms are validated on the front end, using a combination of HTML and Javascript form validation. Customer errors were pre-empted as much as possible and plans put in place to prevent them.
@@ -136,6 +143,7 @@ Defensive programming was manually tested with the below user acceptance testing
 ![screenshot](documentation/order-success-message.png)
 ![screenshot](documentation/features/fc-product-details-defensive-quantity.png)
 ![screenshot](documentation/features/fc-product-details-disable-quantity.png)
+![screenshot](documentation/features/fc-checkout-stripe-card-error.png)
 
 - Products sorting, searching and filtering works as expected. PASS 
 (See README.md Products Features section for screenshots and more information on this)
@@ -146,43 +154,44 @@ Defensive programming was manually tested with the below user acceptance testing
 ![screenshot](documentation/features/fc-products-search-results.png)
 ![screenshot](documentation/features/fc-product-search-term.png)
 ![screenshot](documentation/features/fc-sort-select.png)
+![screenshot](documentation/features/fc-review-pending-approval.png)
+![screenshot](documentation/features/fc-review-success.png)
+![screenshot](documentation/features/fc-review-not-legged-in.png)
 
 - The add to wishlist button works as expected. PASS
 - Users can click remove from wishlist button to remove item from their wishlist. PASS
 - Users who try to access the wishlist page without an account are redirected to the login page. PASS
 ![screenshot](documentation/features/fc-wishlist-success.png)
 
-
-
 ## User Story Testing
 
 | User Story | Screenshot |
 | --- | --- |
-| As a new site user, I would like to I would like to view a responsive website, so that I can use any device. | ![screenshot](documentation/features/feature01.png) |
-| As a new site user, I would like to checkout as a guest without creating an account, so that I can purchase without an account. | ![screenshot](documentation/features/feature02.png) |
-| As a new site user, I would like to create an account, so that I can store my delivery details, save my order history and submit product reviews. | ![screenshot](documentation/features/feature03.png) |
-| As a new site user, I would like to add products to my wishlist, so that I can return to them at a later date/time. | ![screenshot](documentation/features/feature04.png) |
-| As a new site user, I would like to easily edit and delete any reviews that I write, so that I can control what reviews I submit and edit or delete them if I wish. | ![screenshot](documentation/features/feature05.png) |
-| As a new site user, I would like to easily contact the website administrators, so that I can ask questions. | ![screenshot](documentation/features/feature06.png) |
-| As a new site user, I should be able to easily understand the main purpose of the site/store, so that I can know what type of website I am on immediately. | ![screenshot](documentation/features/feature07.png) |
+| As a new site user, I would like to I would like to view a responsive website, so that I can use any device. | ![screenshot](documentation/responsiveness/responsive-mobile-home.png) |
+| As a new site user, I would like to checkout as a guest without creating an account, so that I can purchase without an account. | ![screenshot](documentation/guest-checkout.png) |
+| As a new site user, I would like to create an account, so that I can store my delivery details, save my order history and submit product reviews. | ![screenshot](documentation/features/fc-my-profile.png) |
+| As a new site user, I would like to add products to my wishlist, so that I can return to them at a later date/time. | ![screenshot](documentation/features/fc-wishlist.png) |
+| As a new site user, I would like to easily edit and delete any reviews that I write, so that I can control what reviews I submit and edit or delete them if I wish. | ![screenshot](documentation/features/fc-review-delete.png) |
+| As a new site user, I would like to easily contact the website administrators, so that I can ask questions. | ![screenshot](documentation/features/fc-contact-page.png) |
+| As a new site user, I should be able to easily understand the main purpose of the site/store, so that I can know what type of website I am on immediately. | ![screenshot](documentation/features/fc-homepage-desktop.png) |
 
 | User Story | Screenshot |
 | --- | --- |
-| As a returning site user, I would like to I would like to view a responsive website, so that I can use any device and have an easy shopping experience. | ![screenshot](documentation/features/feature01.png) |
-| As a returning site user, I would like to log into my account, so that I can edit my delivery details, view my order history and submit product reviews. | ![screenshot](documentation/features/feature03.png) |
-| As a returning site user, I would like to my stored/saved delivery information, so that I can checkout quickly. | ![screenshot](documentation/features/feature03.png) |
-| As a returning site user, I would like to add products to my wishlist, so that I can return to them at a later date/time. | ![screenshot](documentation/features/feature04.png) |
-| As a returning site user, I would like to easily edit and delete any reviews that I write, so that I can control what reviews I submit and edit or delete them if I wish. | ![screenshot](documentation/features/feature05.png) |
+| As a returning site user, I would like to I would like to view a responsive website, so that I can use any device and have an easy shopping experience. | ![screenshot](documentation/django-admin-fc.png) |
+| As a returning site user, I would like to log into my account, so that I can edit my delivery details, view my order history and submit product reviews. | ![screenshot](documentation/sigin-page.png) |
+| As a returning site user, I would like to my stored/saved delivery information, so that I can checkout quickly. | ![screenshot](documentation/features/fc-checkout-prefilled-form.png) |
+| As a returning site user, I would like to add products to my wishlist, so that I can return to them at a later date/time. | ![screenshot](documentation/features/fc-wishlis.png) |
+| As a returning site user, I would like to easily edit and delete any reviews that I write, so that I can control what reviews I submit and edit or delete them if I wish. | ![screenshot](documentation/features/fc-review-delete.png) |
 
 | User Story | Screenshot |
 | --- | --- |
 | As a site administrator, I would like to I would like to have a recognizable branded Django admininstator area, so that I know which website I'm working on. | ![screenshot](documentation/features/feature01.png) |
-| As a site administrator, I would like to use the front end to add a new product to the store, so that I can update my store regularly without having any coding knowledge and use a user-friendly UI. | ![screenshot](documentation/features/feature03.png) |
-| As a site administrator, I would like to easily edit or delete a product from the store from the front-end/website, so that I can keep my online store up to date. | ![screenshot](documentation/features/feature03.png) |
-| As a site administrator, I would like to easily send a newsletter email to all newsletter subscribers using a user-friendly UI, so that I can keep customers interested and engaged with my store, and encourage purchases. | ![screenshot](documentation/features/feature04.png) |
-| As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI, so that I the website is keep fresh and up to date. | ![screenshot](documentation/features/feature05.png) |
-| As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website, so that no spam or bot reviews appear on the site. | ![screenshot](documentation/features/feature05.png) |
-| As a site administrator, I would like to manage user contact requests , so that I can response to requests/questions in a timely manner. | ![screenshot](documentation/features/feature05.png) |
+| As a site administrator, I would like to use the front end to add a new product to the store, so that I can update my store regularly without having any coding knowledge and use a user-friendly UI. | ![screenshot](documentation/features/fc-product-admin-add-product.png) |
+| As a site administrator, I would like to easily edit or delete a product from the store from the front-end/website, so that I can keep my online store up to date. | ![screenshot](documentation/features/fc-product-admin-edit-1.png) |
+| As a site administrator, I would like to easily send a newsletter email to all newsletter subscribers using a user-friendly UI, so that I can keep customers interested and engaged with my store, and encourage purchases. | ![screenshot](documentation/features/fc-newsletter-form.png) |
+| As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI, so that I the website is keep fresh and up to date. | ![screenshot](documentation/features/fc-about_table_ui.png) |
+| As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website, so that no spam or bot reviews appear on the site. | ![screenshot](documentation/features/fc-review-pending-approval.png) |
+| As a site administrator, I would like to manage user contact requests , so that I can response to requests/questions in a timely manner. | ![screenshot](documentation/features/admin-contact-table.png) |
 
 ## Automated Testing
 
