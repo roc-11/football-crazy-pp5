@@ -64,7 +64,7 @@ Goals for Site Administrators
 * As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI.
 * As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website.
 * As a site administrator, I would like to manage user contact requests and mark them as read.
-As a site administrator, I would like to have a simple UI that will encourage users to return and engage with the store.
+* As a site administrator, I would like to have a simple UI that will encourage users to return and engage with the store.
 
 Goals for Shoppers
 * As a shopper, I want to easily find the products and their details.

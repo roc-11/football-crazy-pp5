@@ -80,16 +80,11 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 I've tested my deployed project on multiple devices to check for responsiveness issues.
 
-| Device | Home | About | Contact | etc | Notes |
-| --- | --- | --- | --- | --- | --- |
-| Mobile (DevTools) | ![screenshot](documentation/responsiveness/responsive-mobile-home.png) | ![screenshot](documentation/responsiveness/responsive-mobile-about.png) | ![screenshot](documentation/responsiveness/responsive-mobile-contact.png) | ![screenshot](documentation/responsiveness/responsive-mobile-etc.png) | Works as expected |
-| Tablet (DevTools) | ![screenshot](documentation/responsiveness/responsive-tablet-home.png) | ![screenshot](documentation/responsiveness/responsive-tablet-about.png) | ![screenshot](documentation/responsiveness/responsive-tablet-contact.png) | ![screenshot](documentation/responsiveness/responsive-tablet-etc.png) | Works as expected |
-| Desktop | ![screenshot](documentation/responsiveness/responsive-desktop-home.png) | ![screenshot](documentation/responsiveness/responsive-desktop-about.png) | ![screenshot](documentation/responsiveness/responsive-desktop-contact.png) | ![screenshot](documentation/responsiveness/responsive-desktop-etc.png) | Works as expected |
-| XL Monitor | ![screenshot](documentation/responsiveness/responsive-xl-home.png) | ![screenshot](documentation/responsiveness/responsive-xl-about.png) | ![screenshot](documentation/responsiveness/responsive-xl-contact.png) | ![screenshot](documentation/responsiveness/responsive-xl-etc.png) | Scaling starts to have minor issues |
-| 4K Monitor | ![screenshot](documentation/responsiveness/responsive-4k-home.png) | ![screenshot](documentation/responsiveness/responsive-4k-about.png) | ![screenshot](documentation/responsiveness/responsive-4k-contact.png) | ![screenshot](documentation/responsiveness/responsive-4k-etc.png) | Noticeable scaling issues |
-| Google Pixel 7 Pro | ![screenshot](documentation/responsiveness/responsive-pixel-home.png) | ![screenshot](documentation/responsiveness/responsive-pixel-about.png) | ![screenshot](documentation/responsiveness/responsive-pixel-contact.png) | ![screenshot](documentation/responsiveness/responsive-pixel-etc.png) | Works as expected |
-| iPhone 14 | ![screenshot](documentation/responsiveness/responsive-iphone-home.png) | ![screenshot](documentation/responsiveness/responsive-iphone-about.png) | ![screenshot](documentation/responsiveness/responsive-iphone-contact.png) | ![screenshot](documentation/responsiveness/responsive-iphone-etc.png) | Works as expected |
-| repeat for any other tested browsers | x | x | x | x | x |
+| Device | Home | About | Contact | Product | Product Detail | Profile | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Mobile (DevTools) | ![screenshot](documentation/responsiveness/responsive-mobile-home.png) | ![screenshot](documentation/responsiveness/responsive-mobile-about.png) | ![screenshot](documentation/responsiveness/responsive-mobile-contact.png) | ![screenshot](documentation/responsiveness/responsive-mobile-product.png) | ![screenshot](documentation/responsiveness/responsive-mobile-product-detail.png) |![screenshot](documentation/responsiveness/responsive-mobile-profile.png) | Works as expected |
+| Tablet (DevTools) | ![screenshot](documentation/responsiveness/responsive-tablet-home.png) | ![screenshot](documentation/responsiveness/responsive-tablet-about.png) | ![screenshot](documentation/responsiveness/responsive-tablet-contact.png) | ![screenshot](documentation/responsiveness/responsive-tablet-product.png) | ![screenshot](documentation/responsiveness/responsive-tablet-product-detail.png) | ![screenshot](documentation/responsiveness/responsive-tablet-profile.png) | Works as expected |
+| Desktop | ![screenshot](documentation/responsiveness/responsive-desktop-home.png) | ![screenshot](documentation/responsiveness/responsive-desktop-about.png) | ![screenshot](documentation/responsiveness/responsive-desktop-contact.png) | ![screenshot](documentation/responsiveness/responsive-desktop-product.png) | ![screenshot](documentation/responsiveness/responsive-desktop-product-detail.png) | ![screenshot](documentation/responsiveness/responsive-desktop-profile.png) |Works as expected |
 
 ## Lighthouse Audit
 
@@ -156,94 +151,37 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | User Story | Screenshot |
 | --- | --- |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/features/feature01.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/features/feature02.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/features/feature03.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/features/feature04.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/features/feature05.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/features/feature06.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/features/feature07.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/features/feature08.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/features/feature09.png) |
-| repeat for all remaining user stories | x |
+| As a new site user, I would like to I would like to view a responsive website, so that I can use any device. | ![screenshot](documentation/features/feature01.png) |
+| As a new site user, I would like to checkout as a guest without creating an account, so that I can purchase without an account. | ![screenshot](documentation/features/feature02.png) |
+| As a new site user, I would like to create an account, so that I can store my delivery details, save my order history and submit product reviews. | ![screenshot](documentation/features/feature03.png) |
+| As a new site user, I would like to add products to my wishlist, so that I can return to them at a later date/time. | ![screenshot](documentation/features/feature04.png) |
+| As a new site user, I would like to easily edit and delete any reviews that I write, so that I can control what reviews I submit and edit or delete them if I wish. | ![screenshot](documentation/features/feature05.png) |
+| As a new site user, I would like to easily contact the website administrators, so that I can ask questions. | ![screenshot](documentation/features/feature06.png) |
+| As a new site user, I should be able to easily understand the main purpose of the site/store, so that I can know what type of website I am on immediately. | ![screenshot](documentation/features/feature07.png) |
+
+| User Story | Screenshot |
+| --- | --- |
+| As a returning site user, I would like to I would like to view a responsive website, so that I can use any device and have an easy shopping experience. | ![screenshot](documentation/features/feature01.png) |
+| As a returning site user, I would like to log into my account, so that I can edit my delivery details, view my order history and submit product reviews. | ![screenshot](documentation/features/feature03.png) |
+| As a returning site user, I would like to my stored/saved delivery information, so that I can checkout quickly. | ![screenshot](documentation/features/feature03.png) |
+| As a returning site user, I would like to add products to my wishlist, so that I can return to them at a later date/time. | ![screenshot](documentation/features/feature04.png) |
+| As a returning site user, I would like to easily edit and delete any reviews that I write, so that I can control what reviews I submit and edit or delete them if I wish. | ![screenshot](documentation/features/feature05.png) |
+
+| User Story | Screenshot |
+| --- | --- |
+| As a site administrator, I would like to I would like to have a recognizable branded Django admininstator area, so that I know which website I'm working on. | ![screenshot](documentation/features/feature01.png) |
+| As a site administrator, I would like to use the front end to add a new product to the store, so that I can update my store regularly without having any coding knowledge and use a user-friendly UI. | ![screenshot](documentation/features/feature03.png) |
+| As a site administrator, I would like to easily edit or delete a product from the store from the front-end/website, so that I can keep my online store up to date. | ![screenshot](documentation/features/feature03.png) |
+| As a site administrator, I would like to easily send a newsletter email to all newsletter subscribers using a user-friendly UI, so that I can keep customers interested and engaged with my store, and encourage purchases. | ![screenshot](documentation/features/feature04.png) |
+| As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI, so that I the website is keep fresh and up to date. | ![screenshot](documentation/features/feature05.png) |
+| As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website, so that no spam or bot reviews appear on the site. | ![screenshot](documentation/features/feature05.png) |
+| As a site administrator, I would like to manage user contact requests , so that I can response to requests/questions in a timely manner. | ![screenshot](documentation/features/feature05.png) |
 
 ## Automated Testing
 
 I have conducted a series of automated tests on my application.
 
 I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive.
-
-### JavaScript (Jest Testing)
-
-I have used the [Jest](https://jestjs.io) JavaScript testing framework to test the application functionality.
-
-In order to work with Jest, I first had to initialize NPM.
-
-- `npm init`
-- Hit `enter` for all options, except for **test command:**, just type `jest`.
-
-Add Jest to a list called **Dev Dependencies** in a dev environment:
-
-- `npm install --save-dev jest`
-
-**IMPORTANT**: Initial configurations
-
-When creating test files, the name of the file needs to be `file-name.test.js` in order for Jest to properly work.
-
-Without the following, Jest won't properly run the tests:
-
-- `npm install -D jest-environment-jsdom`
-
-Due to a change in Jest's default configuration, you'll need to add the following code to the top of the `.test.js` file:
-
-```js
-/**
- * @jest-environment jsdom
- */
-
-const { test, expect } = require("@jest/globals");
-const { function1, function2, function3, etc. } = require("../script-name");
-
-beforeAll(() => {
-    let fs = require("fs");
-    let fileContents = fs.readFileSync("index.html", "utf-8");
-    document.open();
-    document.write(fileContents);
-    document.close();
-});
-```
-
-Remember to adjust the `fs.readFileSync()` to the specific file you'd like you test.
-The example above is testing the `index.html` file.
-
-Finally, at the bottom of the script file where your primary scripts are written, include the following at the bottom of the file.
-Make sure to include the name of all of your functions that are being tested in the `.test.js` file.
-
-```js
-if (typeof module !== "undefined") module.exports = {
-    function1, function2, function3, etc.
-};
-```
-
-Now that these steps have been undertaken, further tests can be written, and be expected to fail initially.
-Write JS code that can get the tests to pass as part of the Red-Green refactor process.
-
-Once ready, to run the tests, use this command:
-
-- `npm test`
-
-**NOTE**: To obtain a coverage report, use the following command:
-
-- `npm test --coverage`
-
-Below are the results from the tests that I've written for this application:
-
-| Test Suites | Tests | Screenshot |
-| --- | --- | --- |
-| 1 passed | 16 passed | ![screenshot](documentation/tests/js-test-coverage.png) |
-| x | x | repeat for all remaining tests |
-
-#### Jest Test Issues
 
 ### Python (Unit Testing)
 
