@@ -185,13 +185,13 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | User Story | Screenshot |
 | --- | --- |
-| As a site administrator, I would like to I would like to have a recognizable branded Django admininstator area, so that I know which website I'm working on. | ![screenshot](documentation/features/feature01.png) |
+| As a site administrator, I would like to I would like to have a recognizable branded Django admininstator area, so that I know which website I'm working on. | ![screenshot](documentation/django-admin-fc.png) |
 | As a site administrator, I would like to use the front end to add a new product to the store, so that I can update my store regularly without having any coding knowledge and use a user-friendly UI. | ![screenshot](documentation/features/fc-product-admin-add-product.png) |
 | As a site administrator, I would like to easily edit or delete a product from the store from the front-end/website, so that I can keep my online store up to date. | ![screenshot](documentation/features/fc-product-admin-edit-1.png) |
 | As a site administrator, I would like to easily send a newsletter email to all newsletter subscribers using a user-friendly UI, so that I can keep customers interested and engaged with my store, and encourage purchases. | ![screenshot](documentation/features/fc-newsletter-form.png) |
 | As a site administrator, I would like to easily edit the about text and profile picture using a user-friendly UI, so that I the website is keep fresh and up to date. | ![screenshot](documentation/features/fc-about_table_ui.png) |
 | As a site administrator, I would like to have control over approving site user reviews before they appear on the Football Crazy Store website, so that no spam or bot reviews appear on the site. | ![screenshot](documentation/features/fc-review-pending-approval.png) |
-| As a site administrator, I would like to manage user contact requests , so that I can response to requests/questions in a timely manner. | ![screenshot](documentation/features/admin-contact-table.png) |
+| As a site administrator, I would like to manage user contact requests , so that I can response to requests/questions in a timely manner. | ![screenshot](documentation/admin-contact-table.png) |
 
 ## Automated Testing
 
