@@ -185,9 +185,21 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+    
     # send order confirmation email
     subject = render_to_string(
-        'checkout/confirmation_emails/confirmation_email_subject.txt', {}
+        f'Football Crazy Confirmation for Order Number {order.order_number }', {}
     )
     html_message = render_to_string(
         'checkout/confirmation_emails/confirmation_email_body.txt', {}
@@ -202,17 +214,5 @@ def checkout_success(request, order_number):
         recipient_list,
         html_message=html_message
     )
-
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
-
-    if 'bag' in request.session:
-        del request.session['bag']
-
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
 
     return render(request, template, context)
