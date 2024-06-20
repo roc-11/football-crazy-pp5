@@ -179,11 +179,39 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## Automated Testing
 
-I have conducted a series of automated tests on my application.
+Unfortunately, I did not have time to conduct a series of automated tests on my application.
 
-I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive.
+I fully acknowledge and understand that, in a real-world scenario, an extensive set of tests would be required.
 
 ## Bugs
+
+- Django jinga not rendering on Checkout Success Email
+
+    - The checkout success message was sending successfully to the customer email, however it was missing all the content sent from the view. 
+    ![screenshot](documentation/email-order-confirm-error.png)
+
+    - To fix this I added the CONTEXT to the email message and subject. This sent the context 'order':order to the email .txt files. Now the confirmation email contains all the necessary information the customer would need.
+    ![screenshot](documentation/email-order-confirm-fix.png)
+
+```python
+ # send order confirmation email
+    subject = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order,}
+    )
+    html_message = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_body.txt', {'order': order,}
+    )
+    plain_message = strip_tags(html_message)
+    from_email = settings.DEFAULT_FROM_EMAIL
+    recipient_list = [order.email]
+    send_mail(
+        subject,
+        plain_message,
+        from_email,
+        recipient_list,
+        html_message=html_message
+    )
+```
 
 - Gmail password naming error: preventing sending of real emails. This bug took me a long time to debug and it was a simple typo error. Result was a "500 error" on any page which required email in production (register, checkout, etc.)
 
@@ -191,56 +219,28 @@ I fully acknowledge and understand that, in a real-world scenario, an extensive 
     EMAIL_HOST_PASS = os.environ.get('EMAIL_HOST_PASS')
     to
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS').
+    - I also had to reflect this change in the Heroku Config Vars.
+
+    ![screenshot](documentation/email_error_1.png)
+
+    ![screenshot](documentation/email_error_2.png)
 
 - Django/Python error: I had duplicate workspaces. This caused a huge error in the IDE. 
 
     - To fix this, I deleted one workspace, and pinned the one I kept. I had to reinstall Django and allauth. This was near the beginnning of my project.
 
-### GitHub **Issues**
+- AWS Free Tier Filling warning
 
-**Fixed Bugs**
+    - To fix this I added the config var DISABLE_COLLECT_STATIC = 1 back in Heroku so that I could test the site without worrying about charges, during the development process. This reduced the amount of requests being made significantly.
+    - I considered switching from AWS to Cloudinary, but it would have required too many changes at that late stage of the development process.
 
-[![GitHub issue custom search](https://img.shields.io/github/issues-search?query=repo%3Aroc-11%2Ffootball-crazy-pp5%20label%3Abug&label=bugs)](https://github.com/roc-11/football-crazy-pp5/issues?q=is%3Aissue+is%3Aclosed+label%3Abug)
+- HTML duplicate ID error on validation : id="user-options" there for mobile and desktop version with same ID. This was for the My Account dropdown navigation feature.
 
-All previously closed/fixed bugs can be tracked [here](https://github.com/roc-11/football-crazy-pp5/issues?q=is%3Aissue+is%3Aclosed).
+    - To fix this I changed the mobile-top-header.html id="user-options-mobile" & aria-labelledby="user-options-mobile".
 
-| Bug | Status |
-| --- | --- |
-| [JS Uncaught ReferenceError: `foobar` is undefined/not defined](https://github.com/roc-11/football-crazy-pp5/issues/1) | Closed |
-| [Python `'ModuleNotFoundError'` when trying to import module from imported package](https://github.com/roc-11/football-crazy-pp5/issues/2) | Closed |
-| [Django `TemplateDoesNotExist` at /appname/path appname/template_name.html](https://github.com/roc-11/football-crazy-pp5/issues/3) | Closed |
+- Error with the decrement and increment buttons on the Bag page not working as expected. The minus quantity button in the bag is meant to be disabled when the quantity hits 1. There is a duplicate quantity-form ID.
 
-**Open Issues**
-
-[![GitHub issues](https://img.shields.io/github/issues/roc-11/football-crazy-pp5)](https://github.com/roc-11/football-crazy-pp5/issues)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/roc-11/football-crazy-pp5)](https://github.com/roc-11/football-crazy-pp5/issues?q=is%3Aissue+is%3Aclosed)
-
-Any remaining open issues can be tracked [here](https://github.com/roc-11/football-crazy-pp5/issues).
-
-| Bug | Status |
-| --- | --- |
-| [JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).](https://github.com/roc-11/football-crazy-pp5/issues/4) | Open |
-| [Python `E501 line too long` (93 > 79 characters)](https://github.com/roc-11/football-crazy-pp5/issues/5) | Open |
-
-## Unfixed Bugs
-
-- On devices smaller than 375px, the page starts to have `overflow-x` scrolling.
-
-    ![screenshot](documentation/bugs/unfixed-bug01.png)
-
-    - Attempted fix: I tried to add additional media queries to handle this, but things started becoming too small to read.
-
-- For PP3, when using a helper `clear()` function, any text above the height of the terminal does not clear, and remains when you scroll up.
-
-    ![screenshot](documentation/bugs/unfixed-bug02.png)
-
-    - Attempted fix: I tried to adjust the terminal size, but it only resizes the actual terminal, not the allowable area for text.
-
-- When validating HTML with a semantic `section` element, the validator warns about lacking a header `h2-h6`. This is acceptable.
-
-    ![screenshot](documentation/bugs/unfixed-bug03.png)
-
-    - Attempted fix: this is a known warning and acceptable, and my section doesn't require a header since it's dynamically added via JS.
+    - To fix this I followed the steps listed on the Code Institute Boutique Ado Project. I changed the ID on the quantity-form to a class, and refactor the JavaScript to look for elements with the same class name and perform the appropriate actions.
 
 > [!NOTE]  
 > There are no remaining bugs that I am aware of.
