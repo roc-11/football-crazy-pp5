@@ -185,11 +185,12 @@ I fully acknowledge and understand that, in a real-world scenario, an extensive 
 
 ## Bugs
 
-- JS Uncaught ReferenceError: `foobar` is undefined/not defined
+- Gmail password naming error: preventing sending of real emails. This bug took me a long time to debug and it was a simple typo error.
 
-    ![screenshot](documentation/bugs/bug01.png)
-
-    - To fix this, I _____________________.
+    - To fix this, I changed:
+    EMAIL_HOST_PASS = os.environ.get('EMAIL_HOST_PASS')
+    to
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS').
 
 - JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).
 
